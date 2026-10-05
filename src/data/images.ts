@@ -55,16 +55,16 @@ export const serviceImages: Record<string, { card: string; hero: string; cap: st
   },
   'car-transportation': {
     card: '/images/car-transportation.png',
-    hero: '/images/car-transportation-sol.jpg',
+    hero: '/images/cartrandaction.png',
     cap: ['/images/car-transportation-cap-1.jpg', '/images/car-transportation-cap-2.jpg'],
-    sol: '/images/car-transportation-sol.jpg',
+    sol: '/images/cartrandaction.png',
     cta: '/images/ctabanner.png',
     solLeft: true
   },
   'cargo-insurance': {
     card: '/images/cargo-insurance.png',
-    hero: '/images/cargo-insurance-sol.jpg',
-    cap: ['/images/cargo-insurance-cap-1.jpg'],
+    hero: '/images/insurance.png',
+    cap: ['/images/insurance.png'],
     sol: '/images/cargo-insurance-sol.jpg',
     cta: '/images/ctabanner.png'
   },
