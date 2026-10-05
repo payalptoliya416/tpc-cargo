@@ -1,14 +1,59 @@
 // Image paths for every service page. Files live in /public/images
-const p = (name: string) => `/images/${name}.png`;
 
 export const serviceImages: Record<string, { card: string; hero: string; cap: string[]; sol: string; solLeft?: boolean }> = {
-  'sea-freight': { card: p('sea-freight'), hero: p('sea-freight-sol'), cap: [p('sea-freight-cap-1'), p('sea-freight-cap-2')], sol: p('sea-freight-sol') },
-  'air-freight': { card: p('air-freight'), hero: p('air-freight-sol'), cap: [p('air-freight-cap-1')], sol: p('air-freight-sol') },
-  'road-freight': { card: p('road-freight'), hero: p('road-freight-sol'), cap: [p('road-freight-cap-1')], sol: p('road-freight-sol') },
-  'multimodal-transport': { card: p('multimodal-transport'), hero: p('multimodal-transport-cap-1'), cap: [p('multimodal-transport-cap-1')], sol: p('sea-freight-sol') },
-  'freight-forwarding': { card: p('freight-forwarding'), hero: p('freight-forwarding-cap-1'), cap: [p('freight-forwarding-cap-1')], sol: p('road-freight-sol') },
-  'parcel-courier': { card: p('parcel-courier'), hero: p('parcel-courier-sol'), cap: [p('parcel-courier-cap-1')], sol: p('parcel-courier-sol') },
-  'packaging-and-storage': { card: p('packaging-and-storage'), hero: p('packaging-and-storage-sol'), cap: [p('packaging-and-storage-cap-1'), p('packaging-and-storage-cap-2')], sol: p('packaging-and-storage-sol') },
-  'car-transportation': { card: p('car-transportation'), hero: p('car-transportation-sol'), cap: [p('car-transportation-cap-1'), p('car-transportation-cap-2')], sol: p('car-transportation-sol'), solLeft: true },
-  'cargo-insurance': { card: p('cargo-insurance'), hero: p('cargo-insurance-sol'), cap: [p('cargo-insurance-cap-1')], sol: p('cargo-insurance-sol') },
+  'sea-freight': {
+    card: '/images/sea-freight.png',
+    hero: '/images/sea-freight-hero.png',
+    cap: ['/images/sea-freight-cap-1.jpg', '/images/sea-freight-cap-2.jpg'],
+    sol: '/images/sea-freight-sol.jpg'
+  },
+  'air-freight': {
+    card: '/images/air-freight.png',
+    hero: '/images/air-freight-sol.png',
+    cap: ['/images/air-freight-cap-1.jpg'],
+    sol: '/images/air-freight-sol.png'
+  },
+  'road-freight': {
+    card: '/images/road-freight.png',
+    hero: '/images/road-freight-sol.jpg',
+    cap: ['/images/road-freight-cap-1.jpg'],
+    sol: '/images/road-freight-sol.jpg'
+  },
+  'multimodal-transport': {
+    card: '/images/multimodal-transport.png',
+    hero: '/images/multimodal-transport-cap-1.jpg',
+    cap: ['/images/multimodal-transport-cap-1.jpg'],
+    sol: '/images/sea-freight-sol.jpg'
+  },
+  'freight-forwarding': {
+    card: '/images/freight-forwarding.png',
+    hero: '/images/freight-forwarding-cap-1.jpg',
+    cap: ['/images/freight-forwarding-cap-1.jpg'],
+    sol: '/images/road-freight-sol.jpg'
+  },
+  'parcel-courier': {
+    card: '/images/parcel-courier.png',
+    hero: '/images/parcel-courier-sol.jpg',
+    cap: ['/images/parcel-courier-cap-1.jpg'],
+    sol: '/images/parcel-courier-sol.jpg'
+  },
+  'packaging-and-storage': {
+    card: '/images/packaging-and-storage.png',
+    hero: '/images/packaging-and-storage-sol.jpg',
+    cap: ['/images/packaging-and-storage-cap-1.jpg', '/images/packaging-and-storage-cap-2.jpg'],
+    sol: '/images/packaging-and-storage-sol.jpg'
+  },
+  'car-transportation': {
+    card: '/images/car-transportation.png',
+    hero: '/images/car-transportation-sol.jpg',
+    cap: ['/images/car-transportation-cap-1.jpg', '/images/car-transportation-cap-2.jpg'],
+    sol: '/images/car-transportation-sol.jpg',
+    solLeft: true
+  },
+  'cargo-insurance': {
+    card: '/images/cargo-insurance.png',
+    hero: '/images/cargo-insurance-sol.jpg',
+    cap: ['/images/cargo-insurance-cap-1.jpg'],
+    sol: '/images/cargo-insurance-sol.jpg'
+  },
 };
