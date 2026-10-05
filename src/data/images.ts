@@ -4,7 +4,7 @@ export const serviceImages: Record<string, { card: string; hero: string; cap: st
   'sea-freight': {
     card: '/images/sea-freight.png',
     hero: '/images/sea-freight-hero.png',
-    cap: ['/images/sea-freight-cap-1.jpg', '/images/sea-freight-cap-2.jpg'],
+    cap: ['/images/sea-freight-cap-1.png', '/images/sea-freight-cap-3.png'],
     sol: '/images/sea-freight-sol.jpg'
   },
   'air-freight': {

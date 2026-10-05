@@ -1,18 +1,79 @@
 ---
 // Quote form shown inside the service hero
+import Icon from './Icon.astro';
 const { title = 'Get Your Quote' } = Astro.props;
 ---
-<div class="rounded-2xl bg-white p-6 text-dark shadow-xl">
-  <h3 class="text-lg font-semibold">{title}</h3>
-  <p class="mt-1 text-xs text-gray-500">Tell us about your shipment and our team will get back to you with the right shipping solution.</p>
-  <form action="#" class="mt-5 grid gap-3 sm:grid-cols-2">
-    <label class="text-xs">First name *<input class="input mt-1" placeholder="Your first name" required /></label>
-    <label class="text-xs">Last name *<input class="input mt-1" placeholder="Your last name" required /></label>
-    <label class="text-xs">Email *<input type="email" class="input mt-1" placeholder="you@company.com" required /></label>
-    <label class="text-xs">Phone Number *<input type="tel" class="input mt-1" placeholder="+00 Your phone number" required /></label>
-    <label class="text-xs">From (Origin) *<input class="input mt-1" placeholder="Port or City, Country" required /></label>
-    <label class="text-xs">To (Destination) *<input class="input mt-1" placeholder="Port or City, Country" required /></label>
-    <label class="text-xs sm:col-span-2">Additional Details<textarea rows="4" class="input mt-1" placeholder="Tell us about your cargo, quantity, dimensions or any special requirements..."></textarea></label>
-    <div class="text-center sm:col-span-2"><button class="btn">Get my free quote</button></div>
+<div class="rounded-3xl bg-white p-6 sm:p-8 text-dark shadow-2xl border border-gray-100/50">
+  <h3 class="text-xl sm:text-2xl font-bold text-dark">{title}</h3>
+  <p class="mt-1.5 text-xs sm:text-sm text-gray-500">Tell us about your shipment and our team will get back to you with the right shipping solution.</p>
+  
+  <form action="#" class="mt-6 grid gap-4 sm:grid-cols-2">
+    <div>
+      <label class="flex items-center gap-1.5 text-[11px] font-semibold text-gray-700">
+        <Icon name="user" class="h-3.5 w-3.5 text-brand" />
+        <span>First name</span>
+        <span class="text-brand">*</span>
+      </label>
+      <input class="mt-1.5 w-full rounded-xl border border-gray-200/80 bg-white px-3.5 py-2.5 text-xs text-gray-800 outline-none focus:border-brand focus:ring-1 focus:ring-brand placeholder:text-gray-400" placeholder="Your first name" required />
+    </div>
+
+    <div>
+      <label class="flex items-center gap-1.5 text-[11px] font-semibold text-gray-700">
+        <Icon name="user" class="h-3.5 w-3.5 text-brand" />
+        <span>Last name</span>
+        <span class="text-brand">*</span>
+      </label>
+      <input class="mt-1.5 w-full rounded-xl border border-gray-200/80 bg-white px-3.5 py-2.5 text-xs text-gray-800 outline-none focus:border-brand focus:ring-1 focus:ring-brand placeholder:text-gray-400" placeholder="Your last name" required />
+    </div>
+
+    <div>
+      <label class="flex items-center gap-1.5 text-[11px] font-semibold text-gray-700">
+        <Icon name="mail" class="h-3.5 w-3.5 text-brand" />
+        <span>Email</span>
+        <span class="text-brand">*</span>
+      </label>
+      <input type="email" class="mt-1.5 w-full rounded-xl border border-gray-200/80 bg-white px-3.5 py-2.5 text-xs text-gray-800 outline-none focus:border-brand focus:ring-1 focus:ring-brand placeholder:text-gray-400" placeholder="you@company.com" required />
+    </div>
+
+    <div>
+      <label class="flex items-center gap-1.5 text-[11px] font-semibold text-gray-700">
+        <Icon name="phone" class="h-3.5 w-3.5 text-brand" />
+        <span>Phone Number</span>
+        <span class="text-brand">*</span>
+      </label>
+      <input type="tel" class="mt-1.5 w-full rounded-xl border border-gray-200/80 bg-white px-3.5 py-2.5 text-xs text-gray-800 outline-none focus:border-brand focus:ring-1 focus:ring-brand placeholder:text-gray-400" placeholder="+00 | You phone number" required />
+    </div>
+
+    <div>
+      <label class="flex items-center gap-1.5 text-[11px] font-semibold text-gray-700">
+        <Icon name="pin" class="h-3.5 w-3.5 text-brand" />
+        <span>From (Origin)</span>
+        <span class="text-brand">*</span>
+      </label>
+      <input class="mt-1.5 w-full rounded-xl border border-gray-200/80 bg-white px-3.5 py-2.5 text-xs text-gray-800 outline-none focus:border-brand focus:ring-1 focus:ring-brand placeholder:text-gray-400" placeholder="Port or City, Country" required />
+    </div>
+
+    <div>
+      <label class="flex items-center gap-1.5 text-[11px] font-semibold text-gray-700">
+        <Icon name="pin" class="h-3.5 w-3.5 text-brand" />
+        <span>To (Destination)</span>
+        <span class="text-brand">*</span>
+      </label>
+      <input class="mt-1.5 w-full rounded-xl border border-gray-200/80 bg-white px-3.5 py-2.5 text-xs text-gray-800 outline-none focus:border-brand focus:ring-1 focus:ring-brand placeholder:text-gray-400" placeholder="Port or City, Country" required />
+    </div>
+
+    <div class="sm:col-span-2">
+      <label class="flex items-center gap-1.5 text-[11px] font-semibold text-gray-700">
+        <Icon name="box" class="h-3.5 w-3.5 text-brand" />
+        <span>Additional Details</span>
+      </label>
+      <textarea rows="3" class="mt-1.5 w-full rounded-xl border border-gray-200/80 bg-white px-3.5 py-2.5 text-xs text-gray-800 outline-none focus:border-brand focus:ring-1 focus:ring-brand placeholder:text-gray-400" placeholder="Tell us about your cargo, quantity, dimensions or any special requirements..."></textarea>
+    </div>
+
+    <div class="pt-3 text-center sm:col-span-2">
+      <button class="w-full sm:w-auto min-w-[240px] rounded-full bg-brand px-8 py-3.5 text-xs font-bold uppercase tracking-wider text-black shadow-lg transition hover:bg-orange-600 cursor-pointer">
+        GET MY FREE QUOTE
+      </button>
+    </div>
   </form>
 </div>
