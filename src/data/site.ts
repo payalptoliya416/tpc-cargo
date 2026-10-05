@@ -23,7 +23,25 @@ export const stats = [
 ];
 
 export const testimonials = [
-  { name: 'Andreas Georgiou', role: 'Logistics Manager · Manufacturing Industry', title: 'Reliable From Booking To Delivery', text: 'TPC Cargo made our sea freight shipment simple to manage. Their team kept us informed throughout the process and handled everything professionally.' },
-  { name: 'Elena Markou', role: 'Procurement Manager · Retail & Distribution', title: 'Professional And Responsive Team', text: 'From planning to delivery, the TPC Cargo team was responsive and helpful. They understood our requirements and provided a smooth shipping experience.' },
-  { name: 'Michael Costas', role: 'Operations Director · Import & Export Business', title: 'A Smooth Shipping Experience', text: 'We needed a dependable solution for our international cargo, and TPC Cargo provided clear communication and efficient coordination throughout the shipment.' },
+  {
+    name: 'Andreas Georgiou',
+    role: 'Logistics Manager | Manufacturing Industry',
+    avatar: '/images/avatar-1.png',
+    title: 'Reliable From Booking To Delivery',
+    text: 'TPC Cargo Made Our Sea Freight Shipment Simple To Manage. Their Team Kept Us Informed Throughout The Process And Handled Everything Professionally.'
+  },
+  {
+    name: 'Elena Markou',
+    role: 'Procurement Manager | Retail & Distribution',
+    avatar: '/images/avatar-2.png',
+    title: 'Professional And Responsive Team',
+    text: 'From Planning To Delivery, The TPC Cargo Team Was Responsive And Helpful. They Understood Our Requirements And Provided A Smooth Shipping Experience.'
+  },
+  {
+    name: 'Michael Costas',
+    role: 'Operations Director | Import & Export Business',
+    avatar: '/images/avatar-3.png',
+    title: 'A Smooth Shipping Experience',
+    text: 'We Needed A Dependable Solution For Our International Cargo, And TPC Cargo Provided Clear Communication And Efficient Coordination Throughout The Shipment.'
+  },
 ];

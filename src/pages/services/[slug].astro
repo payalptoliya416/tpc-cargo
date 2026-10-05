@@ -20,6 +20,17 @@ export function getStaticPaths() {
 const { service } = Astro.props;
 const img = serviceImages[service.slug];
 
+// Helper to bold prefixes like "FCL/Full Container", "LCL/...", etc.
+function formatCapParagraph(p: string) {
+  const commaIndex = p.indexOf(',');
+  if (commaIndex !== -1 && (p.startsWith('FCL') || p.startsWith('LCL') || p.startsWith('RORO') || p.startsWith('BULK'))) {
+    const title = p.substring(0, commaIndex);
+    const rest = p.substring(commaIndex);
+    return `<strong class="font-bold text-gray-900">${title}</strong>${rest}`;
+  }
+  return p;
+}
+
 // Every service gets these 2 extra FAQs at the end
 const faqs = [
   ...service.faqs,
@@ -36,23 +47,101 @@ const faqs = [
     formTitle={`Get Your ${service.name} Quote`}
   />
 
-  <!-- Capabilities -->
+  <!-- Capabilities Section -->
   <section class="section">
-    <div class="wrap grid items-start gap-10 lg:grid-cols-2">
-      <div>
-        <SectionHeading badge={`Our ${service.name} capabilities`} title="Discover Our [Capabilities] And Network" />
-        <div class="mt-6 space-y-4">
-          {service.capParagraphs.map((p) => <p class="text-muted">{p}</p>)}
-          {service.bullets && (
-            <ul class="space-y-2">
-              {service.bullets.map((b) => <li class="flex gap-2 text-sm"><Icon name="check" class="mt-0.5 h-4 w-4 text-brand" />{b}</li>)}
-            </ul>
-          )}
+    <div class="wrap space-y-10">
+      <!-- Header Row: Title & Badge on Left, Intro Text on Right -->
+      <div class="grid gap-6 lg:grid-cols-2 lg:gap-14 lg:items-end">
+        <div>
+          <span class="badge">Our {service.name} capabilities</span>
+          <h2 class="heading mt-4">Discover Our <span class="text-brand">Capabilities<br class="hidden sm:inline" /> And Network</span></h2>
         </div>
+        {service.capParagraphs[0] && (
+          <p class="text-sm sm:text-base leading-relaxed text-gray-500">
+            {service.capParagraphs[0]}
+          </p>
+        )}
       </div>
-      <div class="space-y-4">
-        {img.cap.map((src) => <img src={src} alt={service.name} class="w-full rounded-lg object-cover" loading="lazy" />)}
-      </div>
+
+      <!-- Staggered 2x2 Matrix -->
+      {img.cap.length >= 2 ? (
+        <div class="grid gap-10 lg:grid-cols-2 lg:gap-7 items-start">
+          <!-- Left Column: Paragraphs 1 & 2, then Image 1 -->
+          <div class="flex flex-col gap-8">
+            <div class="space-y-5 text-sm sm:text-base leading-relaxed text-gray-500">
+              {service.capParagraphs.slice(1, 3).map((p) => (
+                <p set:html={formatCapParagraph(p)} />
+              ))}
+            </div>
+
+            <img
+              src={img.cap[0]}
+              alt={`${service.name} cap 1`}
+              class="w-full object-cover shadow-sm"
+              loading="lazy"
+            />
+          </div>
+
+          <!-- Right Column: Image 2, then Paragraphs 3 & 4 -->
+          <div class="flex flex-col gap-8">
+            <img
+              src={img.cap[1]}
+              alt={`${service.name} cap 2`}
+              class="w-full object-cover shadow-sm"
+              loading="lazy"
+            />
+
+            <div class="space-y-5 text-sm sm:text-base leading-relaxed text-gray-500">
+              {service.capParagraphs.slice(3).map((p) => (
+                <p set:html={formatCapParagraph(p)} />
+              ))}
+            </div>
+
+            {service.bullets && (
+              <ul class="space-y-2.5 pt-2">
+                {service.bullets.map((b) => (
+                  <li class="flex items-center gap-3 text-sm font-medium text-gray-700">
+                    <span class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand/15 text-brand">
+                      <Icon name="check" class="h-3 w-3" />
+                    </span>
+                    <span>{b}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </div>
+      ) : (
+        /* Single Image Layout fallback for other services */
+        <div class="grid gap-10 lg:grid-cols-2 lg:gap-14 items-start">
+          <div class="space-y-5 text-sm sm:text-base leading-relaxed text-gray-500">
+            {service.capParagraphs.slice(1).map((p) => (
+              <p set:html={formatCapParagraph(p)} />
+            ))}
+            {service.bullets && (
+              <ul class="space-y-2.5 pt-2">
+                {service.bullets.map((b) => (
+                  <li class="flex items-center gap-3 text-sm font-medium text-gray-700">
+                    <span class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand/15 text-brand">
+                      <Icon name="check" class="h-3 w-3" />
+                    </span>
+                    <span>{b}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+
+          <div>
+            <img
+              src={img.cap[0]}
+              alt={service.name}
+              class="aspect-[4/3] w-full rounded-2xl object-cover shadow-sm"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      )}
     </div>
   </section>
 
@@ -65,7 +154,7 @@ const faqs = [
       <div class="mt-5 space-y-4">
         {service.solParagraphs.map((p) => <p class="text-muted">{p}</p>)}
       </div>
-      <div><a href="/contacts" class="btn mt-8">Contact Now</a></div>
+      <div><a href="/contacts" class="btn mt-8 !text-black">Contact Now</a></div>
     </div>
     <img src={img.sol} alt={service.name} class:list={['h-72 w-full object-cover lg:h-full', img.solLeft && 'lg:order-1']} loading="lazy" />
   </section>

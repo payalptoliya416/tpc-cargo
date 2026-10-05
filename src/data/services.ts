@@ -30,8 +30,8 @@ export const services: Service[] = [
     capParagraphs: [
       'TPC Cargo sea freight services come in a number of ways in which your cargo can be transported from/to Cyprus. Thru our international network of dedicated freight forwarders and sea freight carriers, we can provide:',
       'FCL/Full Container Load, in which you make use of one or more full containers.',
-      'LCL/Less Than Container/Groupage, where your goods share space in containers, as you may not have a full container worth of cargo.',
-      'RORO/Roll On Roll Off vessel, transporting wheeled cargo such as cars, trucks, buses and trailers.',
+      'LCL/Less Than Container/Groupage,where your goods share space in containers, as you may not have a full container worth of cargo. Once they reach their destination,  cargo is divided per customer, and from there each cargo it’s ready to be picked up, delivered, or continue the journey to the final destination thru different transport methods.',
+      'RORO/Roll On Roll Off vessel, transporting wheeled cargo, be it cars, trucks, buses, trailers with cargo and goods, or even industrial vehicles, where your goods do not leave the vehicle they are in to go onto the cargo ship. The vehicle simply drives onto the ship and then drives off the other end.',
       'BULK shipping, used for some specific items, which are deposited into the hold of the ship instead of traveling in a container.',
     ],
     solTitle: 'Sea Freight',
