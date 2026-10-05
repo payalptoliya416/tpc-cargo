@@ -9,14 +9,52 @@
 }
 
 /* Common helper classes used everywhere */
-.wrap { @apply mx-auto w-full max-w-[1536px] px-4 md:px-8 lg:px-12; }
-.section { @apply py-14 md:py-20; }
-.badge { @apply inline-flex items-center gap-2 rounded-full border border-brand/30 bg-cream px-3 py-1 text-[11px] font-medium uppercase text-brand; }
-.badge::before { content: ""; @apply h-1.5 w-1.5 rounded-full bg-brand; }
-.btn { @apply inline-block rounded-full bg-brand px-6 py-2.5 text-xs font-bold uppercase text-white transition hover:bg-orange-600; }
-.heading { @apply mt-4 text-3xl font-medium leading-tight md:text-4xl; }
-.text-muted { @apply text-sm leading-7 text-gray-500; }
-.input { @apply w-full rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-sm outline-none focus:border-brand; }
+.wrap {
+  @apply mx-auto w-full max-w-[1536px] px-4 md:px-8 lg:px-12;
+}
 
-html { scroll-behavior: smooth; }
-body { @apply font-sans text-dark antialiased; }
+.section {
+  @apply py-14 md:py-20;
+}
+
+.badge {
+  @apply inline-flex items-center gap-2 rounded-full border border-brand/30 bg-cream px-3 py-1 text-[11px] font-medium uppercase text-brand;
+}
+
+.badge::before {
+  content: "";
+  @apply h-1.5 w-1.5 rounded-full bg-brand;
+}
+
+.btn {
+  @apply inline-block rounded-full bg-brand px-6 py-2.5 text-xs font-bold uppercase text-white transition hover:bg-orange-600;
+}
+
+.heading {
+  @apply mt-4 text-3xl font-medium leading-tight md:text-4xl;
+}
+
+.text-muted {
+  @apply text-sm leading-7 text-gray-500;
+}
+
+.input {
+  @apply w-full rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-sm outline-none focus:border-brand;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply font-sans text-dark antialiased;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

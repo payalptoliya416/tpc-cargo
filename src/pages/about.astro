@@ -5,12 +5,15 @@ import SectionHeading from '../components/SectionHeading.astro';
 import Icon from '../components/Icon.astro';
 import CtaBanner from '../components/CtaBanner.astro';
 
-const mission = [
+const missionCol1 = [
   'Maintain High Ethical standards',
   'Problem-Solving Solutions that Assist our Customers in Achieving Their Objectives',
   'Offering exceptional value in the Cargo Logistics Marketplace',
   'Be an Active Community Partner',
   'Custom Clearance and Compliance Service',
+];
+
+const missionCol2 = [
   'Provide Best Cargo Transportation and Logistics Services to our Customer\'s',
   'Connect the World\'s Professionals to Make Them More Productive and Successful',
   'Setting the Standard for Professionalism in the Logistic Solutions we provide',
@@ -19,38 +22,83 @@ const mission = [
 ];
 ---
 <Layout title="About Us | TPC Cargo">
+  <!-- Top Hero Banner -->
   <PageBanner title="About Us" />
 
+  <!-- About TPC Cargo Section -->
   <section class="section">
-    <div class="wrap grid gap-10 lg:grid-cols-2">
+    <div class="wrap grid gap-10 lg:grid-cols-2 lg:gap-14">
+      <!-- Left Column: Header, Image 1, Paragraphs Block 2 -->
+      <div class="flex flex-col gap-6">
+        <div>
+          <span class="badge">About TPC Cargo</span>
+          <h2 class="heading">We are <span class="text-[#FE7E01]">TPC Cargo!</span></h2>
+        </div>
+        
+        <img
+          src="/images/freight-forwarding-cap-1.png"
+          alt="TPC Cargo logistics"
+          class="h-[430px] w-full object-cover shadow-sm"
+        />
+
+        <div class="mt-2 space-y-4 text-muted">
+          <p>Our main objective is to help our clients, through efficient transport and logistics solutions, to choose the right way to any national and international destination.</p>
+          <p>A young, flexible team responds with immediate transport solutions to enable customers and partners around the world to connect with each other. We are specialized in the dynamics of the transport industry, proactively focused on efficient transport solutions. We are constantly in touch with our partners and we monitor the transports in good safety conditions.</p>
+          <p>In a constantly changing economy and increasing of suppliers/consumers destinations requests, requires innovative transport solutions which connect different countries, and reduce transit time and costs – it’s a must.</p>
+        </div>
+      </div>
+
+      <!-- Right Column: Paragraphs Block 1, Image 2 -->
+      <div class="flex flex-col gap-6 lg:pt-14">
+        <div class="space-y-4 text-muted">
+          <p>Our Core Business is organization and performance of Combined Transport from/to Cyprus throughout Europe. Over time, we have consolidated a national and international dedicated network of partners -globally.</p>
+          <p>Since the beginning, TPC Express Cargo has carried out pioneering work in the development of combined transport road/sea/air, and regardless of your needs, even if it’s an import-export to/from Cyprus or a personal/corporate need of transport and relocation services, our highly-qualified employees and partners are responsible for the success of your order – from booking until delivery to the final destination- FCL/LCL/FTL/LTL.</p>
+          <p>With a vast experience in the field of freight transport at the national and international levels, we offer combined sea/road/air logistics and transport solutions for a multitude of industries such as construction, retail, agriculture, automotive, FMCG, relocations etc.</p>
+        </div>
+
+        <img
+          src="/images/sea-freight-cap-2.png"
+          alt="Port container truck"
+          class="aspect-[4/3] w-full object-cover shadow-sm"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Mission Section -->
+  <section class="section bg-[#fff9f4] py-16 md:py-24">
+    <div class="wrap grid gap-10 lg:grid-cols-3 lg:gap-16">
       <div>
-        <SectionHeading badge="About TPC Cargo" title="We are [TPC Cargo!]" />
-        <img src="/images/freight-forwarding-cap-1.jpg" alt="TPC Cargo" class="mt-6 aspect-[4/3] w-full rounded-lg object-cover" />
+        <span class="badge">Who we are</span>
+        <h2 class="heading mt-4">Our <span class="text-[#FE7E01]">Mission</span></h2>
       </div>
-      <div class="space-y-4 lg:pt-4">
-        <p class="text-muted">Our Core Business is organization and performance of Combined Transport from/to Cyprus throughout Europe. Over time, we have consolidated a national and international dedicated network of partners -globally.</p>
-        <p class="text-muted">Since the beginning, TPC Express Cargo has carried out pioneering work in the development of combined transport road/sea/air, and regardless of your needs, even if it’s an import-export to/from Cyprus or a personal/corporate need of transport and relocation services, our highly-qualified employees and partners are responsible for the success of your order – from booking until delivery to the final destination- FCL/LCL/FTL/LTL</p>
-        <p class="text-muted">With a vast experience in the field of freight transport at the national and international levels, we offer combined sea/road/air logistics and transport solutions for a multitude of industries such as construction, retail, agriculture, automotive, FMCG, relocations etc.</p>
+
+      <div class="grid gap-8 sm:grid-cols-2 lg:col-span-2 lg:gap-14">
+        <ul class="space-y-7">
+          {missionCol1.map((m) => (
+            <li class="flex items-start gap-4 text-base md:text-[17px] font-normal text-gray-800 leading-relaxed">
+              <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#FFF2E6] text-[#FE7E01] mt-0.5">
+                <Icon name="check" class="h-3.5 w-3.5" />
+              </span>
+              <span>{m}</span>
+            </li>
+          ))}
+        </ul>
+
+        <ul class="space-y-7">
+          {missionCol2.map((m) => (
+            <li class="flex items-start gap-4 text-base md:text-[17px] font-normal text-gray-800 leading-relaxed">
+              <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#FFF2E6] text-[#FE7E01] mt-0.5">
+                <Icon name="check" class="h-3.5 w-3.5" />
+              </span>
+              <span>{m}</span>
+            </li>
+          ))}
+        </ul>
       </div>
-      <div class="space-y-4 lg:pt-2">
-        <p class="text-muted">Our main objective is to help our clients, through efficient transport and logistics solutions, to choose the right way to any national and international destination.</p>
-        <p class="text-muted">A young, flexible team responds with immediate transport solutions to enable customers and partners around the world to connect with each other. We are specialized in the dynamics of the transport industry, proactively focused on efficient transport solutions. We are constantly in touch with our partners and we monitor the transports in good safety conditions.</p>
-        <p class="text-muted">In a constantly changing economy and increasing of suppliers/consumers destinations requests, requires innovative transport solutions which connect different countries, and reduce transit time and costs – it’s a must.</p>
-      </div>
-      <img src="/images/sea-freight-cap-2.jpg" alt="Port" class="aspect-[4/3] w-full rounded-lg object-cover" />
     </div>
   </section>
 
-  <section class="section bg-cream">
-    <div class="wrap grid gap-10 lg:grid-cols-3">
-      <SectionHeading badge="Who we are" title="Our [Mission]" />
-      <ul class="grid gap-x-8 gap-y-5 sm:grid-cols-2 lg:col-span-2">
-        {mission.map((m) => (
-          <li class="flex gap-3 text-sm"><Icon name="check" class="mt-0.5 h-4 w-4 shrink-0 text-brand" />{m}</li>
-        ))}
-      </ul>
-    </div>
-  </section>
-
+  <!-- CTA Banner Section -->
   <CtaBanner title="Not sure which solution fits [your business needs?]" />
 </Layout>

@@ -2,9 +2,9 @@
 import { highlight } from '../utils';
 const { badge, title, text, button = 'Contact Now', href = '/contacts' } = Astro.props;
 ---
-<section class="relative bg-dark bg-cover bg-center text-center text-white" style="background-image:url('/images/road-freight-sol.jpg')">
-  <div class="absolute inset-0 bg-black/60"></div>
-  <div class="wrap relative py-16 md:py-24">
+<section class="relative bg-dark bg-cover bg-center text-center text-white" style="background-image:url('/images/road-freight-sol.png')">
+  <!-- <div class="absolute inset-0 bg-black/80"></div> -->
+  <div class="wrap relative py-16 md:py-28">
     {badge && <span class="badge !bg-black/30">{badge}</span>}
     <h2 class="mt-4 text-3xl font-medium md:text-4xl" set:html={highlight(title)} />
     {text && <p class="mx-auto mt-4 max-w-2xl text-sm text-gray-300">{text}</p>}

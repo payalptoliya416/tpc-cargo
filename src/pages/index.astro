@@ -18,7 +18,7 @@ const heroLinks = [
   { icon: 'warehouse', name: 'Warehousing', href: '/services/packaging-and-storage' },
 ];
 // Cards in the dark section
-const beyond = ['packaging-and-storage', 'car-transportation', 'cargo-insurance', 'sea-freight'].map((slug) => services.find((s) => s.slug === slug));
+const beyond = ['packaging-and-storage', 'car-transportation', 'cargo-insurance', 'sea-freight', 'air-freight', 'road-freight', 'multimodal-transport', 'parcel-courier'].map((slug) => services.find((s) => s.slug === slug)).filter((s): s is import('../data/services').Service => Boolean(s));
 const special = [
   { icon: 'box', name: 'Packaging and Storage' },
   { icon: 'warehouse', name: 'Warehousing service' },
@@ -127,14 +127,26 @@ const special = [
   <Stats />
 
   <!-- Beyond shipping (dark) -->
-  <section class="section mt-14 bg-dark text-white md:mt-20">
-    <div class="wrap">
-      <div class="grid gap-4 md:grid-cols-2 md:items-end">
+  <section class="section relative mt-14 bg-dark text-white md:mt-20 overflow-hidden py-16">
+    <div class="wrap relative pl-6 sm:pl-10 md:pl-14">
+      <!-- Left side vertical slider pagination dots -->
+      <div class="absolute left-0 sm:left-1 md:left-2 top-1/2 -translate-y-1/2 flex flex-col gap-3.5 z-20" id="beyond-slider-dots">
+        <button data-index="0" aria-label="Slide 1" class="slider-dot active h-2.5 w-2.5 rounded-full bg-brand ring-2 ring-brand/40 ring-offset-2 ring-offset-[#120d09] transition-all cursor-pointer"></button>
+        <button data-index="1" aria-label="Slide 2" class="slider-dot h-2 w-2 rounded-full bg-gray-600 hover:bg-gray-400 transition-all cursor-pointer"></button>
+        <button data-index="2" aria-label="Slide 3" class="slider-dot h-2 w-2 rounded-full bg-gray-600 hover:bg-gray-400 transition-all cursor-pointer"></button>
+      </div>
+
+      <div class="grid gap-4 md:grid-cols-2 md:items-end mb-10">
         <SectionHeading light badge="Beyond the ordinary" title="More Than Shipping, [Complete Logistics Support.]" />
         <p class="text-sm leading-7 text-gray-400">Experience the best in international transport with our special services. From cargo shipments to customs clearance, our team is ready to meet all your needs.</p>
       </div>
-      <div class="mt-10 flex snap-x gap-5 overflow-x-auto pb-2 sm:grid sm:grid-cols-2 sm:overflow-visible lg:grid-cols-4">
-        {beyond.map((s) => <div class="min-w-[80%] snap-start sm:min-w-0"><ServiceCard service={s} dark /></div>)}
+
+      <div id="beyond-slider-track" class="flex gap-6 overflow-x-auto pb-4 no-scrollbar scroll-smooth cursor-grab select-none">
+        {beyond.map((s) => (
+          <div class="w-[85%] sm:w-[45%] lg:w-[32%] snap-start shrink-0">
+            <ServiceCard service={s} dark />
+          </div>
+        ))}
       </div>
     </div>
   </section>
@@ -159,4 +171,68 @@ const special = [
 
   <Offices />
   <Map />
+
+  <script>
+    const track = document.getElementById('beyond-slider-track');
+    const dots = document.querySelectorAll('#beyond-slider-dots .slider-dot');
+
+    if (track) {
+      // Mouse drag-to-scroll implementation
+      let isDown = false;
+      let startX = 0;
+      let scrollLeft = 0;
+
+      track.addEventListener('mousedown', (e) => {
+        isDown = true;
+        track.style.cursor = 'grabbing';
+        startX = e.pageX - track.offsetLeft;
+        scrollLeft = track.scrollLeft;
+      });
+
+      track.addEventListener('mouseleave', () => {
+        isDown = false;
+        track.style.cursor = 'grab';
+      });
+
+      track.addEventListener('mouseup', () => {
+        isDown = false;
+        track.style.cursor = 'grab';
+      });
+
+      track.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - track.offsetLeft;
+        const walk = (x - startX) * 1.5;
+        track.scrollLeft = scrollLeft - walk;
+      });
+
+      // Dots navigation
+      if (dots.length) {
+        dots.forEach((dot) => {
+          dot.addEventListener('click', () => {
+            const index = parseInt(dot.getAttribute('data-index') || '0', 10);
+            const maxScroll = track.scrollWidth - track.clientWidth;
+            const scrollAmount = (maxScroll / (dots.length - 1)) * index;
+            track.scrollTo({ left: scrollAmount, behavior: 'smooth' });
+          });
+        });
+
+        track.addEventListener('scroll', () => {
+          const maxScroll = track.scrollWidth - track.clientWidth;
+          if (maxScroll <= 0) return;
+          const progress = track.scrollLeft / maxScroll;
+          const activeIndex = Math.min(dots.length - 1, Math.round(progress * (dots.length - 1)));
+
+          dots.forEach((d, idx) => {
+            if (idx === activeIndex) {
+              d.className = 'slider-dot active h-2.5 w-2.5 rounded-full bg-brand ring-2 ring-brand/40 ring-offset-2 ring-offset-[#120d09] transition-all cursor-pointer';
+            } else {
+              d.className = 'slider-dot h-2 w-2 rounded-full bg-gray-600 hover:bg-gray-400 transition-all cursor-pointer';
+            }
+          });
+        });
+      }
+    }
+  </script>
 </Layout>
