@@ -1,19 +1,26 @@
 ---
 // "Request a Free Quote" form (home + contacts)
 ---
-<div class="rounded-2xl bg-cream p-6 md:p-8">
-  <h3 class="text-xl font-medium">Request a Free Quote</h3>
-  <form action="#" class="mt-5 grid gap-3 sm:grid-cols-2">
-    <select class="input sm:col-span-2" required>
-      <option value="">Freight Type</option>
-      <option>Sea Freight</option><option>Air Freight</option><option>Road Freight</option>
-      <option>Multimodal Transport</option><option>Freight Forwarding</option><option>Parcel Courier</option>
-      <option>Packaging and Storage</option><option>Car Transportation</option><option>Cargo Insurance</option>
-    </select>
-    <input type="email" class="input sm:col-span-2" placeholder="Email" required />
-    <input class="input" placeholder="City of departure" />
-    <input class="input" placeholder="Delivery city" />
-    <textarea rows="5" class="input sm:col-span-2" placeholder="Message"></textarea>
-    <div class="text-center sm:col-span-2"><button class="btn">Submit</button></div>
+<div class="rounded-3xl bg-[#fff9f4] p-6 sm:p-8 md:p-10 shadow-sm border border-orange-100/50">
+  <h3 class="text-xl sm:text-2xl font-semibold text-dark">Request a Free Quote</h3>
+  <form action="#" class="mt-6 grid gap-4 sm:grid-cols-2">
+    <div class="relative sm:col-span-2">
+      <select class="w-full appearance-none rounded-xl border border-gray-100 bg-white px-4 py-3.5 text-sm text-gray-700 outline-none focus:border-brand focus:ring-1 focus:ring-brand" required>
+        <option value="">Freight Type</option>
+        <option>Sea Freight</option><option>Air Freight</option><option>Road Freight</option>
+        <option>Multimodal Transport</option><option>Freight Forwarding</option><option>Parcel Courier</option>
+        <option>Packaging and Storage</option><option>Car Transportation</option><option>Cargo Insurance</option>
+      </select>
+      <div class="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">
+        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+      </div>
+    </div>
+    <input type="email" class="w-full rounded-xl border border-gray-100 bg-white px-4 py-3.5 text-sm text-gray-700 outline-none focus:border-brand focus:ring-1 focus:ring-brand sm:col-span-2" placeholder="Email" required />
+    <input class="w-full rounded-xl border border-gray-100 bg-white px-4 py-3.5 text-sm text-gray-700 outline-none focus:border-brand focus:ring-1 focus:ring-brand" placeholder="City of departure" />
+    <input class="w-full rounded-xl border border-gray-100 bg-white px-4 py-3.5 text-sm text-gray-700 outline-none focus:border-brand focus:ring-1 focus:ring-brand" placeholder="Delivery city" />
+    <textarea rows="4" class="w-full rounded-xl border border-gray-100 bg-white px-4 py-3.5 text-sm text-gray-700 outline-none focus:border-brand focus:ring-1 focus:ring-brand sm:col-span-2" placeholder="Message"></textarea>
+    <div class="pt-2 text-center sm:col-span-2">
+      <button class="inline-block rounded-full bg-brand px-10 py-3 text-xs font-bold uppercase tracking-wider text-black transition hover:bg-orange-600 cursor-pointer">Submit</button>
+    </div>
   </form>
 </div>

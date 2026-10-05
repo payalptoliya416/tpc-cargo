@@ -2,16 +2,19 @@
 import Icon from './Icon.astro';
 import { offices } from '../data/site';
 ---
-<section class="wrap pb-14">
-  <div class="grid gap-8 md:grid-cols-3 md:divide-x">
-    {offices.map((o) => (
-      <div class="md:px-6 first:md:pl-0">
-        <h4 class="border-l-4 border-brand pl-2 text-xl font-semibold text-brand">{o.country}</h4>
-        <ul class="mt-4 space-y-2 text-sm">
-          <li class="flex items-center gap-2"><Icon name="pin" class="h-4 w-4" />{o.address}</li>
-          <li class="flex items-center gap-2"><Icon name="phone" class="h-4 w-4" />{o.phone}</li>
-          <li class="flex items-center gap-2"><Icon name="mail" class="h-4 w-4" />{o.email}</li>
-        </ul>
+<section class="wrap pt-6 pb-12">
+  <div class="grid gap-8 md:grid-cols-3 md:divide-x md:divide-gray-200/80">
+    {offices.map((o, idx) => (
+      <div class={`${idx !== 0 ? 'md:pl-8' : ''} space-y-3`}>
+        <h4 class="text-xl font-medium text-brand border-l-2 border-brand pl-2.5">| {o.country}</h4>
+        <div class="flex flex-wrap items-center gap-x-3 gap-y-1.5 text-xs sm:text-sm text-gray-600 font-medium">
+          <span class="flex items-center gap-1.5"><Icon name="pin" class="h-4 w-4 text-dark shrink-0" />{o.address}</span>
+          <span class="text-gray-300 hidden sm:inline">|</span>
+          <span class="flex items-center gap-1.5"><Icon name="phone" class="h-4 w-4 text-dark shrink-0" />{o.phone}</span>
+        </div>
+        <div class="flex items-center gap-1.5 text-xs sm:text-sm text-gray-600 font-medium">
+          <Icon name="mail" class="h-4 w-4 text-dark shrink-0" />{o.email}
+        </div>
       </div>
     ))}
   </div>
