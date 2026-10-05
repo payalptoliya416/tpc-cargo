@@ -1,8 +1,15 @@
 ---
 import SectionHeading from './SectionHeading.astro';
 import Icon from './Icon.astro';
-// faqs = [[question, answer], ...]
-const { badge, title, intro, faqs } = Astro.props;
+
+interface Props {
+  badge?: string;
+  title?: string;
+  intro?: string;
+  faqs?: [string, string][];
+}
+
+const { badge, title, intro, faqs = [] } = Astro.props;
 ---
 <section class="section">
   <div class="wrap">
@@ -11,11 +18,11 @@ const { badge, title, intro, faqs } = Astro.props;
       <p class="text-muted">{intro}</p>
     </div>
     <div class="mx-auto mt-10 max-w-2xl space-y-3">
-      {faqs.map(([q, a], i) => (
+      {faqs.map(([q, a]: [string, string], i: number) => (
         <details open={i === 0} class="group rounded-lg border border-gray-200 open:border-brand">
           <summary class="flex cursor-pointer list-none items-center justify-between gap-3 px-4 py-3 text-sm group-open:text-brand">
             {q}
-            <Icon name="down" class="h-4 w-4 shrink-0 transition group-open:rotate-180" />
+            <Icon name="down" class="h-4 w-4 shrink-0 transition -rotate-90 group-open:rotate-180" />
           </summary>
           <p class="border-t px-4 py-3 text-sm text-gray-500">{a}</p>
         </details>
