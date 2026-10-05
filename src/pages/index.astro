@@ -17,6 +17,34 @@ const heroLinks = [
   { icon: 'truck', name: 'Road Freight', href: '/services/road-freight' },
   { icon: 'warehouse', name: 'Warehousing', href: '/services/packaging-and-storage' },
 ];
+
+const heroSlides = [
+  {
+    badge: 'Time-sensitive shipping',
+    title: 'Faster <span class="text-brand">Air Freight</span> For Time<br />Critical Cargo',
+    text: 'Keep your shipments moving with dependable air transportation built<br class="hidden md:block" /> around speed, security, and global connectivity.',
+    image: '/images/air-freight-sol.png',
+  },
+  {
+    badge: 'Global ocean freight',
+    title: 'Reliable <span class="text-brand">Sea Freight</span> For Global Trade',
+    text: 'Connect your business to destinations worldwide with cost-effective<br class="hidden md:block" /> FCL, LCL, and RoRo cargo solutions.',
+    image: '/images/sea-freight-hero.png',
+  },
+  {
+    badge: 'Fast & flexible logistics',
+    title: 'Dependable <span class="text-brand">Road Freight</span> Delivered On Time',
+    text: 'Flexible trucking and door-to-door road transportation across key<br class="hidden md:block" /> regional and international trade routes.',
+    image: '/images/road-freight-sol.png',
+  },
+  {
+    badge: 'Secure logistics & storage',
+    title: 'Smart <span class="text-brand">Warehousing</span> & Cargo Management',
+    text: 'Safe, scalable storage, packing, and distribution solutions tailored<br class="hidden md:block" /> to your global supply chain.',
+    image: '/images/packaging-and-storage-sol.jpg',
+  },
+];
+
 // Cards in the dark section
 const beyond = ['packaging-and-storage', 'car-transportation', 'cargo-insurance', 'sea-freight', 'air-freight', 'road-freight', 'multimodal-transport', 'parcel-courier'].map((slug) => services.find((s) => s.slug === slug)).filter((s): s is import('../data/services').Service => Boolean(s));
 const special = [
@@ -30,83 +58,213 @@ const special = [
   <!-- Hero -->
 <section class="px-3 md:px-6">
   <div
-    class="relative h-[770px] overflow-hidden rounded-3xl bg-dark bg-cover bg-center text-white"
-    style="background-image:url('/images/air-freight-sol.png')"
+    id="hero-slider-container"
+    class="relative h-[770px] overflow-hidden rounded-3xl bg-dark text-white select-none"
   >
-    <!-- Dark Overlay -->
-    <div class="absolute inset-0 bg-black/70"></div>
-
-    <!-- Right Pagination -->
-    <div
-      class="absolute right-7 top-1/2 z-20 hidden -translate-y-1/2 flex-col items-center gap-3 sm:flex"
-    >
-      <span class="h-3 w-3 rounded-full border-2 border-brand bg-brand"></span>
-      <span class="h-2 w-2 rounded-full bg-white/40"></span>
-      <span class="h-2 w-2 rounded-full bg-white/40"></span>
-      <span class="h-2 w-2 rounded-full bg-white/40"></span>
+    <!-- Background Images Container for Crossfade -->
+    <div id="hero-bg-container" class="absolute inset-0">
+      {heroSlides.map((slide, index) => (
+        <div
+          class={`hero-bg-item absolute inset-0 bg-cover bg-center transition-opacity duration-700 ease-in-out ${index === 0 ? 'opacity-100 z-0' : 'opacity-0 -z-10'}`}
+          style={`background-image: url('${slide.image}')`}
+          data-slide-index={index}
+        ></div>
+      ))}
     </div>
 
-    <!-- Main Content -->
-    <div class="relative z-10 flex h-full flex-col items-center text-center">
+    <!-- Dark Overlay -->
+    <div class="absolute inset-0 bg-black/70 z-10"></div>
 
-      <!-- Badge -->
-      <div
-        class="mt-[175px] inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2 backdrop-blur-md"
-      >
-        <span class="h-2 w-2 rounded-full bg-brand"></span>
+    <!-- Right Pagination Dots matching screenshot -->
+    <div
+      id="hero-pagination-dots"
+      class="absolute right-7 top-1/2 z-30 hidden -translate-y-1/2 flex-col items-center gap-3 sm:flex"
+    >
+      {heroSlides.map((_, index) => (
+        <button
+          aria-label={`Go to slide ${index + 1}`}
+          data-index={index}
+          class={`hero-dot transition-all duration-300 cursor-pointer ${
+            index === 0
+              ? 'h-3 w-3 rounded-full border-2 border-brand bg-brand ring-2 ring-brand/40 ring-offset-2 ring-offset-black'
+              : 'h-2 w-2 rounded-full bg-white/40 hover:bg-white/80'
+          }`}
+        ></button>
+      ))}
+    </div>
 
-        <span
-          class="text-xs font-semibold uppercase tracking-wider text-brand"
+    <!-- Main Content Items -->
+    <div class="relative z-20 flex h-full flex-col items-center text-center">
+      {heroSlides.map((slide, index) => (
+        <div
+          class={`hero-content-item absolute inset-x-0 top-0 flex flex-col items-center text-center transition-all duration-700 ease-in-out ${
+            index === 0
+              ? 'opacity-100 translate-y-0 pointer-events-auto z-10'
+              : 'opacity-0 translate-y-4 pointer-events-none -z-10'
+          }`}
+          data-slide-index={index}
         >
-          Time-sensitive shipping
-        </span>
-      </div>
+          <!-- Badge -->
+          <div
+            class="mt-[175px] inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2 backdrop-blur-md"
+          >
+            <span class="h-2 w-2 rounded-full bg-brand"></span>
+            <span
+              class="text-xs font-semibold uppercase tracking-wider text-brand"
+            >
+              {slide.badge}
+            </span>
+          </div>
 
-      <!-- Heading -->
-      <h1
-        class="mx-auto mt-10 max-w-[950px] text-4xl font-normal leading-[1.18] text-white sm:text-5xl md:text-[58px] lg:text-[70px]"
-      >
-        Faster
-        <span class="text-brand">Air Freight</span>
-        For Time
-        <br />
-        Critical Cargo
-      </h1>
+          <!-- Heading -->
+          <h1
+            class="mx-auto mt-10 max-w-[950px] text-4xl font-normal leading-[1.18] text-white sm:text-5xl md:text-[58px] lg:text-[70px]"
+            set:html={slide.title}
+          />
 
-      <!-- Description -->
-      <p
-        class="mx-auto mt-10 max-w-[900px] text-sm leading-7 text-gray-200 sm:text-base md:text-lg"
-      >
-        Keep your shipments moving with dependable air transportation built
-        around speed, security, and
-        <br class="hidden md:block" />
-        global connectivity.
-      </p>
+          <!-- Description -->
+          <p
+            class="mx-auto mt-10 max-w-[900px] text-sm leading-7 text-gray-200 sm:text-base md:text-lg"
+            set:html={slide.text}
+          />
+        </div>
+      ))}
 
       <!-- Bottom Navigation -->
       <div
-        class="absolute bottom-0 left-0 w-full grid grid-cols-2 divide-x divide-white/10 border-t border-white/10 bg-black/55 backdrop-blur-md md:grid-cols-4"
+        class="absolute bottom-0 left-0 w-full grid grid-cols-2 divide-x divide-white/10 border-t border-white/10 bg-black/55 backdrop-blur-md md:grid-cols-4 z-30"
       >
-        {heroLinks.map((l) => (
-          <a
-            href={l.href}
-            class="flex h-[125px] flex-col items-center justify-center gap-3 text-sm font-medium text-white transition hover:text-brand"
+        {heroLinks.map((l, index) => (
+          <button
+            data-nav-index={index}
+            class={`hero-nav-item flex h-[125px] flex-col items-center justify-center gap-3 text-sm font-medium text-white transition-all cursor-pointer ${
+              index === 1 ? 'bg-white/15 text-brand font-bold' : 'hover:bg-white/5 hover:text-brand'
+            }`}
           >
             <Icon
               name={l.icon}
               class="h-8 w-8 text-white fill-white"
             />
-
             <span class="text-base md:text-lg">
               {l.name}
             </span>
-          </a>
+          </button>
         ))}
       </div>
-
     </div>
   </div>
 </section>
+
+<script is:inline>
+  function initHeroSlider() {
+    const container = document.getElementById('hero-slider-container');
+    if (!container) return;
+
+    const bgItems = container.querySelectorAll('.hero-bg-item');
+    const contentItems = container.querySelectorAll('.hero-content-item');
+    const dots = container.querySelectorAll('.hero-dot');
+    const navItems = container.querySelectorAll('.hero-nav-item');
+
+    let currentIndex = 0;
+    const totalSlides = bgItems.length;
+    let autoPlayTimer = null;
+
+    // Map nav index (0:Sea, 1:Air, 2:Road, 3:Warehousing) to slide index
+    const navToSlideMap = {
+      0: 1, // Sea Freight -> slide 1
+      1: 0, // Air Freight -> slide 0
+      2: 2, // Road Freight -> slide 2
+      3: 3, // Warehousing -> slide 3
+    };
+
+    function goToSlide(newIndex) {
+      if (newIndex === currentIndex) return;
+
+      bgItems.forEach((bg, idx) => {
+        if (idx === newIndex) {
+          bg.classList.remove('opacity-0', '-z-10');
+          bg.classList.add('opacity-100', 'z-0');
+        } else {
+          bg.classList.remove('opacity-100', 'z-0');
+          bg.classList.add('opacity-0', '-z-10');
+        }
+      });
+
+      contentItems.forEach((content, idx) => {
+        if (idx === newIndex) {
+          content.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none', '-z-10');
+          content.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto', 'z-10');
+        } else {
+          content.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto', 'z-10');
+          content.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none', '-z-10');
+        }
+      });
+
+      dots.forEach((dot, idx) => {
+        if (idx === newIndex) {
+          dot.className = 'hero-dot h-3 w-3 rounded-full border-2 border-brand bg-brand ring-2 ring-brand/40 ring-offset-2 ring-offset-black transition-all duration-300 cursor-pointer';
+        } else {
+          dot.className = 'hero-dot h-2 w-2 rounded-full bg-white/40 hover:bg-white/80 transition-all duration-300 cursor-pointer';
+        }
+      });
+
+      navItems.forEach((nav, navIdx) => {
+        const targetSlide = navToSlideMap[navIdx];
+        if (targetSlide === newIndex) {
+          nav.classList.add('bg-white/15', 'text-brand');
+        } else {
+          nav.classList.remove('bg-white/15', 'text-brand');
+        }
+      });
+
+      currentIndex = newIndex;
+    }
+
+    function nextSlide() {
+      const next = (currentIndex + 1) % totalSlides;
+      goToSlide(next);
+    }
+
+    function startAutoPlay() {
+      stopAutoPlay();
+      autoPlayTimer = setInterval(nextSlide, 5000);
+    }
+
+    function stopAutoPlay() {
+      if (autoPlayTimer) clearInterval(autoPlayTimer);
+    }
+
+    dots.forEach((dot) => {
+      dot.addEventListener('click', () => {
+        const idx = parseInt(dot.getAttribute('data-index') || '0', 10);
+        goToSlide(idx);
+        startAutoPlay();
+      });
+    });
+
+    navItems.forEach((nav) => {
+      nav.addEventListener('click', () => {
+        const navIdx = parseInt(nav.getAttribute('data-nav-index') || '0', 10);
+        const slideIdx = navToSlideMap[navIdx];
+        if (slideIdx !== undefined) {
+          goToSlide(slideIdx);
+          startAutoPlay();
+        }
+      });
+    });
+
+    container.addEventListener('mouseenter', stopAutoPlay);
+    container.addEventListener('mouseleave', startAutoPlay);
+
+    startAutoPlay();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initHeroSlider);
+  } else {
+    initHeroSlider();
+  }
+</script>
 
   <!-- About -->
   <section class="section">
