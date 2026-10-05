@@ -1,0 +1,77 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ServiceHero from '../../components/ServiceHero.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import Stats from '../../components/Stats.astro';
+import Testimonials from '../../components/Testimonials.astro';
+import Faq from '../../components/Faq.astro';
+import WhyUs from '../../components/WhyUs.astro';
+import MoreServices from '../../components/MoreServices.astro';
+import CtaBanner from '../../components/CtaBanner.astro';
+import Icon from '../../components/Icon.astro';
+import { services } from '../../data/services';
+
+// One page is created for every service in data/services.ts
+export function getStaticPaths() {
+  return services.map((service) => ({ params: { slug: service.slug }, props: { service } }));
+}
+
+const { service } = Astro.props;
+const image = `/images/${service.slug}.svg`;
+
+// Every service gets these 2 extra FAQs at the end
+const faqs = [
+  ...service.faqs,
+  [`What Information Is Needed For A ${service.name} Quote?`, 'The type of cargo, its size and weight, where it is going from and to, and when you need it delivered.'],
+  [`How Can I Request A ${service.name} Quote?`, 'Fill in the quote form on this page or email info@tpccargo.com and our team will get back to you.'],
+];
+---
+<Layout title={`${service.name} | TPC Cargo`}>
+  <ServiceHero
+    badge={service.heroBadge}
+    title={service.heroTitle}
+    text={service.heroText}
+    image={image}
+    formTitle={`Get Your ${service.name} Quote`}
+  />
+
+  <!-- Capabilities -->
+  <section class="section">
+    <div class="wrap grid items-start gap-10 lg:grid-cols-2">
+      <div>
+        <SectionHeading badge={`Our ${service.name} capabilities`} title="Discover Our [Capabilities] And Network" />
+        <div class="mt-6 space-y-4">
+          {service.capParagraphs.map((p) => <p class="text-muted">{p}</p>)}
+          {service.bullets && (
+            <ul class="space-y-2">
+              {service.bullets.map((b) => <li class="flex gap-2 text-sm"><Icon name="check" class="mt-0.5 h-4 w-4 text-brand" />{b}</li>)}
+            </ul>
+          )}
+        </div>
+      </div>
+      <img src={image} alt={service.name} class="aspect-[4/3] w-full rounded-lg object-cover" />
+    </div>
+  </section>
+
+  <Stats />
+
+  <!-- Solutions -->
+  <section class="section mt-14 bg-cream md:mt-20">
+    <div class="wrap grid items-center gap-10 lg:grid-cols-2">
+      <div>
+        <SectionHeading badge={`Our ${service.name} solutions`} title={service.solTitle} />
+        <div class="mt-5 space-y-4">
+          {service.solParagraphs.map((p) => <p class="text-muted">{p}</p>)}
+        </div>
+        <a href="/contacts" class="btn mt-8">Contact Now</a>
+      </div>
+      <img src={image} alt={service.name} class="aspect-[4/3] w-full rounded-lg object-cover" />
+    </div>
+  </section>
+
+  <Testimonials />
+  <Faq badge={`${service.name} FAQ`} title={`Questions About [${service.name}]?`} intro={service.faqIntro} faqs={faqs} />
+  <WhyUs />
+  <MoreServices current={service.slug} />
+  <CtaBanner badge="Ready to move your cargo?" title={`Let’s Plan Your [${service.name}] Shipment`} text="Tell us your route and cargo requirements and our team will help you find the right shipping solution." button="Get a free quote" />
+</Layout>

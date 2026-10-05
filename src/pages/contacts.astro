@@ -1,0 +1,24 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageBanner from '../components/PageBanner.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import ContactForm from '../components/ContactForm.astro';
+import Offices from '../components/Offices.astro';
+import Map from '../components/Map.astro';
+---
+<Layout title="Contacts | TPC Cargo">
+  <PageBanner title="Contacts" />
+
+  <section class="section">
+    <div class="wrap grid items-start gap-10 lg:grid-cols-2">
+      <div>
+        <SectionHeading badge="Contact us" title="Get in [Touch]" />
+        <p class="text-muted mt-5">If you have any questions about TPC CARGO or how we can support your business or private cargo transportation needs, please contact us directly by selecting from one of the below categories that is the most relevant to your inquiry and fill out our short feedback form.</p>
+      </div>
+      <ContactForm />
+    </div>
+  </section>
+
+  <Offices />
+  <Map />
+</Layout>

@@ -1,0 +1,36 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageBanner from '../../components/PageBanner.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import WhyUs from '../../components/WhyUs.astro';
+import { services } from '../../data/services';
+---
+<Layout title="Services | TPC Cargo">
+  <PageBanner title="Services" />
+
+  <section class="section">
+    <div class="wrap">
+      <div class="grid gap-4 md:grid-cols-2 md:items-end">
+        <SectionHeading badge="Our services" title="Our Logistics [Services]" />
+        <p class="text-muted">Thru our logistics network and together with our experience, customer service, and tailor made solutions – you will benefit from the best routes and price you deserve.</p>
+      </div>
+      <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {services.map((s) => <ServiceCard service={s} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="grid md:grid-cols-2">
+    <div class="bg-gray-100 px-4 py-14 md:px-12 lg:px-20">
+      <SectionHeading badge="Our approach" title="[Effective] Solutions" />
+      <p class="text-muted mt-5">You benefit from our experience in delivering effective solutions to the complex global supply chains of some of the world’s biggest corporations. You benefit from every innovation, whether it involves a simple extension to our Air and Ocean Freight products, Multimodal solutions, whether it means a development in warehousing, or whether it requires a completely new integrated supply chain model.</p>
+    </div>
+    <div class="bg-cream px-4 py-14 md:px-12 lg:px-20">
+      <SectionHeading badge="Our heritage" title="A Wealth of [Experience]" />
+      <p class="text-muted mt-5">Every new solution adds to the wealth of our experience, and therefore our competence and credibility. All of which explains why you’ll find the team at TPC Cargo ready to apply their passion for solutions in support of your business.</p>
+    </div>
+  </section>
+
+  <WhyUs middle="Innovation" />
+</Layout>

@@ -1,0 +1,99 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import Stats from '../components/Stats.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+import ContactForm from '../components/ContactForm.astro';
+import Offices from '../components/Offices.astro';
+import Map from '../components/Map.astro';
+import { services } from '../data/services';
+
+// Hero bottom links
+const heroLinks = [
+  { icon: 'ship', name: 'Sea Freight', href: '/services/sea-freight' },
+  { icon: 'plane', name: 'Air Freight', href: '/services/air-freight' },
+  { icon: 'truck', name: 'Road Freight', href: '/services/road-freight' },
+  { icon: 'warehouse', name: 'Warehousing', href: '/services/packaging-and-storage' },
+];
+// Cards in the dark section
+const beyond = ['packaging-and-storage', 'car-transportation', 'cargo-insurance', 'sea-freight'].map((slug) => services.find((s) => s.slug === slug));
+const special = [
+  { icon: 'box', name: 'Packaging and Storage' },
+  { icon: 'warehouse', name: 'Warehousing service' },
+  { icon: 'globe', name: 'Multimodal Transport' },
+  { icon: 'truck', name: 'Logistic Services' },
+];
+---
+<Layout title="TPC Cargo | Cyprus, Globally Connected">
+  <!-- Hero -->
+  <section class="px-2 md:px-4">
+    <div class="relative overflow-hidden rounded-3xl bg-dark bg-cover bg-center text-white" style="background-image:url('/images/air-freight.svg')">
+      <div class="absolute inset-0 bg-black/50"></div>
+      <div class="relative px-4 pb-0 pt-20 text-center md:pt-28">
+        <span class="badge !bg-black/30">Time-sensitive shipping</span>
+        <h1 class="mx-auto mt-5 max-w-3xl text-4xl font-medium leading-tight md:text-6xl">Faster <span class="text-brand">Air Freight</span> For Time Critical Cargo</h1>
+        <p class="mx-auto mt-5 max-w-xl text-sm leading-6 text-gray-300">Keep your shipments moving with dependable air transportation built around speed, security, and global connectivity.</p>
+        <div class="mt-16 grid grid-cols-2 border-t border-white/10 bg-black/40 md:grid-cols-4">
+          {heroLinks.map((l) => (
+            <a href={l.href} class="flex flex-col items-center gap-2 py-5 text-sm hover:text-brand"><Icon name={l.icon} class="h-6 w-6" />{l.name}</a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="section">
+    <div class="wrap grid items-center gap-10 lg:grid-cols-2">
+      <div>
+        <span class="badge">About TPC Cargo</span>
+        <h2 class="heading"><span class="text-brand">Cyprus Cargo,</span><br />Globally Connected.</h2>
+        <p class="text-muted mt-5">TPC Cargo service part of TPC EXPRESS LTD, enables Cyprus cargo access to strategic regions, countries and markets. Combining our knowledge with a superior customer service skills, and together with a network of key port terminals, road/rail access routes, warehousing and our trusted worldwide partners – we promise reliability and the highest level of professional services, at the most competitive rates.</p>
+        <p class="text-muted mt-4">Founded in 2015 in Cyprus, the vast experience we collect over the years in the transportation industry served as the best input for building and establishing TPC Cargo as a major regional and global cargo logistics provider.</p>
+      </div>
+      <div class="relative">
+        <img src="/images/about.svg" alt="TPC Cargo team" class="aspect-[4/3] w-full rounded-2xl object-cover" />
+        <span class="absolute left-1/2 top-1/2 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-brand text-white"><Icon name="play" fill class="h-5 w-5" /></span>
+        <div class="absolute -bottom-5 left-4 rounded-xl bg-brand px-5 py-3 text-white"><div class="text-2xl font-semibold">10+</div><div class="text-xs">Years of Experience</div></div>
+      </div>
+    </div>
+  </section>
+
+  <Stats />
+
+  <!-- Beyond shipping (dark) -->
+  <section class="section mt-14 bg-dark text-white md:mt-20">
+    <div class="wrap">
+      <div class="grid gap-4 md:grid-cols-2 md:items-end">
+        <SectionHeading light badge="Beyond the ordinary" title="More Than Shipping, [Complete Logistics Support.]" />
+        <p class="text-sm leading-7 text-gray-400">Experience the best in international transport with our special services. From cargo shipments to customs clearance, our team is ready to meet all your needs.</p>
+      </div>
+      <div class="mt-10 flex snap-x gap-5 overflow-x-auto pb-2 sm:grid sm:grid-cols-2 sm:overflow-visible lg:grid-cols-4">
+        {beyond.map((s) => <div class="min-w-[80%] snap-start sm:min-w-0"><ServiceCard service={s} dark /></div>)}
+      </div>
+    </div>
+  </section>
+
+  <CtaBanner badge="Our promise" title="Reach your destination [100% sure and safe]" text="We provide complete solutions that will fit any transportation industry size. We will take care of your cargo and deliver safely and on time!" />
+
+  <!-- What makes us special -->
+  <section class="section">
+    <div class="wrap grid items-start gap-10 lg:grid-cols-2">
+      <div>
+        <SectionHeading badge="About TPC Cargo" title="What makes [us special?]" />
+        <p class="text-muted mt-4">We offer reliability and the highest level of professional services, at the most competitive rates.</p>
+        <div class="mt-8 grid gap-4 sm:grid-cols-2">
+          {special.map((s) => (
+            <div class="flex items-center gap-3 rounded-lg bg-cream p-4 text-sm font-medium"><Icon name={s.icon} class="h-7 w-7 shrink-0 text-brand" />{s.name}</div>
+          ))}
+        </div>
+      </div>
+      <ContactForm />
+    </div>
+  </section>
+
+  <Offices />
+  <Map />
+</Layout>

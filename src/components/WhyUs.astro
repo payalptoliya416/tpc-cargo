@@ -1,0 +1,21 @@
+---
+import Icon from './Icon.astro';
+// Dark strip with 3 features. Services page uses "Innovation" as 2nd item.
+const { middle = 'Fast Delivery' } = Astro.props;
+const items = [
+  { icon: 'shield', title: 'Safe & Secure', text: 'You benefit from our experience in delivering effective solutions to the complex global supply chains of some of the world’s biggest corporations.' },
+  { icon: middle === 'Innovation' ? 'bulb' : 'zap', title: middle, text: 'You benefit from every innovation, whether it involves a simple extension to our Air and Ocean Freight products, whether it means a development in warehousing.' },
+  { icon: 'phone', title: '100% Support', text: 'All of which explains why you’ll find the team of outstanding support at TPC Cargo ready to apply their passion for solutions in support of your business.' },
+];
+---
+<section class="bg-dark py-14 text-center text-gray-300">
+  <div class="wrap grid gap-10 md:grid-cols-3 md:gap-0 md:divide-x md:divide-white/10">
+    {items.map((i) => (
+      <div class="px-6">
+        <div class="mx-auto flex h-14 w-14 items-center justify-center rounded-full border-2 border-brand text-brand"><Icon name={i.icon} class="h-6 w-6" /></div>
+        <h3 class="mt-5 text-lg font-semibold text-white">{i.title}</h3>
+        <p class="mt-3 text-sm leading-6">{i.text}</p>
+      </div>
+    ))}
+  </div>
+</section>

@@ -1,0 +1,18 @@
+---
+import Icon from './Icon.astro';
+import { offices } from '../data/site';
+---
+<section class="wrap pb-14">
+  <div class="grid gap-8 md:grid-cols-3 md:divide-x">
+    {offices.map((o) => (
+      <div class="md:px-6 first:md:pl-0">
+        <h4 class="border-l-4 border-brand pl-2 text-xl font-semibold text-brand">{o.country}</h4>
+        <ul class="mt-4 space-y-2 text-sm">
+          <li class="flex items-center gap-2"><Icon name="pin" class="h-4 w-4" />{o.address}</li>
+          <li class="flex items-center gap-2"><Icon name="phone" class="h-4 w-4" />{o.phone}</li>
+          <li class="flex items-center gap-2"><Icon name="mail" class="h-4 w-4" />{o.email}</li>
+        </ul>
+      </div>
+    ))}
+  </div>
+</section>

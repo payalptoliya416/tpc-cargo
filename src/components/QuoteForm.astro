@@ -1,0 +1,18 @@
+---
+// Quote form shown inside the service hero
+const { title = 'Get Your Quote' } = Astro.props;
+---
+<div class="rounded-2xl bg-white p-6 text-dark shadow-xl">
+  <h3 class="text-lg font-semibold">{title}</h3>
+  <p class="mt-1 text-xs text-gray-500">Tell us about your shipment and our team will get back to you with the right shipping solution.</p>
+  <form action="#" class="mt-5 grid gap-3 sm:grid-cols-2">
+    <label class="text-xs">First name *<input class="input mt-1" placeholder="Your first name" required /></label>
+    <label class="text-xs">Last name *<input class="input mt-1" placeholder="Your last name" required /></label>
+    <label class="text-xs">Email *<input type="email" class="input mt-1" placeholder="you@company.com" required /></label>
+    <label class="text-xs">Phone Number *<input type="tel" class="input mt-1" placeholder="+00 Your phone number" required /></label>
+    <label class="text-xs">From (Origin) *<input class="input mt-1" placeholder="Port or City, Country" required /></label>
+    <label class="text-xs">To (Destination) *<input class="input mt-1" placeholder="Port or City, Country" required /></label>
+    <label class="text-xs sm:col-span-2">Additional Details<textarea rows="4" class="input mt-1" placeholder="Tell us about your cargo, quantity, dimensions or any special requirements..."></textarea></label>
+    <div class="text-center sm:col-span-2"><button class="btn">Get my free quote</button></div>
+  </form>
+</div>
