@@ -10,6 +10,7 @@ import MoreServices from '../../components/MoreServices.astro';
 import CtaBanner from '../../components/CtaBanner.astro';
 import Icon from '../../components/Icon.astro';
 import { services } from '../../data/services';
+import { serviceImages } from '../../data/images';
 
 // One page is created for every service in data/services.ts
 export function getStaticPaths() {
@@ -17,7 +18,7 @@ export function getStaticPaths() {
 }
 
 const { service } = Astro.props;
-const image = `/images/${service.slug}.svg`;
+const img = serviceImages[service.slug];
 
 // Every service gets these 2 extra FAQs at the end
 const faqs = [
@@ -31,7 +32,7 @@ const faqs = [
     badge={service.heroBadge}
     title={service.heroTitle}
     text={service.heroText}
-    image={image}
+    image={img.hero}
     formTitle={`Get Your ${service.name} Quote`}
   />
 
@@ -49,24 +50,24 @@ const faqs = [
           )}
         </div>
       </div>
-      <img src={image} alt={service.name} class="aspect-[4/3] w-full rounded-lg object-cover" />
+      <div class="space-y-4">
+        {img.cap.map((src) => <img src={src} alt={service.name} class="w-full rounded-lg object-cover" loading="lazy" />)}
+      </div>
     </div>
   </section>
 
   <Stats />
 
-  <!-- Solutions -->
-  <section class="section mt-14 bg-cream md:mt-20">
-    <div class="wrap grid items-center gap-10 lg:grid-cols-2">
-      <div>
-        <SectionHeading badge={`Our ${service.name} solutions`} title={service.solTitle} />
-        <div class="mt-5 space-y-4">
-          {service.solParagraphs.map((p) => <p class="text-muted">{p}</p>)}
-        </div>
-        <a href="/contacts" class="btn mt-8">Contact Now</a>
+  <!-- Solutions: image touches the screen edge, text lines up with the container -->
+  <section class="mt-14 grid bg-cream md:mt-20 lg:grid-cols-2">
+    <div class:list={['flex flex-col justify-center px-4 py-14 md:px-8 lg:py-20', img.solLeft ? 'lg:order-2 lg:pr-[max(3rem,calc((100vw-1440px)/2))] lg:pl-16' : 'lg:pl-[max(3rem,calc((100vw-1440px)/2))] lg:pr-16']}>
+      <SectionHeading badge={`Our ${service.name} solutions`} title={service.solTitle} />
+      <div class="mt-5 space-y-4">
+        {service.solParagraphs.map((p) => <p class="text-muted">{p}</p>)}
       </div>
-      <img src={image} alt={service.name} class="aspect-[4/3] w-full rounded-lg object-cover" />
+      <div><a href="/contacts" class="btn mt-8">Contact Now</a></div>
     </div>
+    <img src={img.sol} alt={service.name} class:list={['h-72 w-full object-cover lg:h-full', img.solLeft && 'lg:order-1']} loading="lazy" />
   </section>
 
   <Testimonials />
