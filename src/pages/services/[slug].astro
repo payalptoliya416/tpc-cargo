@@ -163,5 +163,5 @@ const faqs = [
   <Faq badge={`${service.name} FAQ`} title={`Questions About [${service.name}]?`} intro={service.faqIntro} faqs={faqs} />
   <WhyUs />
   <MoreServices current={service.slug} />
-  <CtaBanner badge="Ready to move your cargo?" title={`Let’s Plan Your [${service.name}] Shipment`} text="Tell us your route and cargo requirements and our team will help you find the right shipping solution." button="Get a free quote" />
+  <CtaBanner badge="Ready to move your cargo?" title={`Let’s Plan Your [${service.name}] Shipment`} text="Tell us your route and cargo requirements and our team will help you find the right shipping solution." button="Get a free quote" image={img?.cta || img?.sol} />
 </Layout>
