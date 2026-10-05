@@ -6,12 +6,21 @@ const { badge, title, text, image, formTitle } = Astro.props;
 <!-- the quote card hangs a bit below the hero on desktop, like the design -->
 <section class="relative px-3 md:px-6 lg:mb-28">
   <div class="absolute inset-y-0 inset-x-3 overflow-hidden rounded-3xl bg-dark bg-cover bg-center md:inset-x-6" style={`background-image:url('${image}')`}>
-    <div class="absolute inset-0 bg-black/55"></div>
+    <div class="absolute inset-0 bg-black/60"></div>
   </div>
   <div class="wrap relative grid gap-8 py-12 text-white lg:grid-cols-2 lg:py-16">
     <div class="lg:self-center">
-      <span class="badge !bg-black/30">{badge}</span>
-      <h1 class="mt-5 text-4xl font-medium leading-tight md:text-5xl" set:html={highlight(title)} />
+      <!-- Clickable Breadcrumbs -->
+      <nav aria-label="Breadcrumb" class="mb-4 flex items-center gap-2 text-xs sm:text-sm text-gray-300">
+        <a href="/" class="transition hover:text-brand hover:underline underline-offset-4">TPC Cargo</a>
+        <span class="text-gray-400">›</span>
+        <a href="/services" class="transition hover:text-brand hover:underline underline-offset-4">Services</a>
+        <span class="text-gray-400">›</span>
+        <span class="font-medium text-white">{badge || 'Service'}</span>
+      </nav>
+
+      <span class="badge">{badge}</span>
+      <h1 class="mt-4 text-4xl font-medium leading-tight md:text-5xl" set:html={highlight(title)} />
       <p class="mt-5 max-w-md text-sm leading-6 text-gray-300">{text}</p>
       <div class="mt-8 flex flex-wrap gap-3">
         <div class="rounded-xl border border-white/20 bg-black/30 px-4 py-2 text-sm"><b>Google</b><br /><span class="text-xs">4.9 <span class="text-brand">★★★★★</span></span></div>
