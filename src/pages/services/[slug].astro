@@ -11,6 +11,7 @@ import CtaBanner from '../../components/CtaBanner.astro';
 import Icon from '../../components/Icon.astro';
 import { services } from '../../data/services';
 import { serviceImages } from '../../data/images';
+import { highlight } from '../../utils';
 
 // One page is created for every service in data/services.ts
 export function getStaticPaths() {
@@ -49,73 +50,88 @@ const faqs = [
 
   <!-- Capabilities Section -->
   <section class="section">
-    <div class="wrap space-y-10">
-      <!-- Header Row: Title & Badge on Left, Intro Text on Right -->
-      <div class="grid gap-6 lg:grid-cols-2 lg:gap-14 lg:items-end">
-        <div>
-          <span class="badge">Our {service.name} capabilities</span>
-          <h2 class="heading mt-4">Discover Our <span class="text-brand">Capabilities<br class="hidden sm:inline" /> And Network</span></h2>
-        </div>
-        {service.capParagraphs[0] && (
-          <p class="text-sm sm:text-base leading-relaxed text-gray-500">
-            {service.capParagraphs[0]}
-          </p>
-        )}
-      </div>
-
-      <!-- Staggered 2x2 Matrix -->
+    <div class="wrap">
       {img.cap.length >= 2 ? (
-        <div class="grid gap-10 lg:grid-cols-2 lg:gap-7 items-start">
-          <!-- Left Column: Paragraphs 1 & 2, then Image 1 -->
-          <div class="flex flex-col gap-8">
-            <div class="space-y-5 text-sm sm:text-base leading-relaxed text-gray-500">
-              {service.capParagraphs.slice(1, 3).map((p) => (
-                <p set:html={formatCapParagraph(p)} />
-              ))}
+        <div class="space-y-10">
+          <!-- Header Row: Title & Badge on Left, Intro Text on Right -->
+          <div class="grid gap-6 lg:grid-cols-2 lg:gap-14 lg:items-end">
+            <div>
+              <span class="badge">Our {service.name} capabilities</span>
+              <h2 class="heading mt-4">Discover Our <span class="text-brand">Capabilities<br class="hidden sm:inline" /> And Network</span></h2>
             </div>
-
-            <img
-              src={img.cap[0]}
-              alt={`${service.name} cap 1`}
-              class="w-full object-cover shadow-sm"
-              loading="lazy"
-            />
+            {service.capParagraphs[0] && (
+              <p class="text-sm sm:text-base leading-relaxed text-gray-500">
+                {service.capParagraphs[0]}
+              </p>
+            )}
           </div>
 
-          <!-- Right Column: Image 2, then Paragraphs 3 & 4 -->
-          <div class="flex flex-col gap-8">
-            <img
-              src={img.cap[1]}
-              alt={`${service.name} cap 2`}
-              class="w-full object-cover shadow-sm"
-              loading="lazy"
-            />
+          <!-- Staggered 2x2 Matrix -->
+          <div class="grid gap-10 lg:grid-cols-2 lg:gap-7 items-start">
+            <!-- Left Column: Paragraphs 1 & 2, then Image 1 -->
+            <div class="flex flex-col gap-8">
+              <div class="space-y-5 text-sm sm:text-base leading-relaxed text-gray-500">
+                {service.capParagraphs.slice(1, 3).map((p) => (
+                  <p set:html={formatCapParagraph(p)} />
+                ))}
+              </div>
 
-            <div class="space-y-5 text-sm sm:text-base leading-relaxed text-gray-500">
-              {service.capParagraphs.slice(3).map((p) => (
-                <p set:html={formatCapParagraph(p)} />
-              ))}
+              <img
+                src={img.cap[0]}
+                alt={`${service.name} cap 1`}
+                class="w-full rounded-2xl object-cover shadow-sm"
+                loading="lazy"
+              />
             </div>
 
-            {service.bullets && (
-              <ul class="space-y-2.5 pt-2">
-                {service.bullets.map((b) => (
-                  <li class="flex items-center gap-3 text-sm font-medium text-gray-700">
-                    <span class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand/15 text-brand">
-                      <Icon name="check" class="h-3 w-3" />
-                    </span>
-                    <span>{b}</span>
-                  </li>
+            <!-- Right Column: Image 2, then Paragraphs 3 & 4 -->
+            <div class="flex flex-col gap-8">
+              <img
+                src={img.cap[1]}
+                alt={`${service.name} cap 2`}
+                class="w-full rounded-2xl object-cover shadow-sm"
+                loading="lazy"
+              />
+
+              <div class="space-y-5 text-sm sm:text-base leading-relaxed text-gray-500">
+                {service.capParagraphs.slice(3).map((p) => (
+                  <p set:html={formatCapParagraph(p)} />
                 ))}
-              </ul>
-            )}
+              </div>
+
+              {service.bullets && (
+                <ul class="space-y-2.5 pt-2">
+                  {service.bullets.map((b) => (
+                    <li class="flex items-center gap-3 text-sm font-medium text-gray-700">
+                      <span class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand/15 text-brand">
+                        <Icon name="check" class="h-3 w-3" />
+                      </span>
+                      <span>{b}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
           </div>
         </div>
       ) : (
-        /* Single Image Layout fallback for other services */
+        /* Single Image Layout - Matches Figma Screenshot (Badge, Title & Image on Left; Paragraphs on Right) */
         <div class="grid gap-10 lg:grid-cols-2 lg:gap-14 items-start">
-          <div class="space-y-5 text-sm sm:text-base leading-relaxed text-gray-500">
-            {service.capParagraphs.slice(1).map((p) => (
+          <div class="space-y-6">
+            <div>
+              <span class="badge">Our {service.name} capabilities</span>
+              <h2 class="heading mt-4">Discover Our <span class="text-brand">Capabilities<br class="hidden sm:inline" /> And Network</span></h2>
+            </div>
+            <img
+              src={img.cap[0]}
+              alt={service.name}
+              class="w-full object-cover shadow-sm"
+              loading="lazy"
+            />
+          </div>
+
+          <div class="space-y-5 text-sm sm:text-base leading-relaxed text-gray-500 lg:pt-2">
+            {service.capParagraphs.map((p) => (
               <p set:html={formatCapParagraph(p)} />
             ))}
             {service.bullets && (
@@ -131,15 +147,6 @@ const faqs = [
               </ul>
             )}
           </div>
-
-          <div>
-            <img
-              src={img.cap[0]}
-              alt={service.name}
-              class="aspect-[4/3] w-full rounded-2xl object-cover shadow-sm"
-              loading="lazy"
-            />
-          </div>
         </div>
       )}
     </div>
@@ -147,16 +154,20 @@ const faqs = [
 
   <Stats />
 
-  <!-- Solutions: image touches the screen edge, text lines up with the container -->
-  <section class="mt-14 grid bg-cream md:mt-20 lg:grid-cols-2">
-    <div class:list={['flex flex-col justify-center px-4 py-14 md:px-8 lg:py-20', img.solLeft ? 'lg:order-2 lg:pr-[max(3rem,calc((100vw-1440px)/2))] lg:pl-16' : 'lg:pl-[max(3rem,calc((100vw-1440px)/2))] lg:pr-16']}>
-      <SectionHeading badge={`Our ${service.name} solutions`} title={service.solTitle} />
-      <div class="mt-5 space-y-4">
-        {service.solParagraphs.map((p) => <p class="text-muted">{p}</p>)}
+  <!-- Solutions Section (Full-width Dark Banner with Background Image matching Figma) -->
+  <section class="relative bg-dark bg-cover bg-center py-20 md:py-28 text-white overflow-hidden" style={`background-image: url('${img.sol}')`}>
+    <div class="wrap relative z-10">
+      <div class="max-w-2xl space-y-6">
+        <span class="badge !bg-black/40">Our {service.name} solutions</span>
+        <h2 class="heading text-white text-3xl font-semibold sm:text-4xl leading-tight" set:html={highlight(service.solTitle)} />
+        {service.solParagraphs.map((p) => (
+          <p class="text-sm sm:text-base leading-relaxed text-gray-300">{p}</p>
+        ))}
+        <div>
+          <a href="/contacts" class="btn mt-4 inline-block">Contact Now</a>
+        </div>
       </div>
-      <div><a href="/contacts" class="btn mt-8 !text-black">Contact Now</a></div>
     </div>
-    <img src={img.sol} alt={service.name} class:list={['h-72 w-full object-cover lg:h-full', img.solLeft && 'lg:order-1']} loading="lazy" />
   </section>
 
   <Testimonials />
