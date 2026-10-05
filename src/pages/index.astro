@@ -28,21 +28,85 @@ const special = [
 ---
 <Layout title="TPC Cargo | Cyprus, Globally Connected">
   <!-- Hero -->
-  <section class="px-3 md:px-6">
-    <div class="relative overflow-hidden rounded-3xl bg-dark bg-cover bg-center text-white" style="background-image:url('/images/air-freight-sol.jpg')">
-      <div class="absolute inset-0 bg-black/50"></div>
-      <div class="relative px-4 pb-0 pt-20 text-center md:pt-28">
-        <span class="badge !bg-black/30">Time-sensitive shipping</span>
-        <h1 class="mx-auto mt-5 max-w-3xl text-4xl font-medium leading-tight md:text-6xl">Faster <span class="text-brand">Air Freight</span> For Time Critical Cargo</h1>
-        <p class="mx-auto mt-5 max-w-xl text-sm leading-6 text-gray-300">Keep your shipments moving with dependable air transportation built around speed, security, and global connectivity.</p>
-        <div class="mt-16 grid grid-cols-2 border-t border-white/10 bg-black/40 md:grid-cols-4">
-          {heroLinks.map((l) => (
-            <a href={l.href} class="flex flex-col items-center gap-2 py-5 text-sm hover:text-brand"><Icon name={l.icon} class="h-6 w-6" />{l.name}</a>
-          ))}
-        </div>
-      </div>
+<section class="px-3 md:px-6">
+  <div
+    class="relative h-[770px] overflow-hidden rounded-3xl bg-dark bg-cover bg-center text-white"
+    style="background-image:url('/images/air-freight-sol.png')"
+  >
+    <!-- Dark Overlay -->
+    <div class="absolute inset-0 bg-black/70"></div>
+
+    <!-- Right Pagination -->
+    <div
+      class="absolute right-7 top-1/2 z-20 hidden -translate-y-1/2 flex-col items-center gap-3 sm:flex"
+    >
+      <span class="h-3 w-3 rounded-full border-2 border-brand bg-brand"></span>
+      <span class="h-2 w-2 rounded-full bg-white/40"></span>
+      <span class="h-2 w-2 rounded-full bg-white/40"></span>
+      <span class="h-2 w-2 rounded-full bg-white/40"></span>
     </div>
-  </section>
+
+    <!-- Main Content -->
+    <div class="relative z-10 flex h-full flex-col items-center text-center">
+
+      <!-- Badge -->
+      <div
+        class="mt-[175px] inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2 backdrop-blur-md"
+      >
+        <span class="h-2 w-2 rounded-full bg-brand"></span>
+
+        <span
+          class="text-xs font-semibold uppercase tracking-wider text-brand"
+        >
+          Time-sensitive shipping
+        </span>
+      </div>
+
+      <!-- Heading -->
+      <h1
+        class="mx-auto mt-10 max-w-[950px] text-4xl font-normal leading-[1.18] text-white sm:text-5xl md:text-[58px] lg:text-[70px]"
+      >
+        Faster
+        <span class="text-brand">Air Freight</span>
+        For Time
+        <br />
+        Critical Cargo
+      </h1>
+
+      <!-- Description -->
+      <p
+        class="mx-auto mt-10 max-w-[900px] text-sm leading-7 text-gray-200 sm:text-base md:text-lg"
+      >
+        Keep your shipments moving with dependable air transportation built
+        around speed, security, and
+        <br class="hidden md:block" />
+        global connectivity.
+      </p>
+
+      <!-- Bottom Navigation -->
+      <div
+        class="absolute bottom-0 left-0 w-full grid grid-cols-2 divide-x divide-white/10 border-t border-white/10 bg-black/55 backdrop-blur-md md:grid-cols-4"
+      >
+        {heroLinks.map((l) => (
+          <a
+            href={l.href}
+            class="flex h-[125px] flex-col items-center justify-center gap-3 text-sm font-medium text-white transition hover:text-brand"
+          >
+            <Icon
+              name={l.icon}
+              class="h-8 w-8 text-white fill-white"
+            />
+
+            <span class="text-base md:text-lg">
+              {l.name}
+            </span>
+          </a>
+        ))}
+      </div>
+
+    </div>
+  </div>
+</section>
 
   <!-- About -->
   <section class="section">
