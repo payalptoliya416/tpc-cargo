@@ -114,6 +114,42 @@ const faqs = [
             </div>
           </div>
         </div>
+      ) : img.capLeft ? (
+        /* Image on Left, Badge + Title + Paragraphs on Right (Matches Freight Forwarding Figma Screenshot) */
+        <div class="grid gap-10 lg:grid-cols-2 lg:gap-14 items-start">
+          <div>
+            <img
+              src={img.cap[0]}
+              alt={service.name}
+              class="w-full object-cover shadow-sm"
+              loading="lazy"
+            />
+          </div>
+
+          <div class="space-y-6">
+            <div>
+              <span class="badge">Our {service.name} expertise</span>
+              <h2 class="heading mt-4">Discover Our <span class="text-brand">Capabilities<br class="hidden sm:inline" /> And Network</span></h2>
+            </div>
+            <div class="space-y-5 text-sm sm:text-base leading-relaxed text-gray-500">
+              {service.capParagraphs.map((p) => (
+                <p set:html={formatCapParagraph(p)} />
+              ))}
+              {service.bullets && (
+                <ul class="space-y-2.5 pt-2">
+                  {service.bullets.map((b) => (
+                    <li class="flex items-center gap-3 text-sm font-medium text-gray-700">
+                      <span class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand/15 text-brand">
+                        <Icon name="check" class="h-3 w-3" />
+                      </span>
+                      <span>{b}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </div>
+        </div>
       ) : (
         /* Single Image Layout - Matches Figma Screenshot (Badge, Title & Image on Left; Paragraphs on Right) */
         <div class="grid gap-10 lg:grid-cols-2 lg:gap-14 items-start">
@@ -154,15 +190,13 @@ const faqs = [
 
   <Stats />
 
-  <!-- Solutions Section (Full-width Dark Banner with Background Image matching Figma) -->
+  <!-- Solutions Section (Full-width Dark Banner matching Figma screenshot) -->
   <section class="relative bg-dark bg-cover bg-center py-20 md:py-28 text-white overflow-hidden" style={`background-image: url('${img.sol}')`}>
+    <div class="absolute inset-0 bg-gradient-to-r from-black/95 via-black/85 to-transparent"></div>
     <div class="wrap relative z-10">
       <div class="max-w-2xl space-y-6">
-        <span class="badge !bg-black/40">Our {service.name} solutions</span>
+        <span class="badge !bg-black/50">Our {service.name} solutions</span>
         <h2 class="heading text-white text-3xl font-semibold sm:text-4xl leading-tight" set:html={highlight(service.solTitle)} />
-        {service.solParagraphs.map((p) => (
-          <p class="text-sm sm:text-base leading-relaxed text-gray-300">{p}</p>
-        ))}
         <div>
           <a href="/contacts" class="btn mt-4 inline-block">Contact Now</a>
         </div>
