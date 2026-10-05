@@ -6,7 +6,7 @@ interface Props {
   badge?: string;
   title?: string;
   intro?: string;
-  faqs?: [string, string][];
+  faqs?: Array<[string, string] | string[]>;
 }
 
 const { badge, title, intro, faqs = [] } = Astro.props;
@@ -18,7 +18,7 @@ const { badge, title, intro, faqs = [] } = Astro.props;
       <p class="text-muted">{intro}</p>
     </div>
     <div class="mx-auto mt-10 max-w-2xl space-y-3">
-      {faqs.map(([q, a]: [string, string], i: number) => (
+      {faqs.map(([q, a]: any, i: number) => (
         <details open={i === 0} class="group rounded-lg border border-gray-200 open:border-brand">
           <summary class="flex cursor-pointer list-none items-center justify-between gap-3 px-4 py-3 text-sm group-open:text-brand">
             {q}
