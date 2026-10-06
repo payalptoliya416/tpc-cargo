@@ -6,11 +6,11 @@ const { title, image = '/images/sea-freight-sol.png' } = Astro.props;
   <div class="relative flex min-h-[260px] items-center justify-center overflow-hidden rounded-3xl bg-cover bg-center md:min-h-[489px]" style={`background-image:url('${image}')`}>
     <!-- <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/45 to-black/75"></div> -->
     <div class="relative z-10 text-center text-white">
-      <span class="badge">TPC Cargo</span>
-      <h1 class="mt-4 text-4xl font-medium md:text-6xl">{title}</h1>
-      <nav aria-label="Breadcrumb" class="mt-3 flex items-center justify-center gap-2 text-sm text-gray-200">
+      <span class="badge-dark">TPC Cargo</span>
+      <h1 class="mt-[30px] text-4xl font-medium md:text-[74px]">{title}</h1>
+      <nav aria-label="Breadcrumb" class="mt-[35px] flex items-center justify-center gap-2 text-lg text-[#B6B5B4]">
         <a href="/" class="transition hover:text-[#FE7E01] hover:underline underline-offset-4">TPC Cargo</a>
-        <span class="text-gray-400">›</span>
+        <span class="text-[#B6B5B4]">›</span>
         <span class="font-medium text-white">{title}</span>
       </nav>
     </div>
