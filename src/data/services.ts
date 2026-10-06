@@ -111,7 +111,7 @@ export const services: Service[] = [
     capParagraphs: [
       'Since the beginning, TPC Express Cargo has carried out pioneering work in the development of multimodal transport road/sea/air. Regardless of your needs, even if it’s an import-export to/from Cyprus or a personal/corporate need of transport and relocation services, our highly-qualified employees and partners are responsible for the success of your order – from booking until delivery to the final destination.',
       'Thereby, we can guarantee combined sea/road/air freight solutions and cargo space at all times, as well as optimal response, price, and transit times.',
-      'Our expertise in transport management and planning of multimodal cargo transportation allows us to design a solution that meets your needs and also quickly responds to any event disruptions such as adverse weather conditions, additional pick ups or drop offs, or heavy traffic – meaning that your goods are always traveling the most efficient routes.',
+      'TPC Cargo’s logistics model, it’s using only quality carriers, which means you benefit from improved service levels, greater flexibility, and time-definite deliveries. Our expertise in transport management and planning of multimodal cargo transportation allows us to design a solution that meets your needs and also quickly responds to any event disruptions such as adverse weather conditions, additional pick ups or drop offs, or heavy traffic – meaning that your goods are always traveling the most efficient routes.',
     ],
     solTitle: combo,
     solParagraphs: [

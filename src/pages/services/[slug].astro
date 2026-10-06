@@ -156,8 +156,8 @@ const faqs: [string, string][] = [
             </div>
           </div>
         </div>
-      ) : (
-        /* Single Image Layout - Matches Air Freight UI (Badge, Title & Paragraphs 2+ on Left; Paragraph 1 & Image on Right) */
+      ) : img.capAir ? (
+        /* Air Freight Layout - Badge, Title & Paragraphs 2+ on Left; Paragraph 1 & Image on Right */
         <div class="grid gap-10 lg:grid-cols-2 lg:gap-14 items-start">
           <div class="space-y-6">
             <div>
@@ -183,6 +183,40 @@ const faqs: [string, string][] = [
               class="w-full object-cover shadow-sm"
               loading="lazy"
             />
+            {service.bullets && (
+              <ul class="space-y-2.5 pt-2">
+                {service.bullets.map((b) => (
+                  <li class="flex items-center gap-3 text-sm font-medium text-gray-700">
+                    <span class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand/15 text-brand">
+                      <Icon name="check" class="h-3 w-3" />
+                    </span>
+                    <span>{b}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </div>
+      ) : (
+        /* Standard Single Image Layout (For Multimodal Transport, etc.) - Badge, Title & Image on Left; Paragraphs on Right */
+        <div class="grid gap-10 lg:grid-cols-2 lg:gap-14 items-start">
+          <div class="space-y-6">
+            <div>
+              <span class="badge">Our {service.name} capabilities</span>
+              <h2 class="heading mt-4">Discover Our <span class="text-brand">Capabilities<br class="hidden sm:inline" /> And Network</span></h2>
+            </div>
+            <img
+              src={img.cap[0]}
+              alt={service.name}
+              class="w-full object-cover shadow-sm"
+              loading="lazy"
+            />
+          </div>
+
+          <div class="space-y-5 text-sm sm:text-base leading-relaxed text-gray-500 lg:pt-2">
+            {service.capParagraphs.map((p) => (
+              <p set:html={formatCapParagraph(p)} />
+            ))}
             {service.bullets && (
               <ul class="space-y-2.5 pt-2">
                 {service.bullets.map((b) => (
@@ -238,7 +272,7 @@ const faqs: [string, string][] = [
     </section>
   ) : img?.solBanner ? (
     /* Full-width Dark Hero Banner (For Multimodal Transport & Freight Forwarding - Matches 2nd Figma Screenshot) */
-    <section class="relative bg-dark bg-cover bg-center py-20 md:py-28 text-white overflow-hidden" style={`background-image: url('${img.sol}')`}>
+    <section class="relative bg-dark bg-cover bg-center py-20 md:py-28 text-white overflow-hidden mt-[100px]" style={`background-image: url('${img.sol}')`}>
       {/* <div class="absolute inset-0 bg-gradient-to-r from-black/95 via-black/85 to-transparent"></div> */}
       <div class="wrap relative z-10">
         <div class="max-w-2xl space-y-6">
