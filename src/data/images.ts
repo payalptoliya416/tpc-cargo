@@ -70,8 +70,8 @@ export const serviceImages: Record<string, { card: string; hero: string; cap: st
   'cargo-insurance': {
     card: '/images/cargo-insurance.png',
     hero: '/images/insurance.png',
-    cap: ['/images/insurance-left.png'],
-    sol: '/images/cargo-insurance-sol.jpg',
+    cap: ['/images/cargo-insurance-cap-1.jpg'],
+    sol: '/images/cargo-insurance-sol.png',
     cta: '/images/ctabanner.png'
   },
 };

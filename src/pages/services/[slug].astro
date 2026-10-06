@@ -298,7 +298,7 @@ const faqs: [string, string][] = [
         <div class="grid gap-10 lg:grid-cols-2 lg:gap-14 items-start">
           <div class="space-y-6">
             <div>
-              <span class="badge">Our {service.name} capabilities</span>
+              <span class="badge">{service.capBadge || `Our ${service.name} capabilities`}</span>
               <h2 class="heading mt-4">Discover Our <span class="text-brand">Capabilities<br class="hidden sm:inline" /> And Network</span></h2>
             </div>
             <img
