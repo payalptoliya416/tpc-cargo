@@ -44,10 +44,11 @@ export const serviceImages: Record<string, { card: string; hero: string; cap: st
   },
   'parcel-courier': {
     card: '/images/parcel-courier.png',
-    hero: '/images/parcel-courier-sol.jpg',
-    cap: ['/images/parcel-courier-cap-1.jpg'],
-    sol: '/images/parcel-courier-sol.jpg',
-    cta: '/images/ctabanner.png'
+    hero: '/images/parcel-courier-sol.png',
+    cap: ['/images/parcel-courier-sol-right.png'],
+    sol: '/images/parsel-right.png',
+    cta: '/images/ctabanner.png',
+    capLeft: true
   },
   'packaging-and-storage': {
     card: '/images/packaging-and-storage.png',

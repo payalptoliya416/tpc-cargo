@@ -7,6 +7,7 @@ export interface Service {
   heroBadge: string;
   heroTitle: string;    // [word] = orange
   heroText: string;
+  capBadge?: string;
   capTitle?: string;
   capParagraphs: string[];
   bullets?: string[];
@@ -159,6 +160,7 @@ export const services: Service[] = [
     heroBadge: 'Parcel Courier Solutions',
     heroTitle: 'Fast, Reliable Delivery, [Every Time]',
     heroText: 'Secure parcel delivery with fast collection, reliable tracking, and flexible delivery options.',
+    capBadge: 'Our Parcel Courier expertise',
     capParagraphs: [
       'Get your parcel delivered safely and on time with the best carriers using our quick and easy booking process, with door collection and delivery.',
       'We offer express and economy services to almost any destination.',

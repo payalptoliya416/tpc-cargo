@@ -128,7 +128,7 @@ const faqs: [string, string][] = [
 
           <div class="space-y-6">
             <div>
-              <span class="badge">Our {service.name} capabilities</span>
+              <span class="badge">{service.capBadge || `Our ${service.name} capabilities`}</span>
               <h2 class="heading mt-4">
                 {service.capTitle ? (
                   <span set:html={highlight(service.capTitle)} />
