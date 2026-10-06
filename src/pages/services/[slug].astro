@@ -79,7 +79,7 @@ const faqs: [string, string][] = [
               <img
                 src={img.cap[0]}
                 alt={`${service.name} cap 1`}
-                class="w-full rounded-2xl object-cover shadow-sm"
+                class="w-full object-cover shadow-sm"
                 loading="lazy"
               />
             </div>
@@ -89,7 +89,7 @@ const faqs: [string, string][] = [
               <img
                 src={img.cap[1]}
                 alt={`${service.name} cap 2`}
-                class="w-full rounded-2xl object-cover shadow-sm"
+                class="w-full object-cover shadow-sm"
                 loading="lazy"
               />
 
@@ -151,25 +151,32 @@ const faqs: [string, string][] = [
           </div>
         </div>
       ) : (
-        /* Single Image Layout - Matches Figma Screenshot (Badge, Title & Image on Left; Paragraphs on Right) */
+        /* Single Image Layout - Matches Air Freight UI (Badge, Title & Paragraphs 2+ on Left; Paragraph 1 & Image on Right) */
         <div class="grid gap-10 lg:grid-cols-2 lg:gap-14 items-start">
           <div class="space-y-6">
             <div>
               <span class="badge">Our {service.name} capabilities</span>
               <h2 class="heading mt-4">Discover Our <span class="text-brand">Capabilities<br class="hidden sm:inline" /> And Network</span></h2>
             </div>
+            {service.capParagraphs.length > 1 && (
+              <div class="space-y-5 text-sm sm:text-base leading-relaxed text-gray-500">
+                {service.capParagraphs.slice(1).map((p) => (
+                  <p set:html={formatCapParagraph(p)} />
+                ))}
+              </div>
+            )}
+          </div>
+
+          <div class="space-y-6">
+            {service.capParagraphs[0] && (
+              <p class="text-sm sm:text-base leading-relaxed text-gray-500" set:html={formatCapParagraph(service.capParagraphs[0])} />
+            )}
             <img
               src={img.cap[0]}
               alt={service.name}
               class="w-full object-cover shadow-sm"
               loading="lazy"
             />
-          </div>
-
-          <div class="space-y-5 text-sm sm:text-base leading-relaxed text-gray-500 lg:pt-2">
-            {service.capParagraphs.map((p) => (
-              <p set:html={formatCapParagraph(p)} />
-            ))}
             {service.bullets && (
               <ul class="space-y-2.5 pt-2">
                 {service.bullets.map((b) => (
