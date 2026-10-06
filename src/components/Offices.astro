@@ -6,7 +6,7 @@ import { offices } from '../data/site';
   <div class="grid gap-8 md:grid-cols-3 md:divide-x md:divide-gray-200/80">
     {offices.map((o, idx) => (
       <div class={`${idx !== 0 ? 'md:pl-8' : ''} space-y-3`}>
-        <h4 class="text-xl font-medium text-brand border-l-2 border-brand pl-2.5">| {o.country}</h4>
+        <h4 class="text-xl font-medium text-[#FE7E01] border-l-2 border-brand pl-2.5">| {o.country}</h4>
         <div class="flex flex-wrap items-center gap-x-3 gap-y-1.5 text-xs sm:text-sm text-gray-600 font-medium">
           <span class="flex items-center gap-1.5"><Icon name="pin" class="h-4 w-4 text-dark shrink-0" />{o.address}</span>
           <span class="text-gray-300 hidden sm:inline">|</span>

@@ -8,6 +8,6 @@ const { service, dark = false } = Astro.props;
   <div class="flex flex-1 flex-col p-2 pt-4">
     <h3 class="font-semibold">{service.name}</h3>
     <p class:list={['mt-3 flex-1 text-sm leading-6', dark ? 'text-gray-400' : 'text-gray-500']}>{service.short}</p>
-    <a href={`/services/${service.slug}`} class="mt-4 text-sm font-medium text-brand">Read More ›</a>
+    <a href={`/services/${service.slug}`} class="mt-4 text-sm font-medium text-[#FE7E01]">Read More ›</a>
   </div>
 </div>

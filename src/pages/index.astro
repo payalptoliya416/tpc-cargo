@@ -12,34 +12,34 @@ import { services } from '../data/services';
 
 // Hero bottom links
 const heroLinks = [
-  { icon: 'ship', name: 'Sea Freight', href: '/services/sea-freight' },
-  { icon: 'plane', name: 'Air Freight', href: '/services/air-freight' },
-  { icon: 'truck', name: 'Road Freight', href: '/services/road-freight' },
-  { icon: 'warehouse', name: 'Warehousing', href: '/services/packaging-and-storage' },
+  { icon: 'ship-solid', name: 'Sea Freight', href: '/services/sea-freight' },
+  { icon: 'plane-solid', name: 'Air Freight', href: '/services/air-freight' },
+  { icon: 'truck-solid', name: 'Road Freight', href: '/services/road-freight' },
+  { icon: 'warehouse-solid', name: 'Warehousing', href: '/services/packaging-and-storage' },
 ];
 
 const heroSlides = [
   {
     badge: 'Time-sensitive shipping',
-    title: 'Faster <span class="text-brand">Air Freight</span> For Time<br />Critical Cargo',
-    text: 'Keep your shipments moving with dependable air transportation built<br class="hidden md:block" /> around speed, security, and global connectivity.',
+    title: 'Faster <span class="text-[#FE7E01]">Air Freight</span> For Time<br />Critical Cargo',
+    text: 'Keep your shipments moving with dependable air transportation built around speed, security,<br class="hidden md:block" /> and global connectivity.',
     image: '/images/air-freight-sol.png',
   },
   {
     badge: 'Global ocean freight',
-    title: 'Reliable <span class="text-brand">Sea Freight</span> For Global Trade',
+    title: 'Reliable <span class="text-[#FE7E01]">Sea Freight</span> For Global Trade',
     text: 'Connect your business to destinations worldwide with cost-effective<br class="hidden md:block" /> FCL, LCL, and RoRo cargo solutions.',
     image: '/images/sea-freight-hero.png',
   },
   {
     badge: 'Fast & flexible logistics',
-    title: 'Dependable <span class="text-brand">Road Freight</span> Delivered On Time',
+    title: 'Dependable <span class="text-[#FE7E01]">Road Freight</span> Delivered On Time',
     text: 'Flexible trucking and door-to-door road transportation across key<br class="hidden md:block" /> regional and international trade routes.',
     image: '/images/road-freight-sol.png',
   },
   {
     badge: 'Secure logistics & storage',
-    title: 'Smart <span class="text-brand">Warehousing</span> & Cargo Management',
+    title: 'Smart <span class="text-[#FE7E01]">Warehousing</span> & Cargo Management',
     text: 'Safe, scalable storage, packing, and distribution solutions tailored<br class="hidden md:block" /> to your global supply chain.',
     image: '/images/packaging-and-storage-sol.jpg',
   },
@@ -110,7 +110,7 @@ const special = [
           >
             <span class="h-2 w-2 rounded-full bg-brand"></span>
             <span
-              class="text-xs font-semibold uppercase tracking-wider text-brand"
+              class="text-base font-semibold uppercase tracking-wider text-[#FE7E01]"
             >
               {slide.badge}
             </span>
@@ -118,13 +118,13 @@ const special = [
 
           <!-- Heading -->
           <h1
-            class="mx-auto mt-10 max-w-[950px] text-4xl font-normal leading-[1.18] text-white sm:text-5xl md:text-[58px] lg:text-[70px]"
+            class="mx-auto mt-10 max-w-[950px] text-4xl font-medium leading-[1.18] text-white sm:text-5xl md:text-[58px] lg:text-[74px]"
             set:html={slide.title}
           />
 
           <!-- Description -->
           <p
-            class="mx-auto mt-10 max-w-[900px] text-sm leading-7 text-gray-200 sm:text-base md:text-lg"
+            class="mx-auto mt-[35px] max-w-[900px] text-sm leading-7 text-gray-200 sm:text-base md:text-lg"
             set:html={slide.text}
           />
         </div>
@@ -138,14 +138,14 @@ const special = [
           <button
             data-nav-index={index}
             class={`hero-nav-item flex h-[125px] flex-col items-center justify-center gap-3 text-sm font-medium text-white transition-all cursor-pointer ${
-              index === 1 ? 'bg-white/15 text-brand font-bold' : 'hover:bg-white/5 hover:text-brand'
+              index === 1 ? 'bg-white/10 text-[#FE7E01] font-bold' : 'hover:bg-white/5 hover:text-[#FE7E01]'
             }`}
           >
             <Icon
               name={l.icon}
               class="h-8 w-8 text-white fill-white"
             />
-            <span class="text-base md:text-lg">
+            <span class="text-base md:text-xl">
               {l.name}
             </span>
           </button>
@@ -211,9 +211,9 @@ const special = [
       navItems.forEach((nav, navIdx) => {
         const targetSlide = navToSlideMap[navIdx];
         if (targetSlide === newIndex) {
-          nav.classList.add('bg-white/15', 'text-brand');
+          nav.classList.add('bg-white/15', 'text-[#FE7E01]');
         } else {
-          nav.classList.remove('bg-white/15', 'text-brand');
+          nav.classList.remove('bg-white/15', 'text-[#FE7E01]');
         }
       });
 
@@ -268,12 +268,12 @@ const special = [
 
   <!-- About -->
   <section class="section">
-    <div class="wrap grid items-center gap-10 lg:grid-cols-2">
+    <div class="wrap grid items-center gap-[60px] lg:grid-cols-2">
       <div>
         <span class="badge">About TPC Cargo</span>
-        <h2 class="heading"><span class="text-brand">Cyprus Cargo,</span><br />Globally Connected.</h2>
-        <p class="text-muted mt-5">TPC Cargo service part of TPC EXPRESS LTD, enables Cyprus cargo access to strategic regions, countries and markets. Combining our knowledge with a superior customer service skills, and together with a network of key port terminals, road/rail access routes, warehousing and our trusted worldwide partners – we promise reliability and the highest level of professional services, at the most competitive rates.</p>
-        <p class="text-muted mt-4">Founded in 2015 in Cyprus, the vast experience we collect over the years in the transportation industry served as the best input for building and establishing TPC Cargo as a major regional and global cargo logistics provider.</p>
+        <h2 class="heading"><span class="text-[#FE7E01]">Cyprus Cargo,</span><br />Globally Connected.</h2>
+        <p class="text-muted mt-6"><strong>TPC Cargo service part of TPC EXPRESS LTD</strong>, enables Cyprus cargo access to strategic regions, countries and markets. Combining our knowledge with a superior customer service skills, and together with a network of key port terminals, road/rail access routes, warehousing and our trusted worldwide partners – we promise reliability and the highest level of professional services, at the most competitive rates.</p>
+        <p class="text-muted mt-5"><strong>Founded in 2015 in Cyprus</strong>, the vast experience we collect over the years in the transportation industry served as the best input for building and establishing <strong>TPC Cargo</strong> as a major regional and global cargo logistics provider.</p>
       </div>
       <div class="relative group cursor-pointer" id="video-play-trigger">
         <img src="/images/about-team.jpg" alt="TPC Cargo team" class="aspect-[3/2] w-full rounded-2xl object-cover shadow-md transition-transform duration-500 group-hover:scale-[1.01]" />
@@ -402,9 +402,9 @@ const special = [
         <button data-index="2" aria-label="Slide 3" class="slider-dot h-2 w-2 rounded-full bg-gray-600 hover:bg-gray-400 transition-all cursor-pointer"></button>
       </div>
 
-      <div class="grid gap-4 md:grid-cols-2 md:items-end mb-10">
+      <div class="grid gap-4 md:grid-cols-2 md:items-center mb-10">
         <SectionHeading light badge="Beyond the ordinary" title="More Than Shipping, [Complete Logistics Support.]" />
-        <p class="text-sm leading-7 text-gray-400">Experience the best in international transport with our special services. From cargo shipments to customs clearance, our team is ready to meet all your needs.</p>
+        <p class="text-lg leading-[30px] text-[#9D9C9B]">Experience the best in international transport with our special services. From cargo shipments to customs clearance, our team is ready to meet all your needs.</p>
       </div>
 
       <div id="beyond-slider-track" class="flex gap-6 overflow-x-auto pb-4 no-scrollbar scroll-smooth cursor-grab select-none">
@@ -427,7 +427,7 @@ const special = [
         <p class="text-muted mt-4">We offer reliability and the highest level of professional services, at the most competitive rates.</p>
         <div class="mt-8 grid gap-4 sm:grid-cols-2">
           {special.map((s) => (
-            <div class="flex items-center gap-3 rounded-lg bg-cream p-4 text-sm font-medium"><Icon name={s.icon} class="h-7 w-7 shrink-0 text-brand" />{s.name}</div>
+            <div class="flex items-center gap-3 rounded-lg bg-cream p-4 text-sm font-medium"><Icon name={s.icon} class="h-7 w-7 shrink-0 text-[#FE7E01]" />{s.name}</div>
           ))}
         </div>
       </div>

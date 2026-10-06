@@ -2,7 +2,7 @@
 
 @theme {
   --color-brand: #ff7a00;
-  --color-dark: #120d09;
+  --color-dark: #0B0806;
   --color-cream: #fff9f3;
   --font-sans: "Manrope", sans-serif;
   --font-logo: "Bebas Neue", sans-serif;
@@ -10,7 +10,7 @@
 
 /* Common helper classes used everywhere */
 .wrap {
-  @apply mx-auto w-full max-w-[1536px] px-4 md:px-8 lg:px-12;
+  @apply mx-auto w-full max-w-[1440px] px-4 md:px-8 lg:px-12;
 }
 
 .section {
@@ -18,7 +18,10 @@
 }
 
 .badge {
-  @apply inline-flex items-center gap-2 rounded-full border border-brand/30 bg-cream px-3 py-1 text-[11px] font-medium uppercase text-brand;
+  @apply inline-flex items-center gap-2 rounded-full border border-[#FFD8B3] bg-[#FFF9F2] px-3 py-1 text-sm font-medium uppercase text-[#FE9834];
+}
+.badge-dark {
+  @apply inline-flex items-center gap-2 rounded-full border border-[#ffc9925d] bg-[#FFFFFF1A] px-3 py-1 text-sm font-medium uppercase text-[#FE9834];
 }
 
 .badge::before {
@@ -31,11 +34,11 @@
 }
 
 .heading {
-  @apply mt-4 text-3xl font-medium leading-tight md:text-4xl;
+  @apply mt-5 text-3xl font-medium leading-tight md:text-[48px];
 }
 
 .text-muted {
-  @apply text-sm leading-7 text-gray-500;
+  @apply text-base leading-[30px] text-[#858482];
 }
 
 .input {

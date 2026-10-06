@@ -10,22 +10,22 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
   <div class="flex items-center justify-between gap-4 px-3 py-4 md:px-6">
     <div class="flex items-center gap-6">
       <Logo />
-      <nav class="hidden items-center gap-6 text-sm md:flex">
+      <nav class="hidden items-center gap-6 text-base md:flex">
         {navLinks.map((l) => (
-          <a href={l.href} class:list={['hover:text-brand', isActive(l.href) && 'text-brand']}>{l.name}</a>
+          <a href={l.href} class:list={['hover:text-[#FE7E01]', isActive(l.href) && 'text-[#FE7E01]']}>{l.name}</a>
         ))}
       </nav>
     </div>
   
       <div class="flex items-center gap-3">
-        <div class="hidden items-center gap-6 text-sm xl:flex">
+        <div class="hidden items-center gap-6 text-base xl:flex">
           <a href={`tel:${phone}`} class="flex items-center gap-2"><Icon name="phone" class="h-4 w-4" />{phone}</a>
           <a href={`mailto:${email}`} class="flex items-center gap-2"><Icon name="mail" class="h-4 w-4" />{email}</a>
           <span class="flex items-center gap-2"><Icon name="clock" class="h-4 w-4" />{hours}</span>
         </div>
         <!-- Office dropdown -->
         <details class="relative hidden sm:block">
-          <summary class="flex cursor-pointer list-none items-center gap-2 rounded-full bg-brand px-4 py-2 text-xs font-semibold text-white">
+          <summary class="flex cursor-pointer list-none items-center gap-2 rounded-full bg-brand px-4 py-2.5 text-xs font-semibold text-black">
             Cyprus Office <Icon name="down" class="h-3 w-3" />
           </summary>
           <ul class="absolute right-0 z-20 mt-2 w-40 rounded-lg border bg-white p-2 text-sm shadow-lg">
@@ -40,7 +40,7 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
   <!-- Mobile menu -->
   <nav id="mobile-menu" class="hidden border-t px-4 py-3 md:hidden">
     {navLinks.map((l) => (
-      <a href={l.href} class:list={['block py-2 text-sm', isActive(l.href) && 'text-brand']}>{l.name}</a>
+      <a href={l.href} class:list={['block py-2 text-sm', isActive(l.href) && 'text-[#FE7E01]']}>{l.name}</a>
     ))}
   </nav>
 </header>

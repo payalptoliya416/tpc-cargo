@@ -16,7 +16,7 @@ const footerServices = services.filter((s) => ['sea-freight', 'air-freight', 'ro
     <div>
       <h4 class="mb-4 font-semibold uppercase text-white">Useful Links</h4>
       <ul class="space-y-3 text-sm">
-        {navLinks.map((l) => <li><a href={l.href} class="hover:text-brand">{l.name}</a></li>)}
+        {navLinks.map((l) => <li><a href={l.href} class="hover:text-[#FE7E01]">{l.name}</a></li>)}
       </ul>
     </div>
     <div>
@@ -31,7 +31,7 @@ const footerServices = services.filter((s) => ['sea-freight', 'air-freight', 'ro
     <div>
       <h4 class="mb-4 font-semibold uppercase text-white">Our Services</h4>
       <ul class="space-y-3 text-sm">
-        {footerServices.map((s) => <li><a href={`/services/${s.slug}`} class="hover:text-brand">{s.name}</a></li>)}
+        {footerServices.map((s) => <li><a href={`/services/${s.slug}`} class="hover:text-[#FE7E01]">{s.name}</a></li>)}
       </ul>
     </div>
   </div>
@@ -39,7 +39,7 @@ const footerServices = services.filter((s) => ['sea-freight', 'air-freight', 'ro
     <p class="text-white">Copyright © 2023 TPCCARGO. All rights reserved.</p>
     <div class="flex gap-3">
       {['facebook', 'x', 'instagram'].map((n) => (
-        <a href="#" aria-label={n} class="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 text-white hover:border-brand hover:text-brand"><Icon name={n} class="h-4 w-4" /></a>
+        <a href="#" aria-label={n} class="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 text-white hover:border-brand hover:text-[#FE7E01]"><Icon name={n} class="h-4 w-4" /></a>
       ))}
     </div>
   </div>

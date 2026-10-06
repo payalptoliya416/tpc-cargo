@@ -20,7 +20,7 @@ const { badge, title, intro, faqs = [] } = Astro.props;
     <div class="mx-auto mt-10 max-w-2xl space-y-3">
       {faqs.map(([q, a]: any, i: number) => (
         <details open={i === 0} class="group rounded-lg border border-gray-200 open:border-brand">
-          <summary class="flex cursor-pointer list-none items-center justify-between gap-3 px-4 py-3 text-sm group-open:text-brand">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-3 px-4 py-3 text-sm group-open:text-[#FE7E01]">
             {q}
             <Icon name="down" class="h-4 w-4 shrink-0 transition -rotate-90 group-open:rotate-180" />
           </summary>

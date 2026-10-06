@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import PageBanner from '../../components/PageBanner.astro';
 import ServiceCard from '../../components/ServiceCard.astro';
 import WhyUs from '../../components/WhyUs.astro';
+import Stats from '../../components/Stats.astro';
 import { services } from '../../data/services';
 ---
 <Layout title="Services | TPC Cargo">
@@ -15,7 +16,7 @@ import { services } from '../../data/services';
       <div class="grid gap-4 md:grid-cols-2 md:items-end mb-10">
         <div>
           <span class="badge">Our Services</span>
-          <h2 class="heading">Our Logistics <span class="text-brand">Services</span></h2>
+          <h2 class="heading">Our Logistics <span class="text-[#FE7E01]">Services</span></h2>
         </div>
         <p class="text-sm leading-7 text-gray-500">
           Thru Our Dedicated Network And Together With Our Experience, Customer Service, And Transport Solutions – You Will Benefit From The Best Service, And Rates In Cyprus.
@@ -28,17 +29,19 @@ import { services } from '../../data/services';
     </div>
   </section>
 
+  <Stats />
+
   <!-- Section 2: Split 2-Column Section (Effective Solutions & A Wealth of Experience) -->
   <section class="grid grid-cols-1 lg:grid-cols-2 overflow-hidden">
     <!-- Left Column: Light Grey Background -->
     <div class="bg-[#f2f4f7] py-14 sm:py-20 md:py-24 px-6 sm:px-10 md:px-16 lg:px-20 flex lg:justify-end">
       <div class="w-full max-w-[700px] space-y-4 md:space-y-5">
-        <div class="inline-flex items-center gap-2 rounded-full border border-brand/30 bg-white px-3.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-brand">
+        <div class="inline-flex items-center gap-2 rounded-full border border-brand/30 bg-white px-3.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-[#FE7E01]">
           <span class="h-1.5 w-1.5 rounded-full bg-brand"></span>
           <span>Our Approach</span>
         </div>
         <h2 class="text-3xl font-medium leading-tight sm:text-4xl md:text-5xl text-dark">
-          <span class="text-brand">Effective</span> Solutions
+          <span class="text-[#FE7E01]">Effective</span> Solutions
         </h2>
         <p class="text-sm leading-relaxed text-gray-500 sm:text-base md:leading-8">
           You benefit from our experience in delivering effective solutions to the complex global supply chains of some of the world's biggest corporations. You benefit from many innovation, whether it involves a simple standard Sea or Air Cargo Freight products, Multimodal solutions, whether it involves a investment in warehousing, or whether it requires a completely new integrated supply chain model.
@@ -49,12 +52,12 @@ import { services } from '../../data/services';
     <!-- Right Column: Light Cream Background -->
     <div class="bg-[#fff9f4] py-14 sm:py-20 md:py-24 px-6 sm:px-10 md:px-16 lg:px-20 flex lg:justify-start">
       <div class="w-full max-w-[700px] space-y-4 md:space-y-5">
-        <div class="inline-flex items-center gap-2 rounded-full border border-brand/30 bg-white px-3.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-brand">
+        <div class="inline-flex items-center gap-2 rounded-full border border-brand/30 bg-white px-3.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-[#FE7E01]">
           <span class="h-1.5 w-1.5 rounded-full bg-brand"></span>
           <span>Our Heritage</span>
         </div>
         <h2 class="text-3xl font-medium leading-tight sm:text-4xl md:text-5xl text-dark">
-          A Wealth of <span class="text-brand">Experience</span>
+          A Wealth of <span class="text-[#FE7E01]">Experience</span>
         </h2>
         <p class="text-sm leading-relaxed text-gray-500 sm:text-base md:leading-8">
           Every new solution adds to the wealth of our experience, and deepens our competence and capability. All of which is the reason why you will find that at TPC Cargo we try to apply that proven innovation to support all your business.
