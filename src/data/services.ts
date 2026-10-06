@@ -186,8 +186,11 @@ export const services: Service[] = [
     short: 'Need help packing and storing your belongings? Look no further than our professional moving company! We offer top-notch packing and storage services for your convenience.',
     heroBadge: 'Packaging and Storage Solutions',
     heroTitle: 'Pack, Store, Move With [Confidence]',
-    heroText: 'Secure packaging and flexible storage solutions designed to keep your goods protected and ready for delivery.',
-    capParagraphs: [flex, same],
+    capParagraphs: [
+      'Logistics Ground’s flexible model, using only quality carriers, means you benefit from improved service levels, greater flexibility and time-definite deliveries. Our expertise in transport management and planning allows us to design a solution that meets your needs and also quickly respond to any event disruptions, such as weather.',
+      'Through our global network of control towers and state-of-the-art technology, we are able to monitor and dynamically react to situations such as adverse weather, additional pick ups or drop offs, or heavy traffic, meaning that your goods are always travelling the most efficient route.',
+      'Our non-asset based road network provides you with flexibility, improved service levels, accelerated delivery, reduced direct and indirect costs and much less complexity. Integrated road networks, covering the world.',
+    ],
     solTitle: combo,
     solParagraphs: [
       same,

@@ -51,7 +51,61 @@ const faqs: [string, string][] = [
   <!-- Capabilities Section -->
   <section class="section">
     <div class="wrap">
-      {img.cap.length >= 2 ? (
+      {img.capTwoCol ? (
+        /* 2-Image Side-by-Side Layout (For Packaging and Storage - Matches Figma Screenshot with Bottom Aligned Images) */
+        <div class="grid gap-10 lg:grid-cols-2 lg:gap-14 items-stretch">
+          <!-- Left Column: Badge, Heading, and Image 1 -->
+          <div class="flex flex-col h-full space-y-6">
+            <div>
+              <span class="badge">{service.capBadge || `Our ${service.name} capabilities`}</span>
+              <h2 class="heading mt-4">
+                {service.capTitle ? (
+                  <span set:html={highlight(service.capTitle)} />
+                ) : (
+                  <>Discover Our <span class="text-brand">Capabilities<br class="hidden sm:inline" /> And Network</span></>
+                )}
+              </h2>
+            </div>
+            <img
+              src={img.cap[0]}
+              alt={`${service.name} cap 1`}
+              class="w-full mt-auto object-cover shadow-sm"
+              loading="lazy"
+            />
+          </div>
+
+          <!-- Right Column: Paragraphs and Image 2 -->
+          <div class="flex flex-col h-full space-y-6">
+            <div class="space-y-5 text-sm sm:text-base leading-relaxed text-gray-500">
+              {service.capParagraphs.map((p) => (
+                <p set:html={formatCapParagraph(p)} />
+              ))}
+            </div>
+
+            {img.cap[1] && (
+              <img
+                src={img.cap[1]}
+                alt={`${service.name} cap 2`}
+                class="w-full mt-auto object-cover shadow-sm"
+                loading="lazy"
+              />
+            )}
+
+            {service.bullets && (
+              <ul class="space-y-2.5 pt-2">
+                {service.bullets.map((b) => (
+                  <li class="flex items-center gap-3 text-sm font-medium text-gray-700">
+                    <span class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand/15 text-brand">
+                      <Icon name="check" class="h-3 w-3" />
+                    </span>
+                    <span>{b}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </div>
+      ) : img.cap.length >= 2 ? (
         <div class="space-y-10">
           <!-- Header Row: Title & Badge on Left, Intro Text on Right -->
           <div class="grid gap-6 lg:grid-cols-2 lg:gap-14 lg:items-end">

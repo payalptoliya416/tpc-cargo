@@ -1,6 +1,6 @@
 // Image paths for every service page. Files live in /public/images
 
-export const serviceImages: Record<string, { card: string; hero: string; cap: string[]; sol: string; cta?: string; capLeft?: boolean; capAir?: boolean; solLeft?: boolean; solBanner?: boolean; solStacked?: boolean }> = {
+export const serviceImages: Record<string, { card: string; hero: string; cap: string[]; sol: string; cta?: string; capLeft?: boolean; capAir?: boolean; capTwoCol?: boolean; solLeft?: boolean; solBanner?: boolean; solStacked?: boolean }> = {
   'sea-freight': {
     card: '/images/sea-freight.png',
     hero: '/images/sea-freight-hero.png',
@@ -52,10 +52,11 @@ export const serviceImages: Record<string, { card: string; hero: string; cap: st
   },
   'packaging-and-storage': {
     card: '/images/packaging-and-storage.png',
-    hero: '/images/packaging-and-storage-sol.jpg',
+    hero: '/images/packaging-and-storage-sol.png',
     cap: ['/images/packaging-and-storage-cap-1.jpg', '/images/packaging-and-storage-cap-2.jpg'],
-    sol: '/images/packaging-and-storage-sol.jpg',
-    cta: '/images/ctabanner.png'
+    sol: '/images/packing.png',
+    cta: '/images/ctabanner.png',
+    capTwoCol: true
   },
   'car-transportation': {
     card: '/images/car-transportation.png',
