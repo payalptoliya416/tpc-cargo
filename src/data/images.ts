@@ -20,7 +20,8 @@ export const serviceImages: Record<string, { card: string; hero: string; cap: st
     hero: '/images/road-hero.png',
     cap: ['/images/road-freight-cap-1.jpg'],
     sol: '/images/road-freight-sol.jpg',
-    cta: '/images/ctabanner.png'
+    cta: '/images/ctabanner.png',
+    capLeft: true
   },
   'multimodal-transport': {
     card: '/images/multimodal-transport.png',
