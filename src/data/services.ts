@@ -213,6 +213,7 @@ export const services: Service[] = [
     heroBadge: 'Car Transportation Solutions',
     heroTitle: 'Safe, Reliable Vehicle [Transport Worldwide]',
     heroText: 'Secure vehicle shipping solutions designed for smooth, reliable transport across international destinations.',
+    capBadge: 'Our Vehicle Shipping capabilities',
     capParagraphs: [
       'Cars, motorcycles, boats, fast-food caravans or leisure caravans – are a few examples of our customers’ choices. With years of experience in the vehicle shipping industry, we built an extremely straightforward process – safe and efficient.',
       'Our customizable services mean that you can always choose.',

@@ -1,6 +1,6 @@
 // Image paths for every service page. Files live in /public/images
 
-export const serviceImages: Record<string, { card: string; hero: string; cap: string[]; sol: string; cta?: string; capLeft?: boolean; capAir?: boolean; capTwoCol?: boolean; solLeft?: boolean; solBanner?: boolean; solStacked?: boolean }> = {
+export const serviceImages: Record<string, { card: string; hero: string; cap: string[]; sol: string; cta?: string; capLeft?: boolean; capAir?: boolean; capTwoCol?: boolean; capRightStacked?: boolean; solLeft?: boolean; solBanner?: boolean; solStacked?: boolean }> = {
   'sea-freight': {
     card: '/images/sea-freight.png',
     hero: '/images/sea-freight-hero.png',
@@ -62,14 +62,15 @@ export const serviceImages: Record<string, { card: string; hero: string; cap: st
     card: '/images/car-transportation.png',
     hero: '/images/cartrandaction.png',
     cap: ['/images/car-transportation-cap-1.jpg', '/images/car-transportation-cap-2.jpg'],
-    sol: '/images/cartrandaction.png',
+    sol: '/images/combine.png',
     cta: '/images/ctabanner.png',
+    capRightStacked: true,
     solLeft: true
   },
   'cargo-insurance': {
     card: '/images/cargo-insurance.png',
     hero: '/images/insurance.png',
-    cap: ['/images/insurance.png'],
+    cap: ['/images/insurance-left.png'],
     sol: '/images/cargo-insurance-sol.jpg',
     cta: '/images/ctabanner.png'
   },
