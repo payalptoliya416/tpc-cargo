@@ -4,20 +4,19 @@ import PageBanner from '../components/PageBanner.astro';
 import ContactForm from '../components/ContactForm.astro';
 import Offices from '../components/Offices.astro';
 import Map from '../components/Map.astro';
-import Stats from '../components/Stats.astro';
 ---
 <Layout title="Contacts | TPC Cargo">
   <!-- Top Hero Banner -->
   <PageBanner title="Contacts" image="/images/contact.png" />
 
-  <section class="section">
+  <section class="section !pb-0">
     <div class="wrap">
       <!-- Main Contact Top Grid -->
       <div class="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
         <div class="lg:py-4">
           <span class="badge">Contact us</span>
           <h2 class="heading mt-4">Get in <span class="text-[#FE7E01]">Touch</span></h2>
-          <p class="mt-5 text-base leading-relaxed text-[#858482] max-w-xl">
+          <p class="mt-5 text-base leading-[28px] text-[#858482] max-w-xl">
             If you have any questions about TPC CARGO or how we can support your business or private cargo transportation needs, please contact us directly by selecting from one of the below categories that is the most relevant to your inquiry and fill out our short feedback form.
           </p>
         </div>
@@ -26,13 +25,11 @@ import Stats from '../components/Stats.astro';
       </div>
 
       <!-- Bottom Offices Bar (3 Offices Grid) -->
-      <div class="mt-14 md:mt-24">
+      <div class="mt-10">
         <Offices />
       </div>
     </div>
   </section>
-
-  <Stats />
 
   <Map />
 </Layout>
