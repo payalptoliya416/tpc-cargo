@@ -204,7 +204,39 @@ const faqs: [string, string][] = [
   <Stats />
 
   <!-- Solutions Section -->
-  {img?.solBanner ? (
+  {img?.solStacked ? (
+    /* Stacked White Container Layout (For Road Freight - Matches Figma Screenshot) */
+    <section class="section">
+      <div class="wrap space-y-10">
+        <div class="grid gap-8 lg:grid-cols-2 lg:gap-14 items-start">
+          <div class="space-y-6">
+            <div>
+              <span class="badge">Our {service.name} solutions</span>
+              <h2 class="heading mt-4" set:html={highlight(service.solTitle)} />
+            </div>
+            <div>
+              <a href="/contacts" class="btn inline-block !text-black">Contact Now</a>
+            </div>
+          </div>
+
+          <div class="space-y-5 text-sm sm:text-base leading-relaxed text-gray-500 lg:pt-2">
+            {service.solParagraphs.map((p) => (
+              <p>{p}</p>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <img
+            src={img.sol}
+            alt={service.name}
+            class="w-full object-cover max-h-[550px] -mt-16 -z-10 relative"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </section>
+  ) : img?.solBanner ? (
     /* Full-width Dark Hero Banner (For Multimodal Transport & Freight Forwarding - Matches 2nd Figma Screenshot) */
     <section class="relative bg-dark bg-cover bg-center py-20 md:py-28 text-white overflow-hidden" style={`background-image: url('${img.sol}')`}>
       {/* <div class="absolute inset-0 bg-gradient-to-r from-black/95 via-black/85 to-transparent"></div> */}
