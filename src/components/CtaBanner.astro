@@ -16,15 +16,15 @@ const {
   text,
   button = 'Contact Now',
   href = '/contacts',
-  image = '/images/road-freight-sol.png'
+  image = '/images/cta.png'
 } = Astro.props;
 ---
-<section class="relative bg-dark bg-cover bg-center text-center text-white" style={`background-image:url('${image}')`}>
+<section class="relative bg-dark bg-cover bg-center text-center text-white min-h-[472px]" style={`background-image:url('${image}')`}>
   <!-- <div class="absolute inset-0 bg-black/60"></div> -->
-  <div class="wrap relative py-16 md:py-28 z-10">
-    {badge && <span class="badge !bg-black/40">{badge}</span>}
-    <h2 class="mt-4 text-3xl font-medium md:text-4xl" set:html={highlight(title)} />
-    {text && <p class="mx-auto mt-4 max-w-2xl text-sm text-gray-300">{text}</p>}
-    <a href={href} class="btn mt-8">{button}</a>
+  <div class="wrap relative py-16 md:py-32 z-10">
+    {badge && <span class="badge">{badge}</span>}
+    <h2 class="mt-6 text-3xl font-medium md:text-[46px]" set:html={highlight(title)} />
+    {text && <p class="mx-auto mt-4 max-w-[816px] text-lg text-[#9D9C9B]">{text}</p>}
+    <a href={href} class="btn mt-10">{button}</a>
   </div>
 </section>

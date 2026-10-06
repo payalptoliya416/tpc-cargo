@@ -2,7 +2,7 @@
 
 @theme {
   --color-brand: #ff7a00;
-  --color-dark: #0B0806;
+  --color-dark: #0B0806;#0B0806
   --color-cream: #fff9f3;
   --font-sans: "Manrope", sans-serif;
   --font-logo: "Bebas Neue", sans-serif;
@@ -30,11 +30,11 @@
 }
 
 .btn {
-  @apply inline-block rounded-full bg-brand px-6 py-2.5 text-xs font-bold uppercase text-white transition hover:bg-orange-600;
+  @apply inline-block rounded-full bg-brand px-6 py-2.5 text-sm font-bold uppercase text-black transition hover:bg-orange-600;
 }
 
 .heading {
-  @apply mt-5 text-3xl font-medium leading-tight md:text-[48px];
+  @apply mt-5 text-3xl font-medium leading-tight md:text-[46px];
 }
 
 .text-muted {
