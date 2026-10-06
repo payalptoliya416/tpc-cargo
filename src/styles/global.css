@@ -2,7 +2,7 @@
 
 @theme {
   --color-brand: #ff7a00;
-  --color-dark: #0B0806;#0B0806
+  --color-dark: #0B0806;
   --color-cream: #fff9f3;
   --font-sans: "Manrope", sans-serif;
   --font-logo: "Bebas Neue", sans-serif;
@@ -20,6 +20,7 @@
 .badge {
   @apply inline-flex items-center gap-2 rounded-full border border-[#FFD8B3] bg-[#FFF9F2] px-3 py-1 text-sm font-medium uppercase text-[#FE9834];
 }
+
 .badge-dark {
   @apply inline-flex items-center gap-2 rounded-full border border-[#ffc9925d] bg-[#FFFFFF1A] px-3 py-1 text-sm font-medium uppercase text-[#FE9834];
 }
