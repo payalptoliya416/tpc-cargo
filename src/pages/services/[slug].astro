@@ -32,12 +32,7 @@ function formatCapParagraph(p: string) {
   return p;
 }
 
-// Every service gets these 2 extra FAQs at the end
-const faqs: [string, string][] = [
-  ...service.faqs,
-  [`What Information Is Needed For A ${service.name} Quote?`, 'The type of cargo, its size and weight, where it is going from and to, and when you need it delivered.'],
-  [`How Can I Request A ${service.name} Quote?`, 'Fill in the quote form on this page or email info@tpccargo.com and our team will get back to you.'],
-];
+const faqs: [string, string][] = service.faqs;
 ---
 <Layout title={`${service.name} | TPC Cargo`}>
   <ServiceHero
