@@ -22,7 +22,11 @@
 }
 
 .badge-dark {
-  @apply inline-flex items-center gap-2 rounded-full border border-[#ffc9925d] bg-[#FFFFFF1A] px-3 py-1 text-sm font-medium uppercase text-[#FE9834];
+  background-image: url('/images/badge-dark-img.png');
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  @apply inline-flex items-center gap-2.5 rounded-full px-4 py-2 text-xs sm:text-sm font-semibold uppercase tracking-wider text-[#FE7E01];
 }
 
 .badge::before {

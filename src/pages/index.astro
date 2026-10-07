@@ -104,16 +104,7 @@ const special = [
           data-slide-index={index}
         >
           <!-- Badge -->
-          <div
-            class="mt-[175px] inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2 backdrop-blur-md"
-          >
-            <span class="h-2 w-2 rounded-full bg-brand"></span>
-            <span
-              class="text-base font-semibold uppercase tracking-wider text-[#FE7E01]"
-            >
-              {slide.badge}
-            </span>
-          </div>
+          <div class="mt-[175px] badge-dark">{slide.badge}</div>
 
           <!-- Heading -->
           <h1

@@ -19,7 +19,7 @@ const { badge, title, text, image, formTitle } = Astro.props;
         <span class="font-medium text-white">{badge || 'Service'}</span>
       </nav>
 
-      <span class="badge">{badge}</span>
+      <span class="badge-dark">{badge}</span>
       <h1 class="mt-4 text-3xl font-medium leading-tight sm:text-4xl md:text-5xl lg:text-[56px] xl:text-[68px] text-white" set:html={highlight(title)} />
       <p class="mt-4 max-w-lg text-sm sm:text-base lg:text-lg leading-relaxed text-[#B6B5B4]">{text}</p>
       
