@@ -72,6 +72,24 @@
   box-shadow: 0 2px 8px rgba(255, 122, 0, 0.3);
 }
 
+/* Office section heading — left accent bar */
+.office-heading {
+  position: relative;
+  padding-left: 10px;
+}
+
+.office-heading::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10%;
+  height: 80%;
+  width: 3px;
+  border-top-right-radius: 9999px;
+  border-bottom-right-radius: 9999px;
+  background:#FE7E01;
+}
+
 .heading {
   @apply mt-5 text-3xl font-bold leading-tight md:text-[46px];
 }

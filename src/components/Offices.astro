@@ -6,13 +6,13 @@ import { offices } from '../data/site';
   <div class="grid gap-5 md:gap-8 md:grid-cols-3 md:divide-x md:divide-gray-200/80">
     {offices.map((o, idx) => (
       <div class="space-y-4">
-        <h4 class="text-xl font-semibold text-[#FE7E01] border-l-2 border-brand pl-2.5"> {o.country}</h4>
+        <h4 class="office-heading text-xl font-semibold text-[#FE7E01]">{o.country}</h4>
         <div class="flex flex-wrap items-center gap-x-3 gap-y-1.5 text-xs sm:text-sm 2xl:text-base text-[#3C3A38] font-medium">
           <a href={`https://maps.google.com/?q=${encodeURIComponent(o.address + ', ' + o.country)}`} target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 hover:text-[#FE7E01] transition-colors">
             <Icon name="pin" class="h-4 w-4 text-dark shrink-0" />
             <span>{o.address}</span>
           </a>
-          <span class="text-[#3C3A38] hidden sm:inline">|</span>
+          <span class="hidden sm:inline-block h-1 w-1 rounded-full bg-gray-300"></span>
           <a href={`tel:${o.phone.replace(/\s+/g, '')}`} class="flex items-center gap-1.5 hover:text-[#FE7E01] transition-colors">
             <Icon name="phone" class="h-4 w-4 text-dark shrink-0" />
             <span>{o.phone}</span>
