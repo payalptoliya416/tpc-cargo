@@ -9,11 +9,11 @@ const others = [1, 2, 3].map((n) => services[(i + n) % services.length]);
 ---
 <section class="section">
   <div class="wrap">
-    <div class="grid gap-4 md:grid-cols-2 md:items-end">
+    <div class="grid gap-4 md:grid-cols-2 md:items-center">
       <SectionHeading badge="Explore our logistics services" title="More Ways To Move [Your Cargo]" />
       <p class="text-muted">Explore our complementary logistics services designed to support your shipment from origin to final destination with reliable, flexible solutions.</p>
     </div>
-    <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+    <div class="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
       {others.map((s) => <ServiceCard service={s} />)}
     </div>
   </div>
