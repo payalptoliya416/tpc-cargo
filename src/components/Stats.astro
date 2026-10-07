@@ -2,21 +2,92 @@
 import Icon from './Icon.astro';
 import { stats } from '../data/site';
 ---
-<section class="wrap my-4 md:my-12">
+<section class="wrap my-4 md:my-12" id="stats-section">
   <div class="grid grid-cols-2 gap-4 md:gap-6 rounded-[18px] border border-[#FFE5CC] bg-[#FFF9F2] p-4 md:p-6 md:grid-cols-4 md:p-8">
-    {stats.map((s) => (
-      <div class="flex items-center gap-3.5">
-        {s.icon.includes('/') || s.icon.endsWith('.svg') ? (
-          <img src={s.icon} alt="" class="h-10 w-10 shrink-0 object-contain" />
-        ) : (
-          <Icon name={s.icon} class="h-10 w-10 shrink-0 text-[#FE7E01]" />
-        )}
-        <div>
-          <div class="text-2xl font-extrabold text-black lg:text-4xl tracking-tight mb-2">{s.value}</div>
-          <div class="text-xs sm:text-base text-[#6D6B69] font-normal">{s.label}</div>
+    {stats.map((s) => {
+      const match = s.value.match(/^(\d+)(\+?)$/);
+      const targetNum = match ? match[1] : s.value;
+      const suffix = match ? match[2] : '';
+      return (
+        <div class="flex items-center gap-3.5">
+          {s.icon.includes('/') || s.icon.endsWith('.svg') ? (
+            <img src={s.icon} alt="" class="h-10 w-10 shrink-0 object-contain" />
+          ) : (
+            <Icon name={s.icon} class="h-10 w-10 shrink-0 text-[#FE7E01]" />
+          )}
+          <div>
+            <div
+              class="stat-counter text-2xl font-extrabold text-black lg:text-4xl tracking-tight mb-2"
+              data-target={targetNum}
+              data-suffix={suffix}
+            >
+              0{suffix}
+            </div>
+            <div class="text-xs sm:text-base text-[#6D6B69] font-normal">{s.label}</div>
+          </div>
         </div>
-      </div>
-    ))}
+      );
+    })}
   </div>
 </section>
+
+<script>
+  function initStatCounters() {
+    const section = document.getElementById('stats-section');
+    if (!section) return;
+
+    const counters = section.querySelectorAll('.stat-counter');
+    let hasAnimated = false;
+
+    function animateCounters() {
+      if (hasAnimated) return;
+      hasAnimated = true;
+
+      counters.forEach((counter) => {
+        const target = parseInt(counter.getAttribute('data-target') || '0', 10);
+        const suffix = counter.getAttribute('data-suffix') || '';
+        const duration = 1800;
+        const startTime = performance.now();
+
+        function update(now: number) {
+          const elapsed = now - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          const easedProgress = 1 - Math.pow(1 - progress, 2);
+          const currentVal = Math.floor(easedProgress * target);
+
+          counter.textContent = `${currentVal}${suffix}`;
+
+          if (progress < 1) {
+            requestAnimationFrame(update);
+          } else {
+            counter.textContent = `${target}${suffix}`;
+          }
+        }
+
+        requestAnimationFrame(update);
+      });
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            animateCounters();
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    observer.observe(section);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initStatCounters);
+  } else {
+    initStatCounters();
+  }
+</script>
+
 
