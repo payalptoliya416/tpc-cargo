@@ -42,7 +42,7 @@
 }
 
 .btn {
-  @apply inline-block rounded-full bg-brand px-6 py-2.5 text-sm font-bold uppercase text-black transition hover:bg-orange-600;
+  @apply inline-block rounded-full bg-brand px-6 py-2.5 text-sm font-bold uppercase text-black transition-all duration-300 hover:brightness-110 hover:shadow-lg hover:scale-[1.02] cursor-pointer;
 }
 
 .heading {
@@ -72,4 +72,4 @@ body {
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
-}
+}
