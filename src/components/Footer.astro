@@ -1,7 +1,7 @@
 ---
 import Icon from './Icon.astro';
 import Logo from './Logo.astro';
-import { navLinks, email, hours } from '../data/site';
+import { navLinks, phone, email, hours } from '../data/site';
 import { services } from '../data/services';
 
 // Footer shows these 5 services only
@@ -22,10 +22,28 @@ const footerServices = services.filter((s) => ['sea-freight', 'air-freight', 'ro
     <div>
       <h4 class="mb-4 font-semibold uppercase text-white">Get in Touch</h4>
       <ul class="space-y-4 text-base text-[#9D9C9B]">
-        <li class="flex items-center gap-2"><Icon name="pin" class="h-4 w-4" />Iapetou 21, Agios Athanasios</li>
-        <li class="flex items-center gap-2"><Icon name="phone" class="h-4 w-4" />+357 25 254 515</li>
-        <li class="flex items-center gap-2"><Icon name="mail" class="h-4 w-4" />{email}</li>
-        <li class="flex items-center gap-2"><Icon name="clock" class="h-4 w-4" />{hours}</li>
+        <li>
+          <a href="https://maps.google.com/?q=Iapetou+21,+Agios+Athanasios" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 hover:text-[#FE7E01] transition-colors">
+            <Icon name="pin" class="h-4 w-4 shrink-0" />
+            <span>Iapetou 21, Agios Athanasios</span>
+          </a>
+        </li>
+        <li>
+          <a href={`tel:${phone.replace(/\s+/g, '')}`} class="flex items-center gap-2 hover:text-[#FE7E01] transition-colors">
+            <Icon name="phone" class="h-4 w-4 shrink-0" />
+            <span>+357 25 254 515</span>
+          </a>
+        </li>
+        <li>
+          <a href={`mailto:${email}`} class="flex items-center gap-2 hover:text-[#FE7E01] transition-colors">
+            <Icon name="mail" class="h-4 w-4 shrink-0" />
+            <span>{email}</span>
+          </a>
+        </li>
+        <li class="flex items-center gap-2">
+          <Icon name="clock" class="h-4 w-4 shrink-0" />
+          <span>{hours}</span>
+        </li>
       </ul>
     </div>
     <div>
