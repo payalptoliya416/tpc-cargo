@@ -88,11 +88,7 @@ const special = [
               <div
                 class="hero-mosaic__box absolute overflow-hidden"
                 data-box={bi}
-                style={`
-                  background-image: url('${slide.image}');
-                  background-size: cover;
-                  background-position: center;
-                `}
+                style={`background-image: url('${slide.image}');`}
               ></div>
             ))}
           </div>
@@ -152,7 +148,7 @@ const special = [
           <button
             data-nav-index={index}
             class={`hero-nav-item flex h-[75px] sm:h-[100px] md:h-[125px] flex-col items-center justify-center gap-1.5 sm:gap-3 text-xs sm:text-sm font-medium text-white transition-all cursor-pointer ${
-              index === 1 ? 'is-active bg-white/10 text-[#FE7E01] font-bold' : 'hover:bg-white/5 hover:text-[#FE7E01]'
+              index === 1 ? 'is-active' : ''
             }`}
           >
             {l.icon.includes('/') || l.icon.endsWith('.svg') ? (
@@ -336,6 +332,24 @@ const special = [
 .hero-content-item.is-active .hero-el:nth-child(3) {
   opacity: 1; transform: translateY(0);
   transition-delay: 0.88s;
+}
+
+/* ══════════════════════════════════════
+   NAV BAR ITEMS
+══════════════════════════════════════ */
+.hero-nav-item {
+  background: transparent;
+  color: rgba(255,255,255,0.85);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.hero-nav-item:hover {
+  background: rgba(255,255,255,0.05);
+  color: #FE7E01;
+}
+.hero-nav-item.is-active {
+  background: rgba(255,255,255,0.10);
+  color: #FE7E01;
+  font-weight: 700;
 }
 </style>
 
