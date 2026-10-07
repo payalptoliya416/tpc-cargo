@@ -62,7 +62,7 @@ const special = [
     class="relative h-[500px] sm:h-[620px] md:h-[700px] lg:h-[770px] overflow-hidden rounded-2xl sm:rounded-3xl bg-dark text-white select-none"
   >
     <!-- Background Images -->
-    <div id="hero-bg-container" class="absolute inset-0">
+    <div id="hero-bg-container" class="absolute inset-0 overflow-hidden">
       {heroSlides.map((slide, index) => (
         <div
           class={`hero-bg-item absolute inset-0 ${index === 0 ? 'is-active' : ''}`}
@@ -81,17 +81,6 @@ const special = [
           <!-- Overlays -->
           <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/30 to-black/15"></div>
           <div class="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-transparent"></div>
-
-          <!-- Mosaic boxes layer (scattered small images) -->
-          <div class="hero-mosaic absolute inset-0 pointer-events-none z-10">
-            {Array.from({length: 9}).map((_, bi) => (
-              <div
-                class="hero-mosaic__box absolute overflow-hidden"
-                data-box={bi}
-                style={`background-image: url('${slide.image}');`}
-              ></div>
-            ))}
-          </div>
         </div>
       ))}
     </div>
@@ -140,7 +129,7 @@ const special = [
         </div>
       ))}
 
-      <!-- Bottom Navigation (same UI as before) -->
+      <!-- Bottom Navigation -->
       <div
         class="absolute bottom-0 left-0 w-full grid grid-cols-2 divide-x divide-white/10 border-t border-white/10 bg-black/55 backdrop-blur-md md:grid-cols-4 z-30"
       >
@@ -148,7 +137,7 @@ const special = [
           <button
             data-nav-index={index}
             class={`hero-nav-item flex h-[75px] sm:h-[100px] md:h-[125px] flex-col items-center justify-center gap-1.5 sm:gap-3 text-xs sm:text-sm font-medium text-white transition-all cursor-pointer ${
-              index === 1 ? 'is-active' : ''
+              index === 1 ? 'is-active bg-white/12 text-[#FE9834] font-bold' : ''
             }`}
           >
             {l.icon.includes('/') || l.icon.endsWith('.svg') ? (
@@ -166,18 +155,34 @@ const special = [
 
 <style>
 /* ══════════════════════════════════════
-   SLIDE LAYER STACKING
+   SLIDE LAYER STACKING & COVER IMAGE FITS
 ══════════════════════════════════════ */
 .hero-bg-item {
   z-index: 0;
   pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
 }
-.hero-bg-item.is-active  { z-index: 2; }
-.hero-bg-item.is-leaving { z-index: 1; }
+.hero-bg-item.is-active {
+  z-index: 2;
+  opacity: 1;
+}
+.hero-bg-item.is-leaving {
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
 
-/* ══════════════════════════════════════
-   SLIDE 0 — reveal-left  (curtain L→R)
-══════════════════════════════════════ */
+.hero-bg-reveal {
+  width: 100%;
+  height: 100%;
+}
+
+.hero-bg-img {
+  will-change: transform;
+}
+
+/* Slide 0 — reveal-left (curtain L→R wipe) */
 .hero-bg-item[data-anim="reveal-left"] .hero-bg-reveal {
   clip-path: inset(0 100% 0 0);
   transition: none;
@@ -187,7 +192,7 @@ const special = [
   transition: clip-path 0.9s cubic-bezier(0.77, 0, 0.175, 1);
 }
 .hero-bg-item[data-anim="reveal-left"] .hero-bg-img {
-  transform: scale(1.07);
+  transform: scale(1.08);
   transition: none;
 }
 .hero-bg-item[data-anim="reveal-left"].is-active .hero-bg-img {
@@ -195,119 +200,57 @@ const special = [
   transition: transform 7s ease-out;
 }
 
-/* ══════════════════════════════════════
-   SLIDE 1 — reveal-top  (curtain T→B)
-══════════════════════════════════════ */
+/* Slide 1 — reveal-top (curtain T→B wipe) */
 .hero-bg-item[data-anim="reveal-top"] .hero-bg-reveal {
   clip-path: inset(0 0 100% 0);
   transition: none;
 }
 .hero-bg-item[data-anim="reveal-top"].is-active .hero-bg-reveal {
   clip-path: inset(0 0 0% 0);
-  transition: clip-path 0.95s cubic-bezier(0.77, 0, 0.18, 1);
+  transition: clip-path 0.9s cubic-bezier(0.77, 0, 0.175, 1);
 }
 .hero-bg-item[data-anim="reveal-top"] .hero-bg-img {
-  transform: scale(1.0) translateY(20px);
+  transform: scale(1.08);
   transition: none;
 }
 .hero-bg-item[data-anim="reveal-top"].is-active .hero-bg-img {
-  transform: scale(1.05) translateY(0px);
+  transform: scale(1.0);
   transition: transform 7s ease-out;
 }
 
-/* ══════════════════════════════════════
-   SLIDE 2 — zoom-in  (scale up from center)
-══════════════════════════════════════ */
+/* Slide 2 — zoom-in */
 .hero-bg-item[data-anim="zoom-in"] .hero-bg-reveal {
   clip-path: inset(0 0 0 0);
-  opacity: 0;
   transition: none;
 }
-.hero-bg-item[data-anim="zoom-in"].is-active .hero-bg-reveal {
-  opacity: 1;
-  transition: opacity 0.6s ease;
-}
 .hero-bg-item[data-anim="zoom-in"] .hero-bg-img {
-  transform: scale(1.18);
+  transform: scale(1.15);
   transition: none;
 }
 .hero-bg-item[data-anim="zoom-in"].is-active .hero-bg-img {
   transform: scale(1.0);
-  transition: transform 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: transform 7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* ══════════════════════════════════════
-   SLIDE 3 — reveal-diagonal  (corner wipe)
-══════════════════════════════════════ */
+/* Slide 3 — reveal-diagonal (R→L curtain wipe) */
 .hero-bg-item[data-anim="reveal-diagonal"] .hero-bg-reveal {
-  clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+  clip-path: inset(0 0 0 100%);
   transition: none;
 }
 .hero-bg-item[data-anim="reveal-diagonal"].is-active .hero-bg-reveal {
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-  transition: clip-path 1s cubic-bezier(0.77, 0, 0.175, 1);
+  clip-path: inset(0 0 0 0);
+  transition: clip-path 0.9s cubic-bezier(0.77, 0, 0.175, 1);
 }
 .hero-bg-item[data-anim="reveal-diagonal"] .hero-bg-img {
-  transform: scale(1.06) translateX(-15px);
+  transform: scale(1.08);
   transition: none;
 }
 .hero-bg-item[data-anim="reveal-diagonal"].is-active .hero-bg-img {
-  transform: scale(1.0) translateX(0px);
-  transition: transform 8s ease-out;
+  transform: scale(1.0);
+  transition: transform 7s ease-out;
 }
 
-/* ══════════════════════════════════════
-   LEAVING — all slides shrink out
-══════════════════════════════════════ */
-.hero-bg-item.is-leaving .hero-bg-reveal {
-  opacity: 0;
-  transition: opacity 0.5s ease 0.1s !important;
-}
-
-/* ══════════════════════════════════════
-   MOSAIC BOXES
-══════════════════════════════════════ */
-.hero-mosaic {
-  opacity: 0;
-  transition: opacity 0s;
-}
-/* Boxes show just before main reveal completes, then fade out */
-.hero-bg-item.is-active .hero-mosaic {
-  animation: mosaic-lifecycle 1.4s ease forwards;
-}
-@keyframes mosaic-lifecycle {
-  0%   { opacity: 1; }
-  70%  { opacity: 1; }
-  100% { opacity: 0; }
-}
-
-.hero-mosaic__box {
-  border-radius: 6px;
-  opacity: 0;
-  transform: scale(0.4) translate(var(--tx, 0px), var(--ty, 0px));
-  transition: transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1),
-              opacity  0.35s ease,
-              width    0.55s ease,
-              height   0.55s ease,
-              top      0.55s ease,
-              left     0.55s ease,
-              border-radius 0.45s ease;
-}
-
-/* Scatter state → fly in */
-.hero-bg-item.is-active .hero-mosaic__box {
-  opacity: 1;
-  transform: scale(1) translate(0, 0);
-}
-
-/* Merge state → boxes expand to fill, then fade */
-.hero-bg-item.is-active .hero-mosaic__box.is-merging {
-  border-radius: 0px;
-}
-
-/* ══════════════════════════════════════
-   CONTENT STAGGER
-══════════════════════════════════════ */
+/* Content stagger */
 .hero-content-item {
   pointer-events: none;
   z-index: 0;
@@ -323,20 +266,18 @@ const special = [
 }
 .hero-content-item.is-active .hero-el:nth-child(1) {
   opacity: 1; transform: translateY(0);
-  transition-delay: 0.55s;
+  transition-delay: 0.4s;
 }
 .hero-content-item.is-active .hero-el:nth-child(2) {
   opacity: 1; transform: translateY(0);
-  transition-delay: 0.72s;
+  transition-delay: 0.55s;
 }
 .hero-content-item.is-active .hero-el:nth-child(3) {
   opacity: 1; transform: translateY(0);
-  transition-delay: 0.88s;
+  transition-delay: 0.7s;
 }
 
-/* ══════════════════════════════════════
-   NAV BAR ITEMS
-══════════════════════════════════════ */
+/* Nav bar items */
 .hero-nav-item {
   background: transparent;
   color: rgba(255,255,255,0.85);
@@ -344,11 +285,11 @@ const special = [
 }
 .hero-nav-item:hover {
   background: rgba(255,255,255,0.05);
-  color: #FE7E01;
+  color: #FE9834;
 }
 .hero-nav-item.is-active {
-  background: rgba(255,255,255,0.10);
-  color: #FE7E01;
+  background: rgba(255,255,255,0.12);
+  color: #FE9834;
   font-weight: 700;
 }
 </style>
@@ -369,120 +310,19 @@ const special = [
     let autoPlayTimer = null;
     const navToSlideMap = { 0: 1, 1: 0, 2: 2, 3: 3 };
 
-    /* ── Mosaic box layout ──
-       9 boxes in a 3×3 grid, each starts scattered from a random offset
-       then snaps to grid position, then expands to fill whole slide
-    ─────────────────────────────── */
-    const COLS = 3, ROWS = 3;
-    const scatterOffsets = [
-      [-120, -80], [0, -100], [130, -90],
-      [-140,  0],  [0,   30], [150,  20],
-      [-110, 90],  [20,  110],[120,  80],
-    ];
-
-    function setupMosaicBoxes(slideEl) {
-      const boxes = slideEl.querySelectorAll('.hero-mosaic__box');
-      const w = container.offsetWidth;
-      const h = container.offsetHeight;
-      const bw = Math.ceil(w / COLS);
-      const bh = Math.ceil(h / ROWS);
-
-      boxes.forEach((box, i) => {
-        const col = i % COLS;
-        const row = Math.floor(i / COLS);
-        const [tx, ty] = scatterOffsets[i] || [0, 0];
-
-        // Final (merged) position
-        box.style.left   = col * bw + 'px';
-        box.style.top    = row * bh + 'px';
-        box.style.width  = bw + 'px';
-        box.style.height = bh + 'px';
-
-        // Background-position to show correct part of image
-        box.style.backgroundSize     = w + 'px ' + h + 'px';
-        box.style.backgroundPosition = -(col * bw) + 'px ' + -(row * bh) + 'px';
-
-        // Scatter offset via CSS custom props
-        box.style.setProperty('--tx', tx + 'px');
-        box.style.setProperty('--ty', ty + 'px');
-
-        // Stagger delay per box
-        box.style.transitionDelay = (i * 0.045) + 's';
-      });
-    }
-
-    function runMosaic(slideEl) {
-      const boxes = slideEl.querySelectorAll('.hero-mosaic__box');
-
-      // Recalc layout (in case size changed)
-      setupMosaicBoxes(slideEl);
-
-      // Phase 1: boxes fly in from scatter
-      requestAnimationFrame(() => {
-        boxes.forEach(b => {
-          b.classList.remove('is-merging');
-          b.style.opacity   = '';
-          b.style.transform = '';
-        });
-
-        // Phase 2: at ~650ms merge (remove border-radius, boxes fill)
-        setTimeout(() => {
-          boxes.forEach((b, i) => {
-            b.style.transitionDelay = (i * 0.025) + 's';
-            b.classList.add('is-merging');
-          });
-
-          // Phase 3: at ~1200ms mosaic fades (CSS animation handles it)
-          // just reset delays after done
-          setTimeout(() => {
-            boxes.forEach(b => { b.style.transitionDelay = ''; });
-          }, 700);
-
-        }, 650);
-      });
-    }
-
-    function resetMosaicBoxes(slideEl) {
-      const boxes = slideEl.querySelectorAll('.hero-mosaic__box');
-      boxes.forEach(b => {
-        b.style.opacity = '0';
-        b.style.transform = 'scale(0.4) translate(var(--tx,0px), var(--ty,0px))';
-        b.style.transitionDelay = '';
-        b.classList.remove('is-merging');
-      });
-    }
-
-    /* ── Initial setup ── */
-    bgItems.forEach((item) => setupMosaicBoxes(item));
-    // Run mosaic on first slide immediately
-    runMosaic(bgItems[0]);
-
-    /* ── Slide transition ── */
     function goToSlide(newIndex) {
       if (newIndex === currentIndex) return;
       const prevIndex = currentIndex;
 
-      // BG
       bgItems[prevIndex].classList.remove('is-active');
       bgItems[prevIndex].classList.add('is-leaving');
+      bgItems[newIndex].classList.remove('is-leaving');
       bgItems[newIndex].classList.add('is-active');
 
-      // Run mosaic on incoming slide
-      runMosaic(bgItems[newIndex]);
-
-      // Cleanup prev after transition
       setTimeout(() => {
         bgItems[prevIndex].classList.remove('is-leaving');
-        resetMosaicBoxes(bgItems[prevIndex]);
-        // Reset img for next re-entry
-        const prevReveal = bgItems[prevIndex].querySelector('.hero-bg-reveal');
-        if (prevReveal) { prevReveal.style.transition = 'none'; }
-        requestAnimationFrame(() => {
-          if (prevReveal) prevReveal.style.transition = '';
-        });
-      }, 1000);
+      }, 700);
 
-      // Content
       contentItems[prevIndex].classList.remove('is-active');
       contentItems[prevIndex].querySelectorAll('.hero-el').forEach(el => {
         el.style.cssText = 'opacity:0;transform:translateY(22px);transition:none';
@@ -492,7 +332,6 @@ const special = [
         el.style.cssText = '';
       });
 
-      // Dots
       dots.forEach((dot, idx) => {
         if (idx === newIndex) {
           dot.className = 'hero-dot cursor-pointer rounded-full transition-all duration-300 h-3 w-3 border-2 border-brand bg-brand ring-2 ring-brand/40 ring-offset-2 ring-offset-black';
@@ -501,12 +340,11 @@ const special = [
         }
       });
 
-      // Nav bar
       navItems.forEach((nav, navIdx) => {
         if (navToSlideMap[navIdx] === newIndex) {
-          nav.classList.add('is-active', 'bg-white/10', 'text-[#FE7E01]', 'font-bold');
+          nav.classList.add('is-active', 'bg-white/12', 'text-[#FE9834]', 'font-bold');
         } else {
-          nav.classList.remove('is-active', 'bg-white/10', 'text-[#FE7E01]', 'font-bold');
+          nav.classList.remove('is-active', 'bg-white/12', 'text-[#FE9834]', 'font-bold');
         }
       });
 
@@ -514,11 +352,9 @@ const special = [
     }
 
     function next() { goToSlide((currentIndex + 1) % totalSlides); }
-
     function startAuto() { stopAuto(); autoPlayTimer = setInterval(next, 5500); }
     function stopAuto()  { clearInterval(autoPlayTimer); }
 
-    // Touch swipe
     let tx0 = 0;
     container.addEventListener('touchstart', e => { tx0 = e.touches[0].clientX; }, { passive: true });
     container.addEventListener('touchend', e => {
@@ -540,11 +376,6 @@ const special = [
 
     container.addEventListener('mouseenter', stopAuto);
     container.addEventListener('mouseleave', startAuto);
-
-    // Recalc on resize
-    window.addEventListener('resize', () => {
-      bgItems.forEach(item => setupMosaicBoxes(item));
-    });
 
     startAuto();
   }
