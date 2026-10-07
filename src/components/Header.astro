@@ -10,7 +10,7 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
   <div class="flex items-center justify-between gap-4 px-3 py-4 md:px-6">
     <div class="flex items-center gap-6">
       <Logo />
-      <nav class="hidden items-center gap-6 text-base md:flex">
+      <nav class="hidden items-center gap-3 2xl:gap-6 text-sm xl:text-base xl:flex">
         {navLinks.map((l) => (
           <a
             href={l.href}
@@ -26,17 +26,17 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
     </div>
   
     <div class="flex items-center gap-3">
-      <div class="hidden items-center gap-6 text-base xl:flex">
+      <div class="hidden items-center gap-3 2xl:gap-6 text-base xl:flex">
         <a href={`tel:${phone}`} class="header-info-link flex items-center gap-2"><Icon name="phone" class="h-4 w-4" />{phone}</a>
         <a href={`mailto:${email}`} class="header-info-link flex items-center gap-2"><Icon name="mail" class="h-4 w-4" />{email}</a>
         <span class="flex items-center gap-2"><Icon name="clock" class="h-4 w-4" />{hours}</span>
       </div>
-      <!-- Office button link -->
-      <a href="/contacts" class="btn hidden sm:inline-flex items-center justify-center !text-xs !font-semibold">
+      <!-- Office button link --> 
+      <a href="/contacts" class="btn !hidden xl:!inline-flex items-center justify-center !text-xs !font-semibold">
         Cyprus Office
       </a>
       <!-- Mobile menu button -->
-      <button id="menu-btn" class="md:hidden focus:outline-none" aria-label="Open menu"><Icon name="menu" class="h-7 w-7" /></button>
+      <button id="menu-btn" class="xl:hidden focus:outline-none" aria-label="Open menu"><Icon name="menu" class="h-7 w-7" /></button>
     </div>
   </div>
 
