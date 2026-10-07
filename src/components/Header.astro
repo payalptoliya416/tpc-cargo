@@ -15,9 +15,8 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
           <a
             href={l.href}
             class:list={[
-              'relative py-1 font-medium transition-colors hover:text-[#FE9834]',
-              'after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-[#FE9834] after:transition-all after:duration-300 hover:after:w-full',
-              isActive(l.href) ? 'text-[#FE9834] font-semibold after:w-full' : 'text-gray-800'
+              'nav-link',
+              isActive(l.href) ? 'nav-link--active' : ''
             ]}
           >
             {l.name}
@@ -28,8 +27,8 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
   
     <div class="flex items-center gap-3">
       <div class="hidden items-center gap-6 text-base xl:flex">
-        <a href={`tel:${phone}`} class="flex items-center gap-2 hover:text-[#FE9834] transition-colors"><Icon name="phone" class="h-4 w-4" />{phone}</a>
-        <a href={`mailto:${email}`} class="flex items-center gap-2 hover:text-[#FE9834] transition-colors"><Icon name="mail" class="h-4 w-4" />{email}</a>
+        <a href={`tel:${phone}`} class="header-info-link flex items-center gap-2"><Icon name="phone" class="h-4 w-4" />{phone}</a>
+        <a href={`mailto:${email}`} class="header-info-link flex items-center gap-2"><Icon name="mail" class="h-4 w-4" />{email}</a>
         <span class="flex items-center gap-2"><Icon name="clock" class="h-4 w-4" />{hours}</span>
       </div>
       <!-- Office button link -->
