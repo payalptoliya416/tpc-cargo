@@ -12,15 +12,24 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
       <Logo />
       <nav class="hidden items-center gap-6 text-base md:flex">
         {navLinks.map((l) => (
-          <a href={l.href} class:list={['hover:text-[#FE7E01]', isActive(l.href) && 'text-[#FE7E01]']}>{l.name}</a>
+          <a
+            href={l.href}
+            class:list={[
+              'relative py-1 font-medium transition-colors hover:text-[#FE9834]',
+              'after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-[#FE9834] after:transition-all after:duration-300 hover:after:w-full',
+              isActive(l.href) ? 'text-[#FE9834] font-semibold after:w-full' : 'text-gray-800'
+            ]}
+          >
+            {l.name}
+          </a>
         ))}
       </nav>
     </div>
   
     <div class="flex items-center gap-3">
       <div class="hidden items-center gap-6 text-base xl:flex">
-        <a href={`tel:${phone}`} class="flex items-center gap-2"><Icon name="phone" class="h-4 w-4" />{phone}</a>
-        <a href={`mailto:${email}`} class="flex items-center gap-2"><Icon name="mail" class="h-4 w-4" />{email}</a>
+        <a href={`tel:${phone}`} class="flex items-center gap-2 hover:text-[#FE9834] transition-colors"><Icon name="phone" class="h-4 w-4" />{phone}</a>
+        <a href={`mailto:${email}`} class="flex items-center gap-2 hover:text-[#FE9834] transition-colors"><Icon name="mail" class="h-4 w-4" />{email}</a>
         <span class="flex items-center gap-2"><Icon name="clock" class="h-4 w-4" />{hours}</span>
       </div>
       <!-- Office button link -->
@@ -57,7 +66,7 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
               href={l.href}
               class:list={[
                 'rounded-lg px-3 py-2 text-base font-medium transition-colors',
-                isActive(l.href) ? 'bg-orange-50 text-[#FE7E01] font-semibold' : 'text-gray-800 hover:bg-gray-50'
+                isActive(l.href) ? 'bg-orange-50 text-[#FE9834] font-semibold' : 'text-gray-800 hover:bg-gray-50'
               ]}
             >
               {l.name}
@@ -79,16 +88,16 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
       <!-- Right side info (Phone, Email, Hours) inside Sidebar -->
       <div class="mt-3 pt-3 border-t border-gray-100 space-y-3 text-sm text-gray-700">
         <p class="px-1 text-xs font-semibold text-gray-400 uppercase tracking-wider">Contact Info</p>
-        <a href={`tel:${phone}`} class="flex items-center gap-2.5 hover:text-[#FE7E01] transition-colors">
-          <Icon name="phone" class="h-4 w-4 text-[#FE7E01]" />
+        <a href={`tel:${phone}`} class="flex items-center gap-2.5 hover:text-[#FE9834] transition-colors">
+          <Icon name="phone" class="h-4 w-4 text-[#FE9834]" />
           <span>{phone}</span>
         </a>
-        <a href={`mailto:${email}`} class="flex items-center gap-2.5 hover:text-[#FE7E01] transition-colors">
-          <Icon name="mail" class="h-4 w-4 text-[#FE7E01]" />
+        <a href={`mailto:${email}`} class="flex items-center gap-2.5 hover:text-[#FE9834] transition-colors">
+          <Icon name="mail" class="h-4 w-4 text-[#FE9834]" />
           <span class="truncate">{email}</span>
         </a>
         <div class="flex items-center gap-2.5 text-gray-600">
-          <Icon name="clock" class="h-4 w-4 text-[#FE7E01]" />
+          <Icon name="clock" class="h-4 w-4 text-[#FE9834]" />
           <span>{hours}</span>
         </div>
       </div>
