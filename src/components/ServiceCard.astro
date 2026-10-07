@@ -5,9 +5,9 @@ const { service, dark = false } = Astro.props;
 ---
 <div class:list={['flex h-full flex-col rounded-[18px] border p-4', dark ? 'border-[#FFFFFF33] bg-white/5 text-white' : 'border-[#E7E6E6] bg-white']}>
   <img src={serviceImages[service.slug].card} alt={service.name} class="aspect-[16/10] w-full rounded-xl object-cover" loading="lazy" />
-  <div class="flex flex-1 flex-col p-2 pt-5">
+  <div class="flex flex-1 flex-col pt-5">
     <h3 class="font-bold text-lg">{service.name}</h3>
-    <p class:list={['mt-4 flex-1 text-base leading-[28px]', dark ? 'text-gray-400' : 'text-[#858482]']}>{service.short}</p>
-    <a href={`/services/${service.slug}`} class="mt-6 text-base font-medium text-[#FE7E01]">Read More ›</a>
+    <p class:list={['mt-2 md:mt-4 flex-1 text-base leading-[28px]', dark ? 'text-gray-400' : 'text-[#858482]']}>{service.short}</p>
+    <a href={`/services/${service.slug}`} class="mt-4 md:mt-6 text-base font-medium text-[#FE7E01]">Read More ›</a>
   </div>
 </div>
