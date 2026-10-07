@@ -65,7 +65,7 @@ const faqs: [string, string][] = service.faqs;
                 <p set:html={formatCapParagraph(p)} />
               ))}
               {service.bullets && (
-                <ul class="space-y-2 pt-2 text-base font-bold text-[#0B0806]">
+                <ul class="space-y-2 pt-2 text-sm sm:text-base font-bold text-[#0B0806]">
                   {service.bullets.map((b) => (
                     <li class="flex items-center gap-2.5">
                       <span class="h-1.5 w-1.5 rounded-full bg-black shrink-0"></span>
