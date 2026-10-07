@@ -3,71 +3,71 @@
 import Icon from './Icon.astro';
 const { title = 'Get Your Quote' } = Astro.props;
 ---
-<div class="rounded-3xl bg-white p-6 sm:p-8 text-dark shadow-2xl border border-gray-100/50">
+<div class="rounded-[20px] bg-white p-6 sm:p-10 text-dark shadow-[0_6px_80px_0_rgba(0,0,0,0.08)] border border-[#F3F3F3]">
   <h3 class="text-xl sm:text-2xl font-bold text-dark">{title}</h3>
-  <p class="mt-1.5 text-xs sm:text-sm text-[#858482]">Tell us about your shipment and our team will get back to you with the right shipping solution.</p>
+  <p class="mt-[15px] text-xs sm:text-base text-[#858482]">Tell us about your shipment and our team will get back to you with the right shipping solution.</p>
   
-  <form action="#" class="mt-6 grid gap-4 sm:grid-cols-2">
+  <form action="#" class="mt-6 grid gap-5 sm:grid-cols-2">
     <div>
-      <label class="flex items-center gap-1.5 text-[11px] font-semibold text-gray-700">
+      <label class="flex items-center gap-1.5 text-sm font-semibold text-gray-700">
         <Icon name="user" class="h-3.5 w-3.5 text-[#FE7E01]" />
         <span>First name</span>
-        <span class="text-[#FE7E01]">*</span>
+        <span class="text-[#ED0E0E]">*</span>
       </label>
-      <input class="mt-1.5 w-full rounded-xl border border-gray-200/80 bg-white px-3.5 py-2.5 text-xs text-gray-800 outline-none focus:border-brand focus:ring-1 focus:ring-brand placeholder:text-gray-400" placeholder="Your first name" required />
+      <input class="mt-[10px] w-full rounded-lg border border-[#E7E6E6] bg-white px-[15px] py-4 text-sm text-[#3C3A38] outline-none focus:border-brand focus:ring-1 focus:ring-brand placeholder:text-[#858482]" placeholder="Your first name" required />
     </div>
 
     <div>
-      <label class="flex items-center gap-1.5 text-[11px] font-semibold text-gray-700">
+      <label class="flex items-center gap-1.5 text-sm font-semibold text-gray-700">
         <Icon name="user" class="h-3.5 w-3.5 text-[#FE7E01]" />
         <span>Last name</span>
-        <span class="text-[#FE7E01]">*</span>
+        <span class="text-[#ED0E0E]">*</span>
       </label>
-      <input class="mt-1.5 w-full rounded-xl border border-gray-200/80 bg-white px-3.5 py-2.5 text-xs text-gray-800 outline-none focus:border-brand focus:ring-1 focus:ring-brand placeholder:text-gray-400" placeholder="Your last name" required />
+      <input class="mt-[10px] w-full rounded-lg border border-[#E7E6E6] bg-white px-[15px] py-4 text-sm text-[#3C3A38] outline-none focus:border-brand focus:ring-1 focus:ring-brand placeholder:text-[#858482]" placeholder="Your last name" required />
     </div>
 
     <div>
-      <label class="flex items-center gap-1.5 text-[11px] font-semibold text-gray-700">
+      <label class="flex items-center gap-1.5 text-sm font-semibold text-gray-700">
         <Icon name="mail" class="h-3.5 w-3.5 text-[#FE7E01]" />
         <span>Email</span>
-        <span class="text-[#FE7E01]">*</span>
+        <span class="text-[#ED0E0E]">*</span>
       </label>
-      <input type="email" class="mt-1.5 w-full rounded-xl border border-gray-200/80 bg-white px-3.5 py-2.5 text-xs text-gray-800 outline-none focus:border-brand focus:ring-1 focus:ring-brand placeholder:text-gray-400" placeholder="you@company.com" required />
+      <input type="email" class="mt-[10px] w-full rounded-lg border border-[#E7E6E6] bg-white px-[15px] py-4 text-sm text-[#3C3A38] outline-none focus:border-brand focus:ring-1 focus:ring-brand placeholder:text-[#858482]" placeholder="you@company.com" required />
     </div>
 
     <div>
-      <label class="flex items-center gap-1.5 text-[11px] font-semibold text-gray-700">
+      <label class="flex items-center gap-1.5 text-sm font-semibold text-gray-700">
         <Icon name="phone" class="h-3.5 w-3.5 text-[#FE7E01]" />
         <span>Phone Number</span>
-        <span class="text-[#FE7E01]">*</span>
+        <span class="text-[#ED0E0E]">*</span>
       </label>
-      <input type="tel" class="mt-1.5 w-full rounded-xl border border-gray-200/80 bg-white px-3.5 py-2.5 text-xs text-gray-800 outline-none focus:border-brand focus:ring-1 focus:ring-brand placeholder:text-gray-400" placeholder="+00 | You phone number" required />
+      <input type="tel" class="mt-[10px] w-full rounded-lg border border-[#E7E6E6] bg-white px-[15px] py-4 text-sm text-[#3C3A38] outline-none focus:border-brand focus:ring-1 focus:ring-brand placeholder:text-[#858482]" placeholder="+00 | You phone number" required />
     </div>
 
     <div>
-      <label class="flex items-center gap-1.5 text-[11px] font-semibold text-gray-700">
+      <label class="flex items-center gap-1.5 text-sm font-semibold text-gray-700">
         <Icon name="pin" class="h-3.5 w-3.5 text-[#FE7E01]" />
         <span>From (Origin)</span>
-        <span class="text-[#FE7E01]">*</span>
+        <span class="text-[#ED0E0E]">*</span>
       </label>
-      <input class="mt-1.5 w-full rounded-xl border border-gray-200/80 bg-white px-3.5 py-2.5 text-xs text-gray-800 outline-none focus:border-brand focus:ring-1 focus:ring-brand placeholder:text-gray-400" placeholder="Port or City, Country" required />
+      <input class="mt-[10px] w-full rounded-lg border border-[#E7E6E6] bg-white px-[15px] py-4 text-sm text-[#3C3A38] outline-none focus:border-brand focus:ring-1 focus:ring-brand placeholder:text-[#858482]" placeholder="Port or City, Country" required />
     </div>
 
     <div>
-      <label class="flex items-center gap-1.5 text-[11px] font-semibold text-gray-700">
+      <label class="flex items-center gap-1.5 text-sm font-semibold text-gray-700">
         <Icon name="pin" class="h-3.5 w-3.5 text-[#FE7E01]" />
         <span>To (Destination)</span>
-        <span class="text-[#FE7E01]">*</span>
+        <span class="text-[#ED0E0E]">*</span>
       </label>
-      <input class="mt-1.5 w-full rounded-xl border border-gray-200/80 bg-white px-3.5 py-2.5 text-xs text-gray-800 outline-none focus:border-brand focus:ring-1 focus:ring-brand placeholder:text-gray-400" placeholder="Port or City, Country" required />
+      <input class="mt-[10px] w-full rounded-lg border border-[#E7E6E6] bg-white px-[15px] py-4 text-sm text-[#3C3A38] outline-none focus:border-brand focus:ring-1 focus:ring-brand placeholder:text-[#858482]" placeholder="Port or City, Country" required />
     </div>
 
     <div class="sm:col-span-2">
-      <label class="flex items-center gap-1.5 text-[11px] font-semibold text-gray-700">
+      <label class="flex items-center gap-1.5 text-sm font-semibold text-gray-700">
         <Icon name="box" class="h-3.5 w-3.5 text-[#FE7E01]" />
         <span>Additional Details</span>
       </label>
-      <textarea rows="3" class="mt-1.5 w-full rounded-xl border border-gray-200/80 bg-white px-3.5 py-2.5 text-xs text-gray-800 outline-none focus:border-brand focus:ring-1 focus:ring-brand placeholder:text-gray-400" placeholder="Tell us about your cargo, quantity, dimensions or any special requirements..."></textarea>
+      <textarea rows="3" class="mt-[10px] w-full min-h-[90px] max-h-[150px] resize-y overflow-y-auto rounded-lg border border-[#E7E6E6] bg-white px-[15px] py-3 text-sm text-[#3C3A38] outline-none focus:border-brand focus:ring-1 focus:ring-brand placeholder:text-[#858482]" placeholder="Tell us about your cargo, quantity, dimensions or any special requirements..."></textarea>
     </div>
 
     <div class="pt-3 text-center sm:col-span-2">
