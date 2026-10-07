@@ -332,9 +332,9 @@ const faqs: [string, string][] = service.faqs;
   {img?.solStacked ? (
     /* Stacked White Container Layout (For Road Freight - Matches Figma Screenshot) */
     <section class="section">
-      <div class="wrap space-y-10">
-        <div class="grid gap-8 lg:grid-cols-2 lg:gap-10 items-center">
-          <div class="space-y-6">
+      <div class="wrap space-y-7 md:space-y-10">
+        <div class="grid gap-5 lg:grid-cols-2 lg:gap-10 items-center">
+          <div class="space-y-5 md:space-y-6">
             <div>
               <span class="badge">Our {service.name} solutions</span>
               <h2 class="heading mt-6" set:html={highlight(service.solTitle)} />
