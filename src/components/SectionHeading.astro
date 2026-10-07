@@ -4,6 +4,6 @@ import { highlight } from '../utils';
 const { badge, title, light = false } = Astro.props;
 ---
 <div>
-  {badge && <span class="badge">{badge}</span>}
+  {badge && <span class={light ? "badge-dark" : "badge"}>{badge}</span>}
   <h2 class:list={['heading', light && 'text-white']} set:html={highlight(title)} />
 </div>

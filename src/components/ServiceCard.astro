@@ -3,7 +3,7 @@ import { serviceImages } from '../data/images';
 // One service card. dark = true for dark backgrounds (home page)
 const { service, dark = false } = Astro.props;
 ---
-<div class:list={['flex h-full flex-col rounded-[18px] border p-4', dark ? 'border-[#E7E6E6] bg-white/5 text-white' : 'border-[#E7E6E6] bg-white']}>
+<div class:list={['flex h-full flex-col rounded-[18px] border p-4', dark ? 'border-[#FFFFFF33] bg-white/5 text-white' : 'border-[#E7E6E6] bg-white']}>
   <img src={serviceImages[service.slug].card} alt={service.name} class="aspect-[16/10] w-full rounded-xl object-cover" loading="lazy" />
   <div class="flex flex-1 flex-col p-2 pt-5">
     <h3 class="font-bold text-lg">{service.name}</h3>
