@@ -65,7 +65,7 @@ const faqs: [string, string][] = service.faqs;
                 <p set:html={formatCapParagraph(p)} />
               ))}
               {service.bullets && (
-                <ul class="space-y-2 pt-2 text-sm font-bold text-gray-900">
+                <ul class="space-y-2 pt-2 text-base font-bold text-[#0B0806]">
                   {service.bullets.map((b) => (
                     <li class="flex items-center gap-2.5">
                       <span class="h-1.5 w-1.5 rounded-full bg-black shrink-0"></span>
@@ -333,7 +333,7 @@ const faqs: [string, string][] = service.faqs;
     /* Stacked White Container Layout (For Road Freight - Matches Figma Screenshot) */
     <section class="section">
       <div class="wrap space-y-10">
-        <div class="grid gap-8 lg:grid-cols-2 lg:gap-14 items-start">
+        <div class="grid gap-8 lg:grid-cols-2 lg:gap-10 items-center">
           <div class="space-y-6">
             <div>
               <span class="badge">Our {service.name} solutions</span>

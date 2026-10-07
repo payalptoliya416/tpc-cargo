@@ -90,7 +90,7 @@ export const services: Service[] = [
     heroText: 'Fast, flexible road freight solutions for reliable local and international delivery.',
     capTitle: 'Road Freight',
     capParagraphs: [
-      'Since the beginning, TPC Express Cargo has carried out pioneering work in the development of combined transport road/sea. Regardless of your needs, even if it’s an import-export to/from Cyprus or a personal/corporate need of transport and relocation services, our highly-qualified employees and partners are responsible for the success of your order – from booking until delivery to the final destination.',
+      'Since the beginning, TPC Express Cargo has carried out pioneering work in the development of combined transport road/sea, and regardless of your needs, even if it’s an import-export to/from Cyprus or a personal/corporate need of transport and relocation services, our highly-qualified employees and partners are responsible for the success of your order – from booking until delivery to the final destination.',
       'Thereby, we can guarantee adequate road freight solutions and cargo space at all times, as well as optimal response, price, and transit times.',
     ],
     solTitle: combo,
