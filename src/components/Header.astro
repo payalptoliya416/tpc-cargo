@@ -123,5 +123,11 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
   menuBtn?.addEventListener('click', openSidebar);
   closeBtn?.addEventListener('click', closeSidebar);
   backdrop?.addEventListener('click', closeSidebar);
+
+  // Auto-close sidebar when screen hits xl breakpoint (1280px)
+  const resizeObserver = new ResizeObserver(() => {
+    if (window.innerWidth >= 1280) closeSidebar();
+  });
+  resizeObserver.observe(document.body);
 </script>
 
