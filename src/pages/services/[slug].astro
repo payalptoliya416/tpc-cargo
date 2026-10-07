@@ -48,7 +48,7 @@ const faqs: [string, string][] = service.faqs;
     <div class="wrap">
       {img.capRightStacked ? (
         /* Left Column: Badge, Title, Paragraphs & Bullets; Right Column: 2 Stacked Images (For Car Transportation - Matches Figma Screenshot with Bottom Alignment & Bullet Dots) */
-        <div class="grid gap-10 lg:grid-cols-2 lg:gap-14 items-stretch">
+        <div class="grid gap-[30px] lg:grid-cols-2 items-stretch">
           <div class="flex flex-col h-full space-y-6">
             <div>
               <span class="badge">{service.capBadge || `Our ${service.name} capabilities`}</span>
@@ -90,7 +90,7 @@ const faqs: [string, string][] = service.faqs;
         </div>
       ) : img.capTwoCol ? (
         /* 2-Image Side-by-Side Layout (For Packaging and Storage - Matches Figma Screenshot with Bottom Aligned Images) */
-        <div class="grid gap-10 lg:grid-cols-2 lg:gap-14 items-stretch">
+        <div class="grid gap-[30px] lg:grid-cols-2 items-stretch">
           <!-- Left Column: Badge, Heading, and Image 1 -->
           <div class="flex flex-col h-full space-y-6">
             <div>
@@ -207,7 +207,7 @@ const faqs: [string, string][] = service.faqs;
         </div>
       ) : img.capLeft ? (
         /* Image on Left, Badge + Title + Paragraphs on Right (Matches Freight Forwarding Figma Screenshot) */
-        <div class="grid gap-10 lg:grid-cols-2 lg:gap-14 items-start">
+        <div class="grid gap-[30px] lg:grid-cols-2 items-start">
           <div>
             <img
               src={img.cap[0]}
@@ -249,7 +249,7 @@ const faqs: [string, string][] = service.faqs;
         </div>
       ) : img.capAir ? (
         /* Air Freight Layout - Badge, Title & Paragraphs 2+ on Left; Paragraph 1 & Image on Right */
-        <div class="grid gap-10 lg:grid-cols-2 lg:gap-14 items-start">
+        <div class="grid gap-[30px] lg:grid-cols-2 items-start">
           <div class="space-y-6">
             <div>
               <span class="badge">Our {service.name} capabilities</span>
@@ -290,7 +290,7 @@ const faqs: [string, string][] = service.faqs;
         </div>
       ) : (
         /* Standard Single Image Layout (For Multimodal Transport, etc.) - Badge, Title & Image on Left; Paragraphs on Right */
-        <div class="grid gap-10 lg:grid-cols-2 lg:gap-14 items-start">
+        <div class="grid gap-[30px] lg:grid-cols-2 items-start">
           <div class="space-y-6">
             <div>
               <span class="badge">{service.capBadge || `Our ${service.name} capabilities`}</span>
