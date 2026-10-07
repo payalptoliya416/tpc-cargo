@@ -395,18 +395,18 @@ const special = [
         <p class="text-lg leading-[30px] text-[#9D9C9B]">Experience the best in international transport with our special services. From cargo shipments to customs clearance, our team is ready to meet all your needs.</p>
       </div>
 
-      <!-- Slider Container Layout: Left Dots + Slider Track -->
-      <div class="flex flex-col lg:flex-row items-center lg:items-stretch gap-6 lg:gap-6">
-        <!-- Desktop Left Vertical Dots -->
-        <div class="hidden lg:flex flex-col justify-center gap-3.5 shrink-0 z-20 w-4" id="beyond-slider-dots-desktop">
+      <!-- Slider Container Layout: Left Dots Outside + Slider Track -->
+      <div class="relative">
+        <!-- Desktop Left Vertical Dots Outside Container -->
+        <div class="hidden lg:flex flex-col justify-center gap-3.5 shrink-0 z-30 absolute -left-7 lg:-left-9 xl:-left-[14%] top-1/2 -translate-y-1/2" id="beyond-slider-dots-desktop">
           <button data-index="0" aria-label="Slide 1" class="slider-dot active h-2.5 w-2.5 rounded-full bg-brand ring-2 ring-brand/40 ring-offset-2 ring-offset-[#120d09] transition-all cursor-pointer"></button>
           <button data-index="1" aria-label="Slide 2" class="slider-dot h-2 w-2 rounded-full bg-gray-600 hover:bg-gray-400 transition-all cursor-pointer"></button>
           <button data-index="2" aria-label="Slide 3" class="slider-dot h-2 w-2 rounded-full bg-gray-600 hover:bg-gray-400 transition-all cursor-pointer"></button>
           <button data-index="3" aria-label="Slide 4" class="slider-dot h-2 w-2 rounded-full bg-gray-600 hover:bg-gray-400 transition-all cursor-pointer"></button>
         </div>
 
-        <!-- Slider Track Wrapper with Left Clipping & Right Bleed -->
-        <div class="grow min-w-0 w-full [clip-path:none] lg:[clip-path:inset(-20px_-2000px_-20px_0px)]">
+        <!-- Slider Track Wrapper Aligned with Container -->
+        <div class="w-full [clip-path:none] lg:[clip-path:inset(-20px_-2000px_-20px_0px)]">
           <div class="swiper beyond-swiper !overflow-visible select-none">
             <div class="swiper-wrapper">
               {beyond.map((s) => (
