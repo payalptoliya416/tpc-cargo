@@ -2,19 +2,103 @@
 import SectionHeading from './SectionHeading.astro';
 import ServiceCard from './ServiceCard.astro';
 import { services } from '../data/services';
-// shows 3 other services (the ones after the current one)
+
 const { current } = Astro.props;
-const i = services.findIndex((s) => s.slug === current);
-const others = [1, 2, 3].map((n) => services[(i + n) % services.length]);
+const list = current ? services.filter((s) => s.slug !== current) : services;
 ---
-<section class="section">
-  <div class="wrap">
-    <div class="grid gap-4 md:grid-cols-2 md:items-center">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+<section class="section relative overflow-hidden sm:overflow-visible px-4 sm:px-10 md:px-14 lg:px-16">
+  <div class="wrap space-y-10">
+    <!-- Header Row: Badge & Title Left, Subtitle Right -->
+    <div class="grid gap-6 md:grid-cols-2 md:items-center md:gap-14">
       <SectionHeading badge="Explore our logistics services" title="More Ways To Move [Your Cargo]" />
-      <p class="text-muted">Explore our complementary logistics services designed to support your shipment from origin to final destination with reliable, flexible solutions.</p>
+      <p class="text-muted">
+        Explore our complementary logistics services designed to support your shipment from origin to final destination with reliable, flexible solutions.
+      </p>
     </div>
-    <div class="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-      {others.map((s) => <ServiceCard service={s} />)}
+
+    <!-- Swiper Slider Container with Arrow Buttons Outside -->
+    <div class="relative w-full">
+      <!-- Left Arrow Button (Positioned Outside) -->
+      <button
+        id="more-prev"
+        aria-label="Previous service"
+        class="hidden sm:flex h-[50px] w-[50px] rounded-full border border-[#CECECD] bg-white items-center justify-center text-[#0B0806] hover:border-brand hover:text-white hover:bg-brand transition shadow-md cursor-pointer shrink-0 z-20 absolute -left-4 sm:-left-7 md:-left-10 lg:-left-14 xl:-left-16 top-1/2 -translate-y-1/2"
+      >
+        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+      </button>
+
+      <!-- Swiper Main Track -->
+      <div class="swiper more-services-swiper w-full overflow-hidden">
+        <div class="swiper-wrapper py-2 items-stretch">
+          {list.map((s) => (
+            <div class="swiper-slide !h-auto flex">
+              <div class="w-full flex">
+                <ServiceCard service={s} />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Right Arrow Button (Positioned Outside) -->
+      <button
+        id="more-next"
+        aria-label="Next service"
+        class="hidden sm:flex h-[50px] w-[50px] rounded-full border border-[#CECECD] bg-white items-center text-[#0B0806] justify-center shadow-md hover:bg-brand hover:text-white transition cursor-pointer shrink-0 z-20 absolute -right-4 sm:-right-7 md:-right-10 lg:-right-14 xl:-right-16 top-1/2 -translate-y-1/2"
+      >
+        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+      </button>
     </div>
   </div>
+
+  <script is:inline src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script is:inline>
+    function initMoreServicesSwiper() {
+      if (typeof Swiper !== 'undefined') {
+        new Swiper('.more-services-swiper', {
+          slidesPerView: 1,
+          spaceBetween: 24,
+          slidesPerGroup: 1,
+          loop: true,
+          speed: 600,
+          grabCursor: true,
+          navigation: {
+            nextEl: '#more-next',
+            prevEl: '#more-prev',
+          },
+          breakpoints: {
+            640: {
+              slidesPerView: 2,
+              slidesPerGroup: 1,
+              spaceBetween: 24,
+            },
+            1024: {
+              slidesPerView: 3,
+              slidesPerGroup: 1,
+              spaceBetween: 24,
+            },
+          },
+        });
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initMoreServicesSwiper);
+    } else {
+      initMoreServicesSwiper();
+    }
+  </script>
 </section>
+
+<style>
+  .more-services-swiper .swiper-wrapper {
+    display: flex !important;
+    align-items: stretch !important;
+  }
+  .more-services-swiper .swiper-slide {
+    height: auto !important;
+    display: flex !important;
+  }
+</style>
