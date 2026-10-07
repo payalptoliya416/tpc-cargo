@@ -3,15 +3,15 @@ import { testimonials } from '../data/site';
 ---
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
-<section class="section bg-[#f5f6f8] py-16 md:py-24 relative overflow-hidden">
+<section class="section bg-[#F3F3F3] py-16 md:!py-[130px] relative overflow-hidden">
   <div class="wrap space-y-10">
     <!-- Header Row: Badge & Title Left, Subtitle Right -->
     <div class="grid gap-6 md:grid-cols-2 md:items-center md:gap-14">
       <div>
         <span class="badge">Trusted by businesses</span>
-        <h2 class="heading mt-4">What <span class="text-[#FE7E01]">Our Clients Say About</span><br />TPC Cargo</h2>
+        <h2 class="heading mt-6">What <span class="text-[#FE7E01]">Our Clients Say About</span><br />TPC Cargo</h2>
       </div>
-      <p class="text-sm sm:text-base leading-relaxed text-[#858482]">
+      <p class="text-sm sm:text-base leading-[28px] text-[#858482]">
         Reliable Service, Responsive Support, And Flexible Logistics Solutions Built Around The Needs Of Businesses Moving Cargo Worldwide.
       </p>
     </div>
@@ -22,7 +22,7 @@ import { testimonials } from '../data/site';
       <button
         id="testi-prev"
         aria-label="Previous testimonial"
-        class="hidden sm:flex h-11 w-11 rounded-full border border-gray-200 bg-white items-center justify-center text-gray-700 shadow-sm hover:border-brand hover:text-[#FE7E01] transition cursor-pointer shrink-0 z-10"
+        class="hidden sm:flex h-[50px] w-[50px] rounded-full border border-[#CECECD] items-center justify-center text-[#0B0806] hover:border-brand hover:text-white hover:bg-brand transition cursor-pointer shrink-0 z-10"
       >
         <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
       </button>
@@ -32,39 +32,39 @@ import { testimonials } from '../data/site';
         <div class="swiper-wrapper py-2 items-stretch">
           {testimonials.map((t) => (
             <div class="swiper-slide !h-auto flex">
-              <div class="w-full flex flex-col justify-between rounded-3xl bg-white p-6 sm:p-7 shadow-sm border border-gray-100">
+              <div class="w-full flex flex-col justify-between rounded-[18px] bg-white px-4 py-6 sm:py-10 sm:px-5 border border-[#E7E6E6]">
                 <div>
                   <!-- Top Client Info Header -->
-                  <div class="flex items-center gap-3.5">
+                  <div class="flex items-center gap-[10px]">
                     <img
                       src={t.avatar}
                       alt={t.name}
-                      class="h-11 w-11 rounded-full object-cover shrink-0 bg-gray-100"
+                      class="h-12 w-12 rounded-full object-cover shrink-0 bg-gray-100"
                       onerror="this.style.display='none'; if(this.nextElementSibling) this.nextElementSibling.style.display='flex';"
                     />
                     <div class="hidden h-11 w-11 rounded-full bg-brand/15 font-bold text-[#FE7E01] items-center justify-center text-sm shrink-0">{t.name[0]}</div>
 
                     <div>
-                      <h4 class="text-base font-semibold text-dark leading-tight">{t.name}</h4>
-                      <p class="text-xs text-gray-400 mt-0.5">{t.role}</p>
+                      <h4 class="text-lg font-semibold text-dark leading-tight">{t.name}</h4>
+                      <p class="text-sm text-[#6D6B69] mt-2">{t.role}</p>
                     </div>
                   </div>
 
                   <!-- Rating Stars & Quote Icon -->
-                  <div class="mt-5 flex items-center justify-between">
-                    <div class="flex gap-1 text-[#FF961F] text-base">
+                  <div class="mt-8 flex items-center justify-between relative">
+                    <div class="flex gap-1 text-[#FF961F] text-xl">
                       ★★★★★
                     </div>
-                    <svg viewBox="0 0 24 24" class="h-7 w-7 text-orange-200/80 fill-current">
+                    <svg viewBox="0 0 24 24" class="h-10 w-10 text-[#FFF2E6] fill-current rotate-180 absolute right-0 top-3">
                       <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                     </svg>
                   </div>
 
                   <!-- Review Title -->
-                  <h5 class="mt-3 text-sm sm:text-base font-bold text-dark leading-snug">{t.title}</h5>
+                  <h5 class="mt-5 text-sm sm:text-lg font-bold text-dark leading-snug">{t.title}</h5>
 
                   <!-- Review Text -->
-                  <p class="mt-2 text-xs sm:text-sm italic leading-relaxed text-[#858482]">"{t.text}"</p>
+                  <p class="mt-[15px] text-xs sm:text-sm italic leading-[26px] text-[#3C3A38]">"{t.text}"</p>
                 </div>
               </div>
             </div>
@@ -76,7 +76,7 @@ import { testimonials } from '../data/site';
       <button
         id="testi-next"
         aria-label="Next testimonial"
-        class="hidden sm:flex h-11 w-11 rounded-full border border-brand/30 bg-[#fff9f4] items-center justify-center text-[#FE7E01] shadow-sm hover:bg-brand hover:text-white transition cursor-pointer shrink-0 z-10"
+        class="hidden sm:flex h-[50px] w-[50px] rounded-full border border-[#CECECD] items-center text-[#0B0806] justify-center shadow-sm hover:bg-brand hover:text-white transition cursor-pointer shrink-0 z-10"
       >
         <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
       </button>

@@ -52,7 +52,7 @@ const faqs: [string, string][] = service.faqs;
           <div class="flex flex-col h-full space-y-6">
             <div>
               <span class="badge">{service.capBadge || `Our ${service.name} capabilities`}</span>
-              <h2 class="heading mt-4">
+              <h2 class="heading mt-6">
                 {service.capTitle ? (
                   <span set:html={highlight(service.capTitle)} />
                 ) : (
@@ -60,7 +60,7 @@ const faqs: [string, string][] = service.faqs;
                 )}
               </h2>
             </div>
-            <div class="space-y-4 text-sm sm:text-base leading-relaxed text-[#858482]">
+            <div class="space-y-4 text-sm sm:text-base leading-[28px] text-[#858482]">
               {service.capParagraphs.map((p) => (
                 <p set:html={formatCapParagraph(p)} />
               ))}
@@ -95,7 +95,7 @@ const faqs: [string, string][] = service.faqs;
           <div class="flex flex-col h-full space-y-6">
             <div>
               <span class="badge">{service.capBadge || `Our ${service.name} capabilities`}</span>
-              <h2 class="heading mt-4">
+              <h2 class="heading mt-6">
                 {service.capTitle ? (
                   <span set:html={highlight(service.capTitle)} />
                 ) : (
@@ -113,7 +113,7 @@ const faqs: [string, string][] = service.faqs;
 
           <!-- Right Column: Paragraphs and Image 2 -->
           <div class="flex flex-col h-full space-y-6">
-            <div class="space-y-5 text-sm sm:text-base leading-relaxed text-[#858482]">
+            <div class="space-y-5 text-sm sm:text-base leading-[28px] text-[#858482]">
               {service.capParagraphs.map((p) => (
                 <p set:html={formatCapParagraph(p)} />
               ))}
@@ -143,15 +143,15 @@ const faqs: [string, string][] = service.faqs;
           </div>
         </div>
       ) : img.cap.length >= 2 ? (
-        <div class="space-y-10">
+        <div class="space-y-8">
           <!-- Header Row: Title & Badge on Left, Intro Text on Right -->
-          <div class="grid gap-6 lg:grid-cols-2 lg:gap-14 lg:items-end">
+          <div class="grid gap-6 lg:grid-cols-2 lg:gap-14 lg:items-center">
             <div>
               <span class="badge">Our {service.name} capabilities</span>
-              <h2 class="heading mt-4">Discover Our <span class="text-[#FE7E01]">Capabilities<br class="hidden sm:inline" /> And Network</span></h2>
+              <h2 class="heading mt-6">Discover Our <span class="text-[#FE7E01]">Capabilities<br class="hidden sm:inline" /> And Network</span></h2>
             </div>
             {service.capParagraphs[0] && (
-              <p class="text-sm sm:text-base leading-relaxed text-[#858482]">
+              <p class="text-sm sm:text-base leading-[28px] text-[#858482]">
                 {service.capParagraphs[0]}
               </p>
             )}
@@ -161,7 +161,7 @@ const faqs: [string, string][] = service.faqs;
           <div class="grid gap-10 lg:grid-cols-2 lg:gap-7 items-start">
             <!-- Left Column: Paragraphs 1 & 2, then Image 1 -->
             <div class="flex flex-col gap-8">
-              <div class="space-y-5 text-sm sm:text-base leading-relaxed text-[#858482]">
+              <div class="space-y-5 text-sm sm:text-base leading-[28px] text-[#858482]">
                 {service.capParagraphs.slice(1, 3).map((p) => (
                   <p set:html={formatCapParagraph(p)} />
                 ))}
@@ -184,7 +184,7 @@ const faqs: [string, string][] = service.faqs;
                 loading="lazy"
               />
 
-              <div class="space-y-5 text-sm sm:text-base leading-relaxed text-[#858482]">
+              <div class="space-y-5 text-sm sm:text-base leading-[28px] text-[#858482]">
                 {service.capParagraphs.slice(3).map((p) => (
                   <p set:html={formatCapParagraph(p)} />
                 ))}
@@ -220,7 +220,7 @@ const faqs: [string, string][] = service.faqs;
           <div class="space-y-6">
             <div>
               <span class="badge">{service.capBadge || `Our ${service.name} capabilities`}</span>
-              <h2 class="heading mt-4">
+              <h2 class="heading mt-6">
                 {service.capTitle ? (
                   <span set:html={highlight(service.capTitle)} />
                 ) : (
@@ -228,7 +228,7 @@ const faqs: [string, string][] = service.faqs;
                 )}
               </h2>
             </div>
-            <div class="space-y-5 text-sm sm:text-base leading-relaxed text-[#858482]">
+            <div class="space-y-5 text-sm sm:text-base leading-[28px] text-[#858482]">
               {service.capParagraphs.map((p) => (
                 <p set:html={formatCapParagraph(p)} />
               ))}
@@ -253,10 +253,10 @@ const faqs: [string, string][] = service.faqs;
           <div class="space-y-6">
             <div>
               <span class="badge">Our {service.name} capabilities</span>
-              <h2 class="heading mt-4">Discover Our <span class="text-[#FE7E01]">Capabilities<br class="hidden sm:inline" /> And Network</span></h2>
+              <h2 class="heading mt-6">Discover Our <span class="text-[#FE7E01]">Capabilities<br class="hidden sm:inline" /> And Network</span></h2>
             </div>
             {service.capParagraphs.length > 1 && (
-              <div class="space-y-5 text-sm sm:text-base leading-relaxed text-[#858482]">
+              <div class="space-y-5 text-sm sm:text-base leading-[28px] text-[#858482]">
                 {service.capParagraphs.slice(1).map((p) => (
                   <p set:html={formatCapParagraph(p)} />
                 ))}
@@ -266,7 +266,7 @@ const faqs: [string, string][] = service.faqs;
 
           <div class="space-y-6">
             {service.capParagraphs[0] && (
-              <p class="text-sm sm:text-base leading-relaxed text-[#858482]" set:html={formatCapParagraph(service.capParagraphs[0])} />
+              <p class="text-sm sm:text-base leading-[28px] text-[#858482]" set:html={formatCapParagraph(service.capParagraphs[0])} />
             )}
             <img
               src={img.cap[0]}
@@ -294,7 +294,7 @@ const faqs: [string, string][] = service.faqs;
           <div class="space-y-6">
             <div>
               <span class="badge">{service.capBadge || `Our ${service.name} capabilities`}</span>
-              <h2 class="heading mt-4">Discover Our <span class="text-[#FE7E01]">Capabilities<br class="hidden sm:inline" /> And Network</span></h2>
+              <h2 class="heading mt-6">Discover Our <span class="text-[#FE7E01]">Capabilities<br class="hidden sm:inline" /> And Network</span></h2>
             </div>
             <img
               src={img.cap[0]}
@@ -304,7 +304,7 @@ const faqs: [string, string][] = service.faqs;
             />
           </div>
 
-          <div class="space-y-5 text-sm sm:text-base leading-relaxed text-[#858482] lg:pt-2">
+          <div class="space-y-5 text-sm sm:text-base leading-[28px] text-[#858482] lg:pt-2">
             {service.capParagraphs.map((p) => (
               <p set:html={formatCapParagraph(p)} />
             ))}
@@ -337,14 +337,14 @@ const faqs: [string, string][] = service.faqs;
           <div class="space-y-6">
             <div>
               <span class="badge">Our {service.name} solutions</span>
-              <h2 class="heading mt-4" set:html={highlight(service.solTitle)} />
+              <h2 class="heading mt-6" set:html={highlight(service.solTitle)} />
             </div>
             <div>
               <a href="/contacts" class="btn inline-block !text-black">Contact Now</a>
             </div>
           </div>
 
-          <div class="space-y-5 text-sm sm:text-base leading-relaxed text-[#858482] lg:pt-2">
+          <div class="space-y-5 text-sm sm:text-base leading-[28px] text-[#858482] lg:pt-2">
             {service.solParagraphs.map((p) => (
               <p>{p}</p>
             ))}
@@ -377,7 +377,7 @@ const faqs: [string, string][] = service.faqs;
     </section>
   ) : (
     /* Split Cream Layout (For Sea Freight, Air Freight, Road Freight, etc. - Matches 1st Figma Screenshot) */
-    <section class="mt-14 grid bg-cream md:mt-20 lg:grid-cols-2">
+    <section class="mt-14 grid bg-[#FFF9F2] md:mt-20 lg:grid-cols-2">
       <div class:list={['flex flex-col justify-center px-4 py-14 md:px-8 lg:py-20', img.solLeft ? 'lg:order-2 lg:pr-[max(3rem,calc((100vw-1440px)/2))] lg:pl-16' : 'lg:pl-[max(3rem,calc((100vw-1440px)/2))] lg:pr-16']}>
         <SectionHeading badge={`Our ${service.name} solutions`} title={service.solTitle} />
         <div class="mt-5 space-y-4">

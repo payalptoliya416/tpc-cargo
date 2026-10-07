@@ -4,12 +4,12 @@ import { highlight } from '../utils';
 const { badge, title, text, image, formTitle } = Astro.props;
 ---
 <!-- the quote card hangs a bit below the hero on desktop, like the design -->
-<section class="relative px-3 md:px-6 lg:h-[760px] lg:flex lg:items-center lg:mb-24">
+<section class="relative px-3 md:px-6 lg:h-[760px] lg:flex lg:items-start lg:mb-24">
   <div class="absolute inset-y-0 inset-x-3 overflow-hidden rounded-3xl bg-dark bg-cover bg-center md:inset-x-6" style={`background-image:url('${image}')`}>
     <!-- <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/65 to-black/35"></div> -->
   </div>
-  <div class="wrap relative grid gap-8 py-10 text-white md:py-14 lg:grid-cols-2 lg:py-0 w-full lg:items-center z-10">
-    <div class="lg:self-center">
+  <div class="wrap relative grid gap-8 py-10 text-white md:py-14 lg:grid-cols-2 lg:pt-[130px] lg:pb-0 w-full lg:items-start z-10">
+    <div class="lg:self-start">
       <!-- Clickable Breadcrumbs -->
       <nav aria-label="Breadcrumb" class="mb-4 flex items-center gap-2 text-xs sm:text-sm text-gray-300">
         <a href="/" class="transition hover:text-[#FE7E01] hover:underline underline-offset-4">TPC Cargo</a>
@@ -51,6 +51,6 @@ const { badge, title, text, image, formTitle } = Astro.props;
         </div>
       </div>
     </div>
-    <div class="lg:-mb-24 lg:self-center lg:justify-self-end lg:w-full lg:max-w-[560px]"><QuoteForm title={formTitle} /></div>
+    <div class="lg:self-start lg:justify-self-end lg:w-full lg:max-w-[560px] lg:-mb-28"><QuoteForm title={formTitle} /></div>
   </div>
 </section>
