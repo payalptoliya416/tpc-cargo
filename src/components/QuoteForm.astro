@@ -3,7 +3,7 @@
 import Icon from './Icon.astro';
 const { title = 'Get Your Quote' } = Astro.props;
 ---
-<div class="rounded-[20px] bg-white p-4 sm:p-10 text-dark shadow-[0_6px_80px_0_rgba(0,0,0,0.08)] border border-[#F3F3F3]">
+<div class="rounded-lg dsm:rounded-[20px] bg-white p-4 sm:p-10 text-dark shadow-[0_6px_80px_0_rgba(0,0,0,0.08)] border border-[#F3F3F3]">
   <h3 class="text-xl sm:text-2xl font-bold text-dark">{title}</h3>
   <p class="mt-[15px] text-xs sm:text-base text-[#858482]">Tell us about your shipment and our team will get back to you with the right shipping solution.</p>
   
@@ -71,7 +71,7 @@ const { title = 'Get Your Quote' } = Astro.props;
     </div>
 
     <div class="pt-[5px] text-center sm:col-span-2">
-      <button class="w-full sm:w-auto min-w-[240px] rounded-full bg-brand px-8 py-4 text-sm font-bold uppercase tracking-wider text-black shadow-lg transition hover:bg-orange-600 cursor-pointer">
+      <button class="sm:min-w-[240px] rounded-full bg-brand px-5 sm:px-8 py-3 sm:py-4 text-sm font-bold uppercase tracking-wider text-black shadow-lg transition hover:bg-orange-600 cursor-pointer">
         GET MY FREE QUOTE
       </button>
     </div>

@@ -19,8 +19,8 @@ const { badge, title, intro, faqs = [] } = Astro.props;
     </div>
     <div class="mx-auto mt-10 max-w-[820px] space-y-3">
       {faqs.map(([q, a]: any, i: number) => (
-        <details open={i === 0} class="group rounded-[14px] border border-[#E7E6E6] open:border-[#FEB267] py-5 px-[22px]">
-          <summary class="flex cursor-pointer list-none items-center justify-between gap-3 text-lg group-open:text-[#FE7E01] group-open:mb-4">
+        <details open={i === 0} class="group rounded-[14px] border border-[#E7E6E6] open:border-[#FEB267] py-4 md:py-5 px-4 md:px-[22px]">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-3 text-base md:text-lg group-open:text-[#FE7E01] group-open:mb-4">
             {q}
             <Icon name="down" class="h-5 w-5 shrink-0 transition -rotate-90 group-open:rotate-180" />
           </summary>
