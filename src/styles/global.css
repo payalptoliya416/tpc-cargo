@@ -18,15 +18,16 @@
 }
 
 .badge {
-  @apply inline-flex items-center gap-2 rounded-full border border-[#FFD8B3] bg-[#FFF9F2] px-3 py-1 text-sm font-medium uppercase text-[#FE9834];
+  @apply inline-flex items-center gap-2 rounded-full border border-[#FFD8B3] bg-[#FFF9F2] px-3 py-1.5 text-sm font-medium uppercase text-[#FE9834];
 }
 
 .badge-dark {
-  background-image: url('/images/badge-dark-img.png');
-  background-size: 100% 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  @apply inline-flex items-center gap-2.5 rounded-full px-4 py-2 text-xs sm:text-sm font-semibold uppercase tracking-wider text-[#FE7E01];
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.55), inset 0 -1px 1px 0 rgba(0, 0, 0, 0.2), 0 4px 15px rgba(0, 0, 0, 0.25);
+  @apply inline-flex items-center gap-2.5 rounded-full px-5 py-2 text-xs sm:text-sm font-semibold uppercase tracking-wider text-[#FE7E01];
 }
 
 .badge::before {
@@ -34,12 +35,18 @@
   @apply h-1.5 w-1.5 rounded-full bg-brand;
 }
 
+.badge-dark::before {
+  content: "";
+  @apply h-2 w-2 rounded-full bg-[#FE7E01] shrink-0;
+  box-shadow: 0 0 6px rgba(254, 126, 1, 0.6);
+}
+
 .btn {
   @apply inline-block rounded-full bg-brand px-6 py-2.5 text-sm font-bold uppercase text-black transition hover:bg-orange-600;
 }
 
 .heading {
-  @apply mt-5 text-3xl font-medium leading-tight md:text-[46px];
+  @apply mt-5 text-3xl font-bold leading-tight md:text-[46px];
 }
 
 .text-muted {
