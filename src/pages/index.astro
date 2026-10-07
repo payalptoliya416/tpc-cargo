@@ -61,20 +61,46 @@ const special = [
     id="hero-slider-container"
     class="relative h-[500px] sm:h-[620px] md:h-[700px] lg:h-[770px] overflow-hidden rounded-2xl sm:rounded-3xl bg-dark text-white select-none"
   >
-    <!-- Background Images Container for Crossfade -->
+    <!-- Background Images -->
     <div id="hero-bg-container" class="absolute inset-0">
       {heroSlides.map((slide, index) => (
         <div
-          class={`hero-bg-item absolute inset-0 bg-cover bg-center transition-opacity duration-700 ease-in-out ${index === 0 ? 'opacity-100 z-0' : 'opacity-0 -z-10'}`}
-          style={`background-image: url('${slide.image}')`}
+          class={`hero-bg-item absolute inset-0 ${index === 0 ? 'is-active' : ''}`}
           data-slide-index={index}
-        ></div>
+          data-anim={['reveal-left', 'reveal-top', 'zoom-in', 'reveal-diagonal'][index]}
+        >
+          <!-- clip-path reveal wrapper -->
+          <div class="hero-bg-reveal absolute inset-0">
+            <img
+              src={slide.image}
+              alt=""
+              class="hero-bg-img absolute inset-0 h-full w-full object-cover object-center"
+              loading={index === 0 ? 'eager' : 'lazy'}
+            />
+          </div>
+          <!-- Overlays -->
+          <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/30 to-black/15"></div>
+          <div class="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-transparent"></div>
+
+          <!-- Mosaic boxes layer (scattered small images) -->
+          <div class="hero-mosaic absolute inset-0 pointer-events-none z-10">
+            {Array.from({length: 9}).map((_, bi) => (
+              <div
+                class="hero-mosaic__box absolute overflow-hidden"
+                data-box={bi}
+                style={`
+                  background-image: url('${slide.image}');
+                  background-size: cover;
+                  background-position: center;
+                `}
+              ></div>
+            ))}
+          </div>
+        </div>
       ))}
     </div>
 
-    <!-- Dark Overlay -->
-
-    <!-- Right Pagination Dots matching screenshot -->
+    <!-- Right Pagination Dots -->
     <div
       id="hero-pagination-dots"
       class="absolute right-7 top-1/2 z-30 hidden -translate-y-1/2 flex-col items-center gap-3 sm:flex"
@@ -83,10 +109,10 @@ const special = [
         <button
           aria-label={`Go to slide ${index + 1}`}
           data-index={index}
-          class={`hero-dot transition-all duration-300 cursor-pointer ${
+          class={`hero-dot cursor-pointer rounded-full transition-all duration-300 ${
             index === 0
-              ? 'h-3 w-3 rounded-full border-2 border-brand bg-brand ring-2 ring-brand/40 ring-offset-2 ring-offset-black'
-              : 'h-2 w-2 rounded-full bg-white/40 hover:bg-white/80'
+              ? 'h-3 w-3 border-2 border-brand bg-brand ring-2 ring-brand/40 ring-offset-2 ring-offset-black'
+              : 'h-2 w-2 bg-white/40 hover:bg-white/70'
           }`}
         ></button>
       ))}
@@ -96,31 +122,29 @@ const special = [
     <div class="relative z-20 flex h-full flex-col items-center text-center">
       {heroSlides.map((slide, index) => (
         <div
-          class={`hero-content-item absolute inset-x-0 top-0 flex flex-col items-center text-center transition-all duration-700 ease-in-out px-4 sm:px-6 ${
-            index === 0
-              ? 'opacity-100 translate-y-0 pointer-events-auto z-10'
-              : 'opacity-0 translate-y-4 pointer-events-none -z-10'
+          class={`hero-content-item absolute inset-x-0 top-0 flex flex-col items-center text-center px-4 sm:px-6 ${
+            index === 0 ? 'is-active' : ''
           }`}
           data-slide-index={index}
         >
           <!-- Badge -->
-          <div class="mt-16 md:mt-[130px] lg:mt-[170px] badge-dark">{slide.badge}</div>
+          <div class="hero-el mt-16 md:mt-[130px] lg:mt-[170px] badge-dark">{slide.badge}</div>
 
           <!-- Heading -->
           <h1
-            class="mx-auto mt-4 sm:mt-6 md:mt-10 max-w-[950px] text-3xl font-medium leading-[1.18] text-white sm:text-4xl md:text-[56px] lg:text-[74px]"
+            class="hero-el mx-auto mt-4 sm:mt-6 md:mt-10 max-w-[950px] text-3xl font-medium leading-[1.18] text-white sm:text-4xl md:text-[56px] lg:text-[74px]"
             set:html={slide.title}
           />
 
           <!-- Description -->
           <p
-            class="mx-auto mt-3 sm:mt-5 md:mt-[35px] max-w-[900px] text-sm leading-[20px] sm:leading-[30px] text-[#B6B5B4] sm:text-base md:text-lg"
+            class="hero-el mx-auto mt-3 sm:mt-5 md:mt-[35px] max-w-[900px] text-sm leading-[20px] sm:leading-[30px] text-[#B6B5B4] sm:text-base md:text-lg"
             set:html={slide.text}
           />
         </div>
       ))}
 
-      <!-- Bottom Navigation -->
+      <!-- Bottom Navigation (same UI as before) -->
       <div
         class="absolute bottom-0 left-0 w-full grid grid-cols-2 divide-x divide-white/10 border-t border-white/10 bg-black/55 backdrop-blur-md md:grid-cols-4 z-30"
       >
@@ -128,20 +152,15 @@ const special = [
           <button
             data-nav-index={index}
             class={`hero-nav-item flex h-[75px] sm:h-[100px] md:h-[125px] flex-col items-center justify-center gap-1.5 sm:gap-3 text-xs sm:text-sm font-medium text-white transition-all cursor-pointer ${
-              index === 1 ? 'bg-white/10 text-[#FE7E01] font-bold' : 'hover:bg-white/5 hover:text-[#FE7E01]'
+              index === 1 ? 'is-active bg-white/10 text-[#FE7E01] font-bold' : 'hover:bg-white/5 hover:text-[#FE7E01]'
             }`}
           >
             {l.icon.includes('/') || l.icon.endsWith('.svg') ? (
               <img src={l.icon} alt="" class="h-5 w-5 sm:h-7 sm:w-7 md:h-8 md:w-8 object-contain" />
             ) : (
-              <Icon
-                name={l.icon}
-                class="h-5 w-5 sm:h-7 sm:w-7 md:h-8 md:w-8 text-white fill-white"
-              />
+              <Icon name={l.icon} class="h-5 w-5 sm:h-7 sm:w-7 md:h-8 md:w-8 text-white fill-white" />
             )}
-            <span class="text-xs sm:text-base lg:text-xl">
-              {l.name}
-            </span>
+            <span class="text-xs sm:text-base lg:text-xl">{l.name}</span>
           </button>
         ))}
       </div>
@@ -149,108 +168,371 @@ const special = [
   </div>
 </section>
 
+<style>
+/* ══════════════════════════════════════
+   SLIDE LAYER STACKING
+══════════════════════════════════════ */
+.hero-bg-item {
+  z-index: 0;
+  pointer-events: none;
+}
+.hero-bg-item.is-active  { z-index: 2; }
+.hero-bg-item.is-leaving { z-index: 1; }
+
+/* ══════════════════════════════════════
+   SLIDE 0 — reveal-left  (curtain L→R)
+══════════════════════════════════════ */
+.hero-bg-item[data-anim="reveal-left"] .hero-bg-reveal {
+  clip-path: inset(0 100% 0 0);
+  transition: none;
+}
+.hero-bg-item[data-anim="reveal-left"].is-active .hero-bg-reveal {
+  clip-path: inset(0 0% 0 0);
+  transition: clip-path 0.9s cubic-bezier(0.77, 0, 0.175, 1);
+}
+.hero-bg-item[data-anim="reveal-left"] .hero-bg-img {
+  transform: scale(1.07);
+  transition: none;
+}
+.hero-bg-item[data-anim="reveal-left"].is-active .hero-bg-img {
+  transform: scale(1.0);
+  transition: transform 7s ease-out;
+}
+
+/* ══════════════════════════════════════
+   SLIDE 1 — reveal-top  (curtain T→B)
+══════════════════════════════════════ */
+.hero-bg-item[data-anim="reveal-top"] .hero-bg-reveal {
+  clip-path: inset(0 0 100% 0);
+  transition: none;
+}
+.hero-bg-item[data-anim="reveal-top"].is-active .hero-bg-reveal {
+  clip-path: inset(0 0 0% 0);
+  transition: clip-path 0.95s cubic-bezier(0.77, 0, 0.18, 1);
+}
+.hero-bg-item[data-anim="reveal-top"] .hero-bg-img {
+  transform: scale(1.0) translateY(20px);
+  transition: none;
+}
+.hero-bg-item[data-anim="reveal-top"].is-active .hero-bg-img {
+  transform: scale(1.05) translateY(0px);
+  transition: transform 7s ease-out;
+}
+
+/* ══════════════════════════════════════
+   SLIDE 2 — zoom-in  (scale up from center)
+══════════════════════════════════════ */
+.hero-bg-item[data-anim="zoom-in"] .hero-bg-reveal {
+  clip-path: inset(0 0 0 0);
+  opacity: 0;
+  transition: none;
+}
+.hero-bg-item[data-anim="zoom-in"].is-active .hero-bg-reveal {
+  opacity: 1;
+  transition: opacity 0.6s ease;
+}
+.hero-bg-item[data-anim="zoom-in"] .hero-bg-img {
+  transform: scale(1.18);
+  transition: none;
+}
+.hero-bg-item[data-anim="zoom-in"].is-active .hero-bg-img {
+  transform: scale(1.0);
+  transition: transform 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ══════════════════════════════════════
+   SLIDE 3 — reveal-diagonal  (corner wipe)
+══════════════════════════════════════ */
+.hero-bg-item[data-anim="reveal-diagonal"] .hero-bg-reveal {
+  clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+  transition: none;
+}
+.hero-bg-item[data-anim="reveal-diagonal"].is-active .hero-bg-reveal {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  transition: clip-path 1s cubic-bezier(0.77, 0, 0.175, 1);
+}
+.hero-bg-item[data-anim="reveal-diagonal"] .hero-bg-img {
+  transform: scale(1.06) translateX(-15px);
+  transition: none;
+}
+.hero-bg-item[data-anim="reveal-diagonal"].is-active .hero-bg-img {
+  transform: scale(1.0) translateX(0px);
+  transition: transform 8s ease-out;
+}
+
+/* ══════════════════════════════════════
+   LEAVING — all slides shrink out
+══════════════════════════════════════ */
+.hero-bg-item.is-leaving .hero-bg-reveal {
+  opacity: 0;
+  transition: opacity 0.5s ease 0.1s !important;
+}
+
+/* ══════════════════════════════════════
+   MOSAIC BOXES
+══════════════════════════════════════ */
+.hero-mosaic {
+  opacity: 0;
+  transition: opacity 0s;
+}
+/* Boxes show just before main reveal completes, then fade out */
+.hero-bg-item.is-active .hero-mosaic {
+  animation: mosaic-lifecycle 1.4s ease forwards;
+}
+@keyframes mosaic-lifecycle {
+  0%   { opacity: 1; }
+  70%  { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.hero-mosaic__box {
+  border-radius: 6px;
+  opacity: 0;
+  transform: scale(0.4) translate(var(--tx, 0px), var(--ty, 0px));
+  transition: transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1),
+              opacity  0.35s ease,
+              width    0.55s ease,
+              height   0.55s ease,
+              top      0.55s ease,
+              left     0.55s ease,
+              border-radius 0.45s ease;
+}
+
+/* Scatter state → fly in */
+.hero-bg-item.is-active .hero-mosaic__box {
+  opacity: 1;
+  transform: scale(1) translate(0, 0);
+}
+
+/* Merge state → boxes expand to fill, then fade */
+.hero-bg-item.is-active .hero-mosaic__box.is-merging {
+  border-radius: 0px;
+}
+
+/* ══════════════════════════════════════
+   CONTENT STAGGER
+══════════════════════════════════════ */
+.hero-content-item {
+  pointer-events: none;
+  z-index: 0;
+}
+.hero-content-item.is-active {
+  pointer-events: auto;
+  z-index: 3;
+}
+.hero-el {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.hero-content-item.is-active .hero-el:nth-child(1) {
+  opacity: 1; transform: translateY(0);
+  transition-delay: 0.55s;
+}
+.hero-content-item.is-active .hero-el:nth-child(2) {
+  opacity: 1; transform: translateY(0);
+  transition-delay: 0.72s;
+}
+.hero-content-item.is-active .hero-el:nth-child(3) {
+  opacity: 1; transform: translateY(0);
+  transition-delay: 0.88s;
+}
+</style>
+
 <script is:inline>
+(function () {
   function initHeroSlider() {
     const container = document.getElementById('hero-slider-container');
     if (!container) return;
 
-    const bgItems = container.querySelectorAll('.hero-bg-item');
+    const bgItems      = container.querySelectorAll('.hero-bg-item');
     const contentItems = container.querySelectorAll('.hero-content-item');
-    const dots = container.querySelectorAll('.hero-dot');
-    const navItems = container.querySelectorAll('.hero-nav-item');
+    const dots         = container.querySelectorAll('.hero-dot');
+    const navItems     = container.querySelectorAll('.hero-nav-item');
 
     let currentIndex = 0;
     const totalSlides = bgItems.length;
     let autoPlayTimer = null;
+    const navToSlideMap = { 0: 1, 1: 0, 2: 2, 3: 3 };
 
-    // Map nav index (0:Sea, 1:Air, 2:Road, 3:Warehousing) to slide index
-    const navToSlideMap = {
-      0: 1, // Sea Freight -> slide 1
-      1: 0, // Air Freight -> slide 0
-      2: 2, // Road Freight -> slide 2
-      3: 3, // Warehousing -> slide 3
-    };
+    /* ── Mosaic box layout ──
+       9 boxes in a 3×3 grid, each starts scattered from a random offset
+       then snaps to grid position, then expands to fill whole slide
+    ─────────────────────────────── */
+    const COLS = 3, ROWS = 3;
+    const scatterOffsets = [
+      [-120, -80], [0, -100], [130, -90],
+      [-140,  0],  [0,   30], [150,  20],
+      [-110, 90],  [20,  110],[120,  80],
+    ];
 
+    function setupMosaicBoxes(slideEl) {
+      const boxes = slideEl.querySelectorAll('.hero-mosaic__box');
+      const w = container.offsetWidth;
+      const h = container.offsetHeight;
+      const bw = Math.ceil(w / COLS);
+      const bh = Math.ceil(h / ROWS);
+
+      boxes.forEach((box, i) => {
+        const col = i % COLS;
+        const row = Math.floor(i / COLS);
+        const [tx, ty] = scatterOffsets[i] || [0, 0];
+
+        // Final (merged) position
+        box.style.left   = col * bw + 'px';
+        box.style.top    = row * bh + 'px';
+        box.style.width  = bw + 'px';
+        box.style.height = bh + 'px';
+
+        // Background-position to show correct part of image
+        box.style.backgroundSize     = w + 'px ' + h + 'px';
+        box.style.backgroundPosition = -(col * bw) + 'px ' + -(row * bh) + 'px';
+
+        // Scatter offset via CSS custom props
+        box.style.setProperty('--tx', tx + 'px');
+        box.style.setProperty('--ty', ty + 'px');
+
+        // Stagger delay per box
+        box.style.transitionDelay = (i * 0.045) + 's';
+      });
+    }
+
+    function runMosaic(slideEl) {
+      const boxes = slideEl.querySelectorAll('.hero-mosaic__box');
+
+      // Recalc layout (in case size changed)
+      setupMosaicBoxes(slideEl);
+
+      // Phase 1: boxes fly in from scatter
+      requestAnimationFrame(() => {
+        boxes.forEach(b => {
+          b.classList.remove('is-merging');
+          b.style.opacity   = '';
+          b.style.transform = '';
+        });
+
+        // Phase 2: at ~650ms merge (remove border-radius, boxes fill)
+        setTimeout(() => {
+          boxes.forEach((b, i) => {
+            b.style.transitionDelay = (i * 0.025) + 's';
+            b.classList.add('is-merging');
+          });
+
+          // Phase 3: at ~1200ms mosaic fades (CSS animation handles it)
+          // just reset delays after done
+          setTimeout(() => {
+            boxes.forEach(b => { b.style.transitionDelay = ''; });
+          }, 700);
+
+        }, 650);
+      });
+    }
+
+    function resetMosaicBoxes(slideEl) {
+      const boxes = slideEl.querySelectorAll('.hero-mosaic__box');
+      boxes.forEach(b => {
+        b.style.opacity = '0';
+        b.style.transform = 'scale(0.4) translate(var(--tx,0px), var(--ty,0px))';
+        b.style.transitionDelay = '';
+        b.classList.remove('is-merging');
+      });
+    }
+
+    /* ── Initial setup ── */
+    bgItems.forEach((item) => setupMosaicBoxes(item));
+    // Run mosaic on first slide immediately
+    runMosaic(bgItems[0]);
+
+    /* ── Slide transition ── */
     function goToSlide(newIndex) {
       if (newIndex === currentIndex) return;
+      const prevIndex = currentIndex;
 
-      bgItems.forEach((bg, idx) => {
-        if (idx === newIndex) {
-          bg.classList.remove('opacity-0', '-z-10');
-          bg.classList.add('opacity-100', 'z-0');
-        } else {
-          bg.classList.remove('opacity-100', 'z-0');
-          bg.classList.add('opacity-0', '-z-10');
-        }
+      // BG
+      bgItems[prevIndex].classList.remove('is-active');
+      bgItems[prevIndex].classList.add('is-leaving');
+      bgItems[newIndex].classList.add('is-active');
+
+      // Run mosaic on incoming slide
+      runMosaic(bgItems[newIndex]);
+
+      // Cleanup prev after transition
+      setTimeout(() => {
+        bgItems[prevIndex].classList.remove('is-leaving');
+        resetMosaicBoxes(bgItems[prevIndex]);
+        // Reset img for next re-entry
+        const prevReveal = bgItems[prevIndex].querySelector('.hero-bg-reveal');
+        if (prevReveal) { prevReveal.style.transition = 'none'; }
+        requestAnimationFrame(() => {
+          if (prevReveal) prevReveal.style.transition = '';
+        });
+      }, 1000);
+
+      // Content
+      contentItems[prevIndex].classList.remove('is-active');
+      contentItems[prevIndex].querySelectorAll('.hero-el').forEach(el => {
+        el.style.cssText = 'opacity:0;transform:translateY(22px);transition:none';
+      });
+      contentItems[newIndex].classList.add('is-active');
+      contentItems[newIndex].querySelectorAll('.hero-el').forEach(el => {
+        el.style.cssText = '';
       });
 
-      contentItems.forEach((content, idx) => {
-        if (idx === newIndex) {
-          content.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none', '-z-10');
-          content.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto', 'z-10');
-        } else {
-          content.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto', 'z-10');
-          content.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none', '-z-10');
-        }
-      });
-
+      // Dots
       dots.forEach((dot, idx) => {
         if (idx === newIndex) {
-          dot.className = 'hero-dot h-3 w-3 rounded-full border-2 border-brand bg-brand ring-2 ring-brand/40 ring-offset-2 ring-offset-black transition-all duration-300 cursor-pointer';
+          dot.className = 'hero-dot cursor-pointer rounded-full transition-all duration-300 h-3 w-3 border-2 border-brand bg-brand ring-2 ring-brand/40 ring-offset-2 ring-offset-black';
         } else {
-          dot.className = 'hero-dot h-2 w-2 rounded-full bg-white/40 hover:bg-white/80 transition-all duration-300 cursor-pointer';
+          dot.className = 'hero-dot cursor-pointer rounded-full transition-all duration-300 h-2 w-2 bg-white/40 hover:bg-white/70';
         }
       });
 
+      // Nav bar
       navItems.forEach((nav, navIdx) => {
-        const targetSlide = navToSlideMap[navIdx];
-        if (targetSlide === newIndex) {
-          nav.classList.add('bg-white/15', 'text-[#FE7E01]');
+        if (navToSlideMap[navIdx] === newIndex) {
+          nav.classList.add('is-active', 'bg-white/10', 'text-[#FE7E01]', 'font-bold');
         } else {
-          nav.classList.remove('bg-white/15', 'text-[#FE7E01]');
+          nav.classList.remove('is-active', 'bg-white/10', 'text-[#FE7E01]', 'font-bold');
         }
       });
 
       currentIndex = newIndex;
     }
 
-    function nextSlide() {
-      const next = (currentIndex + 1) % totalSlides;
-      goToSlide(next);
-    }
+    function next() { goToSlide((currentIndex + 1) % totalSlides); }
 
-    function startAutoPlay() {
-      stopAutoPlay();
-      autoPlayTimer = setInterval(nextSlide, 5000);
-    }
+    function startAuto() { stopAuto(); autoPlayTimer = setInterval(next, 5500); }
+    function stopAuto()  { clearInterval(autoPlayTimer); }
 
-    function stopAutoPlay() {
-      if (autoPlayTimer) clearInterval(autoPlayTimer);
-    }
-
-    dots.forEach((dot) => {
-      dot.addEventListener('click', () => {
-        const idx = parseInt(dot.getAttribute('data-index') || '0', 10);
-        goToSlide(idx);
-        startAutoPlay();
-      });
+    // Touch swipe
+    let tx0 = 0;
+    container.addEventListener('touchstart', e => { tx0 = e.touches[0].clientX; }, { passive: true });
+    container.addEventListener('touchend', e => {
+      const diff = tx0 - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 50) {
+        goToSlide(diff > 0 ? (currentIndex + 1) % totalSlides : (currentIndex - 1 + totalSlides) % totalSlides);
+        startAuto();
+      }
     });
 
-    navItems.forEach((nav) => {
-      nav.addEventListener('click', () => {
-        const navIdx = parseInt(nav.getAttribute('data-nav-index') || '0', 10);
-        const slideIdx = navToSlideMap[navIdx];
-        if (slideIdx !== undefined) {
-          goToSlide(slideIdx);
-          startAutoPlay();
-        }
-      });
+    dots.forEach(dot => dot.addEventListener('click', () => {
+      goToSlide(parseInt(dot.dataset.index)); startAuto();
+    }));
+
+    navItems.forEach(nav => nav.addEventListener('click', () => {
+      const si = navToSlideMap[parseInt(nav.dataset.navIndex)];
+      if (si !== undefined) { goToSlide(si); startAuto(); }
+    }));
+
+    container.addEventListener('mouseenter', stopAuto);
+    container.addEventListener('mouseleave', startAuto);
+
+    // Recalc on resize
+    window.addEventListener('resize', () => {
+      bgItems.forEach(item => setupMosaicBoxes(item));
     });
 
-    container.addEventListener('mouseenter', stopAutoPlay);
-    container.addEventListener('mouseleave', startAutoPlay);
-
-    startAutoPlay();
+    startAuto();
   }
 
   if (document.readyState === 'loading') {
@@ -258,6 +540,7 @@ const special = [
   } else {
     initHeroSlider();
   }
+})();
 </script>
 
   <!-- About -->
