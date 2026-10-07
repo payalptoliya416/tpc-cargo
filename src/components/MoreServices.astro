@@ -11,20 +11,20 @@ const list = current ? services.filter((s) => s.slug !== current) : services;
 <section class="section relative overflow-hidden sm:overflow-visible">
   <div class="wrap space-y-10">
     <!-- Header Row: Badge & Title Left, Subtitle Right -->
-    <div class="grid gap-6 md:grid-cols-2 md:items-center md:gap-14">
+    <div class="grid gap-6 lg:grid-cols-2 md:items-center md:gap-14">
       <SectionHeading badge="Explore our logistics services" title="More Ways To Move [Your Cargo]" />
       <p class="text-muted">
         Explore our complementary logistics services designed to support your shipment from origin to final destination with reliable, flexible solutions.
       </p>
     </div>
 
-    <!-- Swiper Slider Container with Arrow Buttons Outside -->
+    <!-- Swiper Slider Container with Responsive Arrow Buttons -->
     <div class="relative w-full">
-      <!-- Left Arrow Button (Positioned Outside) -->
+      <!-- Left Arrow Button -->
       <button
         id="more-prev"
         aria-label="Previous service"
-        class="hidden sm:flex h-[50px] w-[50px] rounded-full border border-[#CECECD] bg-white items-center justify-center text-[#0B0806] hover:border-brand hover:text-white hover:bg-brand transition shadow-md cursor-pointer shrink-0 z-20 absolute -left-4 sm:-left-7 md:-left-10 lg:-left-14 xl:-left-16 top-1/2 -translate-y-1/2"
+        class="flex h-10 sm:h-[46px] w-10 sm:w-[46px] sm:h-[50px] sm:w-[50px] rounded-full border border-[#CECECD] bg-white/90 backdrop-blur-sm items-center justify-center text-[#0B0806] hover:border-brand hover:text-white hover:bg-brand transition shadow-lg cursor-pointer shrink-0 z-30 absolute left-2 sm:left-3 2xl:-left-16 top-[40%] sm:top-1/2 -translate-y-1/2"
       >
         <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
       </button>
@@ -42,11 +42,11 @@ const list = current ? services.filter((s) => s.slug !== current) : services;
         </div>
       </div>
 
-      <!-- Right Arrow Button (Positioned Outside) -->
+      <!-- Right Arrow Button -->
       <button
         id="more-next"
         aria-label="Next service"
-        class="hidden sm:flex h-[50px] w-[50px] rounded-full border border-[#CECECD] bg-white items-center text-[#0B0806] justify-center shadow-md hover:bg-brand hover:text-white transition cursor-pointer shrink-0 z-20 absolute -right-4 sm:-right-7 md:-right-10 lg:-right-14 xl:-right-16 top-1/2 -translate-y-1/2"
+        class="flex h-10 sm:h-[46px] w-10 sm:w-[46px] sm:h-[50px] sm:w-[50px] rounded-full border border-[#CECECD] bg-white/90 backdrop-blur-sm items-center justify-center text-[#0B0806] hover:bg-brand hover:text-white transition shadow-lg cursor-pointer shrink-0 z-30 absolute right-2 sm:right-3 2xl:-right-16 top-[40%] sm:top-1/2  -translate-y-1/2"
       >
         <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
       </button>

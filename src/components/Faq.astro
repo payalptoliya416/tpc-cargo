@@ -13,7 +13,7 @@ const { badge, title, intro, faqs = [] } = Astro.props;
 ---
 <section class="section">
   <div class="wrap">
-    <div class="grid gap-4 md:grid-cols-2 md:items-center">
+    <div class="grid gap-4 lg:grid-cols-2 md:items-center">
       <SectionHeading badge={badge} title={title} />
       <p class="text-muted">{intro}</p>
     </div>
