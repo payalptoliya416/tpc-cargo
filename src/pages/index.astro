@@ -418,7 +418,7 @@ const special = [
 
         <!-- 10+ Years Experience Badge -->
         <div class="absolute -bottom-5 -left-2 md:-left-4 rounded-lg md:rounded-xl bg-brand px-4 md:px-6 py-2 md:py-4 text-white z-20">
-          <div class="text-2xl font-semibold">10+</div>
+          <div class="text-2xl font-semibold"><span id="exp-counter">0</span>+</div>
           <div class="text-xs font-medium">Years of Experience</div>
         </div>
       </div>
@@ -510,6 +510,36 @@ const special = [
     } else {
       initVideoModal();
     }
+  </script>
+
+  <script is:inline>
+    (function () {
+      var el = document.getElementById('exp-counter');
+      if (!el) return;
+      var target = 10, duration = 1500, started = false;
+
+      function runCounter() {
+        if (started) return;
+        started = true;
+        var start = null;
+        function step(ts) {
+          if (!start) start = ts;
+          var progress = Math.min((ts - start) / duration, 1);
+          // ease-out
+          var eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.floor(eased * target);
+          if (progress < 1) requestAnimationFrame(step);
+          else el.textContent = target;
+        }
+        requestAnimationFrame(step);
+      }
+
+      var observer = new IntersectionObserver(function(entries) {
+        if (entries[0].isIntersecting) { runCounter(); observer.disconnect(); }
+      }, { threshold: 0.5 });
+
+      observer.observe(el);
+    })();
   </script>
 
   <Stats />
