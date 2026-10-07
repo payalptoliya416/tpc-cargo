@@ -83,7 +83,7 @@ const footerServices = services.filter((s) => ['sea-freight', 'air-freight', 'ro
     </div>
   </div>
   <div class="wrap flex flex-col items-center justify-between gap-4 border-t border-white/10 py-6 text-base sm:flex-row">
-    <p class="text-white text-center sm:text-left">Copyright © 2023 TPCCARGO. All rights reserved.</p>
+    <p class="text-white text-center sm:text-left">Copyright © {new Date().getFullYear()} TPCCARGO. All rights reserved.</p>
     <div class="flex gap-5">
       {['facebook', 'x', 'instagram'].map((n) => (
         <a href="#" aria-label={n} class="social-icon flex h-10 sm:h-[46px] w-10 sm:w-[46px] items-center justify-center rounded-full border border-white/20 text-white"><Icon name={n} class="h-4 w-4" /></a>
