@@ -16,10 +16,10 @@ export const offices = [
 ];
 
 export const stats = [
-  { icon: 'boxes-solid', value: '320+', label: 'Monthly Projects' },
-  { icon: 'trolley-solid', value: '80+', label: 'Loads / Week' },
-  { icon: 'globe-solid', value: '190', label: 'Global Coverage' },
-  { icon: 'partners-solid', value: '560+', label: 'Trusted Partners' },
+  { icon: '/images/peoject.svg', value: '320+', label: 'Monthly Projects' },
+  { icon: '/images/load-week.svg', value: '80+', label: 'Loads / Week' },
+  { icon: '/images/global.svg', value: '190', label: 'Global Coverage' },
+  { icon: '/images/trusted.svg', value: '560+', label: 'Trusted Partners' },
 ];
 
 export const testimonials = [
