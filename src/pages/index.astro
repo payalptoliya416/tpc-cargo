@@ -153,11 +153,11 @@ const special = [
           <button
             data-nav-index={index}
             class={`hero-nav-item flex h-[75px] sm:h-[100px] md:h-[125px] flex-col items-center justify-center gap-1.5 sm:gap-3 text-xs sm:text-sm font-medium text-white transition-all cursor-pointer ${
-              index === 1 ? 'is-active bg-white/12 text-[#FE9834] font-bold' : ''
+              index === 1 ? 'is-active bg-white/12 text-[#FE9834]' : ''
             }`}
           >
             <span class="hero-nav-icon h-5 w-5 sm:h-7 sm:w-7 md:h-8 md:w-8 flex items-center justify-center [&>svg]:w-full [&>svg]:h-full" set:html={l.svg} />
-            <span class="text-xs sm:text-base lg:text-xl">{l.name}</span>
+            <span class="text-xs sm:text-base lg:text-xl font-[Inter,sans-serif]">{l.name}</span>
           </button>
         ))}
       </div>

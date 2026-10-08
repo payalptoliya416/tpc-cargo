@@ -5,6 +5,7 @@
   --color-dark: #0B0806;
   --color-cream: #fff9f3;
   --font-sans: "Manrope", sans-serif;
+  --font-inter: "Inter", sans-serif;
   --font-logo: "Bebas Neue", sans-serif;
 }
 
@@ -32,6 +33,7 @@
 
 .badge {
   @apply inline-flex items-center gap-2 rounded-full border border-[#FFD8B3] bg-[#FFF9F2] px-3 py-1.5 text-sm font-medium uppercase text-[#FE9834];
+  font-family: "Inter", sans-serif;
 }
 
 .badge-dark {
@@ -41,6 +43,7 @@
   border: 1px solid rgba(255, 255, 255, 0.25);
   box-shadow: inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.55), inset 0 -1px 1px 0 rgba(0, 0, 0, 0.2), 0 4px 15px rgba(0, 0, 0, 0.25);
   @apply inline-flex items-center gap-2.5 rounded-full px-5 py-2 text-xs sm:text-sm font-semibold uppercase tracking-wider text-[#FE7E01];
+  font-family: "Inter", sans-serif;
 }
 
 .badge::before {
@@ -109,6 +112,12 @@
 
 .text-muted {
   @apply text-base leading-[30px] text-[#858482];
+  font-family: "Inter", sans-serif;
+}
+
+/* All paragraph text uses Inter */
+p {
+  font-family: "Inter", sans-serif;
 }
 
 .input {
