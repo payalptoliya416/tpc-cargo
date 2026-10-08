@@ -1,5 +1,6 @@
 ---
 import QuoteForm from './QuoteForm.astro';
+import Icon from './Icon.astro';
 import { highlight } from '../utils';
 const { badge, title, text, image, formTitle, googleUrl = 'https://google.com', facebookUrl = 'https://facebook.com' } = Astro.props;
 ---
@@ -32,7 +33,7 @@ const { badge, title, text, image, formTitle, googleUrl = 'https://google.com', 
           </svg>
           <div>
             <div class="text-base font-semibold text-white leading-tight mb-0.5">Google</div>
-            <div class="text-sm text-white">4.9 <span class="text-[#FFC107] font-bold ml-1">★ ★ ★ ★ ★</span></div>
+            <div class="text-sm text-white flex items-center gap-1">4.9 <span class="flex ml-1 text-[#FFC107]">{[1,2,3,4,5].map(() => <Icon name="star" class="h-3.5 w-3.5" />)}</span></div>
           </div>
         </a>
 
@@ -48,7 +49,7 @@ const { badge, title, text, image, formTitle, googleUrl = 'https://google.com', 
           </svg>
           <div>
             <div class="text-base font-semibold text-white leading-tight mb-0.5">Facebook</div>
-            <div class="text-sm text-white">5.0 <span class="text-[#FFC107] font-bold ml-1">★ ★ ★ ★ ★</span></div>
+            <div class="text-sm text-white flex items-center gap-1">5.0 <span class="flex ml-1 text-[#FFC107]">{[1,2,3,4,5].map(() => <Icon name="star" class="h-3.5 w-3.5" />)}</span></div>
           </div>
         </a>
       </div>
