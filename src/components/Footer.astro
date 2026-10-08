@@ -11,7 +11,7 @@ const path = Astro.url.pathname;
 // Note: isActive used as SSR fallback; client-side JS handles static builds
 const isActive = (href: string) => path === href;
 ---
-<footer class="bg-dark text-gray-300">
+<footer class="bg-dark">
   <div class="wrap grid gap-5 md:gap-10 py-10 sm:py-14 sm:grid-cols-2 lg:grid-cols-4 font-[Inter,sans-serif]">
     <div>
       <Logo footer />
