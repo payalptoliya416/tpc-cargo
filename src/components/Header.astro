@@ -7,7 +7,7 @@ const path = Astro.url.pathname;
 const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWith(href));
 ---
 <header class="bg-white relative z-40">
-  <div class="flex items-center justify-between gap-4 px-3 py-4 md:px-6">
+  <div class="flex items-center justify-between gap-4 px-3 py-4 md:px-6 font-[Inter,sans-serif]">
     <div class="flex items-center gap-6">
       <Logo />
       <nav class="hidden items-center gap-3 2xl:gap-6 text-sm xl:text-base xl:flex">
@@ -32,7 +32,7 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
         <span class="flex items-center gap-2"><Icon name="clock" class="h-4 w-4" />{hours}</span>
       </div>
       <!-- Office button link --> 
-      <a href="/contacts" class="btn !hidden xl:!inline-flex items-center justify-center !text-sm !font-semibold !capitalize">
+      <a href="/contacts" class="btn !hidden xl:!inline-flex items-center justify-center !text-sm !capitalize">
         Cyprus Office
       </a>
       <!-- Mobile menu button -->

@@ -148,8 +148,8 @@ body {
 .nav-link {
   position: relative;
   padding: 4px 0;
-  font-weight: 500;
-  color: #1f2937;
+  font-weight: 400;
+  color: #0B0806;
   transition: color 0.2s ease;
 }
 
@@ -176,7 +176,6 @@ body {
 
 .nav-link--active {
   color: #FE9834;
-  font-weight: 600;
 }
 
 .nav-link--active::before {
