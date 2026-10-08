@@ -216,6 +216,16 @@ body {
   opacity: 1;
 }
 
+.footer-link--active {
+  color: #FE9834;
+  padding-left: 14px;
+}
+
+.footer-link--active::before {
+  width: 8px;
+  opacity: 1;
+}
+
 /* ── Footer social icons ── */
 .social-icon {
   transition: color 0.18s ease, border-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;

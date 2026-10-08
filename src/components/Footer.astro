@@ -6,6 +6,9 @@ import { services } from '../data/services';
 
 // Footer shows these 5 services only
 const footerServices = services.filter((s) => ['sea-freight', 'air-freight', 'road-freight', 'cargo-insurance', 'parcel-courier'].includes(s.slug));
+
+const path = Astro.url.pathname;
+const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWith(href));
 ---
 <footer class="bg-dark text-gray-300">
   <div class="wrap grid gap-5 md:gap-10 py-10 sm:py-14 sm:grid-cols-2 lg:grid-cols-4">
@@ -20,7 +23,7 @@ const footerServices = services.filter((s) => ['sea-freight', 'air-freight', 'ro
           <li>
             <a
               href={l.href}
-              class="footer-link"
+              class:list={['footer-link', isActive(l.href) ? 'footer-link--active' : '']}
             >
               {l.name}
             </a>
@@ -73,7 +76,7 @@ const footerServices = services.filter((s) => ['sea-freight', 'air-freight', 'ro
           <li>
             <a
               href={`/services/${s.slug}`}
-              class="footer-link"
+              class:list={['footer-link', isActive(`/services/${s.slug}`) ? 'footer-link--active' : '']}
             >
               {s.name}
             </a>
