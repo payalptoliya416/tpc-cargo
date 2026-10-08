@@ -43,7 +43,7 @@ const isActive = (href: string) => path === href;
             rel="noopener noreferrer"
             class="footer-link inline-flex items-center gap-2"
           >
-            <Icon name="pin" class="h-4 w-4 shrink-0" />
+            <img src="/images/footer-location.svg" alt="" class="h-4 w-4 shrink-0" />
             <span>Iapetou 21, Agios Athanasios</span>
           </a>
         </li>
@@ -52,7 +52,7 @@ const isActive = (href: string) => path === href;
             href={`tel:${phone.replace(/\s+/g, '')}`}
             class="footer-link inline-flex items-center gap-2"
           >
-            <Icon name="phone" class="h-4 w-4 shrink-0" />
+            <img src="/images/footer-call.svg" alt="" class="h-4 w-4 shrink-0" />
             <span>+357 25 254 515</span>
           </a>
         </li>
@@ -61,12 +61,12 @@ const isActive = (href: string) => path === href;
             href={`mailto:${email}`}
             class="footer-link inline-flex items-center gap-2"
           >
-            <Icon name="mail" class="h-4 w-4 shrink-0" />
+            <img src="/images/footer-email.svg" alt="" class="h-4 w-4 shrink-0" />
             <span>{email}</span>
           </a>
         </li>
         <li class="flex items-center gap-2">
-          <Icon name="clock" class="h-4 w-4 shrink-0" />
+          <img src="/images/footer-clock.svg" alt="" class="h-4 w-4 shrink-0" />
           <span>{hours}</span>
         </li>
       </ul>
@@ -91,9 +91,15 @@ const isActive = (href: string) => path === href;
   <div class="wrap flex flex-col items-center justify-between gap-4 border-t border-white/10 py-6 text-base sm:flex-row">
     <p class="text-white text-center sm:text-left">Copyright © {new Date().getFullYear()} TPCCARGO. All rights reserved.</p>
     <div class="flex gap-5">
-      {['facebook', 'x', 'instagram'].map((n) => (
-        <a href="#" aria-label={n} class="social-icon flex h-10 sm:h-[46px] w-10 sm:w-[46px] items-center justify-center rounded-full border border-white/20 text-white"><Icon name={n} class="h-4 w-4" /></a>
-      ))}
+      <a href="#" aria-label="Facebook" class="social-icon flex h-10 sm:h-[46px] w-10 sm:w-[46px] items-center justify-center rounded-full border border-white/20">
+        <img src="/images/footer-facebook.svg" alt="Facebook" class="" />
+      </a>
+      <a href="#" aria-label="Meta" class="social-icon flex h-10 sm:h-[46px] w-10 sm:w-[46px] items-center justify-center rounded-full border border-white/20">
+        <img src="/images/footer-meta.svg" alt="Meta" class="" />
+      </a>
+      <a href="#" aria-label="Instagram" class="social-icon flex h-10 sm:h-[46px] w-10 sm:w-[46px] items-center justify-center rounded-full border border-white/20">
+        <img src="/images/footer-insta.svg" alt="Instagram" class="" />
+      </a>
     </div>
   </div>
 </footer>

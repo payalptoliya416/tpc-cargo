@@ -1,6 +1,5 @@
 ---
 // Quote form shown inside the service hero
-import Icon from './Icon.astro';
 const { title = 'Get Your Quote' } = Astro.props;
 ---
 <div class="rounded-[20px] bg-white p-4 sm:p-10 text-dark shadow-[0_6px_80px_0_rgba(0,0,0,0.08)] border border-[#F3F3F3]">
@@ -10,7 +9,7 @@ const { title = 'Get Your Quote' } = Astro.props;
   <form action="#" class="mt-6 grid gap-5 sm:grid-cols-2 font-[Inter,sans-serif]">
     <div>
       <label class="flex items-center gap-1.5 text-sm text-[#3C3A38]">
-        <Icon name="user" class="h-3.5 w-3.5 text-[#FE7E01]" />
+        <img src="/images/form-user.svg" alt="" class="" />
         <span>First name</span>
         <span class="text-[#ED0E0E]">*</span>
       </label>
@@ -19,7 +18,7 @@ const { title = 'Get Your Quote' } = Astro.props;
 
     <div>
       <label class="flex items-center gap-1.5 text-sm text-[#3C3A38]">
-        <Icon name="user" class="h-3.5 w-3.5 text-[#FE7E01]" />
+        <img src="/images/form-user.svg" alt="" class="" />
         <span>Last name</span>
         <span class="text-[#ED0E0E]">*</span>
       </label>
@@ -28,7 +27,7 @@ const { title = 'Get Your Quote' } = Astro.props;
 
     <div>
       <label class="flex items-center gap-1.5 text-sm text-[#3C3A38]">
-        <Icon name="mail" class="h-3.5 w-3.5 text-[#FE7E01]" />
+        <img src="/images/form-mail.svg" alt="" class="" />
         <span>Email</span>
         <span class="text-[#ED0E0E]">*</span>
       </label>
@@ -37,7 +36,7 @@ const { title = 'Get Your Quote' } = Astro.props;
 
     <div>
       <label class="flex items-center gap-1.5 text-sm text-[#3C3A38]">
-        <Icon name="phone" class="h-3.5 w-3.5 text-[#FE7E01]" />
+        <img src="/images/form-call.svg" alt="" class="" />
         <span>Phone Number</span>
         <span class="text-[#ED0E0E]">*</span>
       </label>
@@ -46,7 +45,7 @@ const { title = 'Get Your Quote' } = Astro.props;
 
     <div>
       <label class="flex items-center gap-1.5 text-sm text-[#3C3A38]">
-        <Icon name="pin" class="h-3.5 w-3.5 text-[#FE7E01]" />
+        <img src="/images/form-location.svg" alt="" class="" />
         <span>From (Origin)</span>
         <span class="text-[#ED0E0E]">*</span>
       </label>
@@ -55,7 +54,7 @@ const { title = 'Get Your Quote' } = Astro.props;
 
     <div>
       <label class="flex items-center gap-1.5 text-sm text-[#3C3A38]">
-        <Icon name="pin" class="h-3.5 w-3.5 text-[#FE7E01]" />
+        <img src="/images/form-location.svg" alt="" class="" />
         <span>To (Destination)</span>
         <span class="text-[#ED0E0E]">*</span>
       </label>
@@ -64,7 +63,7 @@ const { title = 'Get Your Quote' } = Astro.props;
 
     <div class="sm:col-span-2">
       <label class="flex items-center gap-1.5 text-sm text-[#3C3A38]">
-        <Icon name="box" class="h-3.5 w-3.5 text-[#FE7E01]" />
+        <img src="/images/form-msj.svg" alt="" class="" />
         <span>Additional Details</span>
       </label>
       <textarea rows="3" class="mt-[10px] w-full min-h-[90px] max-h-[150px] resize-y overflow-y-auto rounded-lg border border-[#E7E6E6] bg-white px-[15px] py-3 text-sm text-[#3C3A38] outline-none focus:border-brand focus:ring-1 focus:ring-brand placeholder:text-[#858482]" placeholder="Tell us about your cargo, quantity, dimensions or any special requirements..."></textarea>

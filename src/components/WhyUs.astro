@@ -1,22 +1,21 @@
 ---
-import Icon from './Icon.astro';
-// Dark strip with 3 features. Services page uses "Innovation" as 2nd item.
+// Dark strip with 3 features.
 const { middle = 'Fast Delivery' } = Astro.props;
 const items = [
   {
-    icon: 'shield',
+    img: '/images/safe-secure.svg',
     title: 'Safe & Secure',
-    text: 'You benefit from our experience in delivering effective solutions to the complex global supply chains of some of the world’s biggest corporations.'
+    text: "You benefit from our experience in delivering effective solutions to the complex global supply chains of some of the world's biggest corporations."
   },
   {
-    icon: middle === 'Innovation' ? 'bulb' : 'zap',
+    img: '/images/fast-delivery.svg',
     title: middle,
     text: 'You benefit from every innovation, whether it involves a simple extension to our Air and Ocean Freight products, whether it means a development in warehousing.'
   },
   {
-    icon: 'phone',
+    img: '/images/support.svg',
     title: '100% Support',
-    text: 'All of which explains why you’ll find the team of outstanding support at TPC Cargo ready to apply their passion for solutions in support of your business.'
+    text: "All of which explains why you'll find the team of outstanding support at TPC Cargo ready to apply their passion for solutions in support of your business."
   },
 ];
 ---
@@ -24,8 +23,8 @@ const items = [
   <div class="wrap grid gap-7 md:grid-cols-3 md:gap-0 md:divide-x md:divide-white/10">
     {items.map((i) => (
       <div class="px-6 md:px-8">
-        <div class="mx-auto flex h-16 md:h-20 w-16 md:w-20 items-center justify-center rounded-full border-2 border-brand text-[#FE7E01] mb-4 md:mb-6 transition duration-300 hover:scale-105">
-          <Icon name={i.icon} class="h-6 w-6 text-white" />
+        <div class="mx-auto flex h-16 md:h-20 w-16 md:w-20 items-center justify-center rounded-full border-2 border-brand mb-4 md:mb-6 transition duration-300 hover:scale-105">
+          <img src={i.img} alt={i.title} class="h-7 w-7" />
         </div>
         <h3 class="text-xl font-medium text-white">{i.title}</h3>
         <p class="mt-3 md:mt-4 text-sm sm:text-base leading-[28px] text-[#B6B5B4] max-w-[340px] mx-auto">{i.text}</p>
