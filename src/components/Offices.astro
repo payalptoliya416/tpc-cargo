@@ -3,11 +3,11 @@ import Icon from './Icon.astro';
 import { offices } from '../data/site';
 ---
 <section class="wrap pt-2 md:pt-6 pb-10 md:pb-[120px]">
-  <div class="grid gap-5 md:gap-8 md:grid-cols-3 md:divide-x md:divide-gray-200/80">
+  <div class="grid gap-5 md:gap-8 md:grid-cols-3 md:divide-x md:divide-gray-200/80 font-[Inter,sans-serif]">
     {offices.map((o, idx) => (
       <div class="space-y-4">
-        <h4 class="office-heading text-xl font-semibold text-[#FE7E01]">{o.country}</h4>
-        <div class="flex flex-wrap items-center gap-x-3 gap-y-1.5 text-xs sm:text-sm 2xl:text-base text-[#3C3A38] font-medium">
+        <h4 class="office-heading text-xl font-medium text-[#FE7E01]">{o.country}</h4>
+        <div class="flex flex-wrap items-center gap-x-3 gap-y-1.5 text-xs sm:text-sm 2xl:text-base text-[#3C3A38] font-normal">
           <a href={`https://maps.google.com/?q=${encodeURIComponent(o.address + ', ' + o.country)}`} target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 hover:text-[#FE7E01] transition-colors">
             <Icon name="pin" class="h-4 w-4 text-dark shrink-0" />
             <span>{o.address}</span>
@@ -18,7 +18,7 @@ import { offices } from '../data/site';
             <span>{o.phone}</span>
           </a>
         </div>
-        <div class="flex items-center gap-1.5 text-xs sm:text-sm 2xl:text-base text-[#3C3A38] font-medium">
+        <div class="flex items-center gap-1.5 text-xs sm:text-sm 2xl:text-base text-[#3C3A38] font-normal">
           <a href={`mailto:${o.email}`} class="flex items-center gap-1.5 hover:text-[#FE7E01] transition-colors">
             <Icon name="mail" class="h-4 w-4 text-dark shrink-0" />
             <span>{o.email}</span>

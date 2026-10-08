@@ -3,7 +3,7 @@ import Icon from './Icon.astro';
 import { stats } from '../data/site';
 ---
 <section class="wrap my-4 md:my-12" id="stats-section">
-  <div class="grid grid-cols-2 gap-4 md:gap-6 rounded-[18px] border border-[#FFE5CC] bg-[#FFF9F2] p-4 md:p-6 md:grid-cols-4 md:p-8">
+  <div class="grid grid-cols-2 gap-4 md:gap-6 rounded-[18px] border border-[#FFE5CC] bg-[#FFF9F2] p-4 md:p-6 md:grid-cols-4 font-[Inter,sans-serif]">
     {stats.map((s) => {
       const match = s.value.match(/^(\d+)(\+?)$/);
       const targetNum = match ? match[1] : s.value;
