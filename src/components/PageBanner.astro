@@ -4,11 +4,18 @@ const { title, image = '/images/sea-freight-sol.png' } = Astro.props;
 ---
 <section class="px-3 md:px-6">
   <div class="relative flex items-center justify-center overflow-hidden rounded-3xl bg-cover bg-center min-h-[489px]" style={`background-image:url('${image}')`}>
-    <!-- <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/45 to-black/75"></div> -->
+    <div class="absolute inset-0 bg-black/40"></div>
     <div class="relative z-10 text-center text-white">
       <span class="badge-dark">TPC Cargo</span>
       <h1 class="mt-[30px] text-4xl font-medium md:text-[74px]">{title}</h1>
-
+      <!-- Breadcrumb -->
+      <div class="mt-5 inline-flex items-center gap-2 rounded-full text-sm md:text-base text-[#B6B5B4] font-[Inter,sans-serif]">
+        <a href="/" class="hover:text-white transition-colors">TPC Cargo</a>
+        <svg class="h-3.5 w-3.5 text-[#B6B5B4]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+        </svg>
+        <span class="text-white font-medium">{title}</span>
+      </div>
     </div>
   </div>
 </section>
