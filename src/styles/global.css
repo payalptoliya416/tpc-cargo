@@ -58,7 +58,7 @@
 }
 
 .btn {
-  @apply inline-block rounded-full bg-brand px-6 py-2.5 text-sm font-medium uppercase text-black cursor-pointer font-[Inter,sans-serif];
+  @apply inline-block rounded-full bg-brand px-6 py-2.5 text-sm font-semibold uppercase text-black cursor-pointer font-[Inter,sans-serif];
   position: relative;
   overflow: hidden;
   transition: transform 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
