@@ -3,24 +3,101 @@
 ---
 <div class="rounded-[20px] bg-[#FFF9F2] px-5 py-5 sm:px-8 sm:py-8 md:px-[35px] md:py-[25px]">
   <h3 class="text-xl sm:text-[28px] font-semibold text-dark">Request a Free Quote</h3>
-  <form action="#" class="mt-[30px] grid gap-5 sm:grid-cols-2">
-    <div class="relative sm:col-span-2">
-      <select class="w-full appearance-none rounded-[12px] bg-white px-4 py-4 text-base text-[#858482] outline-none focus:border-brand focus:ring-1 focus:ring-brand" required>
+  <form action="#" class="mt-[30px] grid gap-5 sm:grid-cols-2 font-[Inter,sans-serif]">
+
+    <!-- Custom Dropdown -->
+    <div class="relative sm:col-span-2" id="freight-dropdown">
+      <button
+        type="button"
+        id="freight-btn"
+        class="w-full flex items-center justify-between rounded-[12px] bg-white px-4 py-4 text-base text-[#858482] outline-none cursor-pointer transition-colors"
+      >
+        <span id="freight-label">Freight Type</span>
+        <svg id="freight-arrow" class="h-4 w-4 shrink-0 transition-transform duration-300 text-[#0B0806]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+        </svg>
+      </button>
+      <!-- Hidden real select for form submission -->
+      <select id="freight-select" name="freight_type" class="sr-only" required>
         <option value="">Freight Type</option>
-        <option>Sea Freight</option><option>Air Freight</option><option>Road Freight</option>
-        <option>Multimodal Transport</option><option>Freight Forwarding</option><option>Parcel Courier</option>
-        <option>Packaging and Storage</option><option>Car Transportation</option><option>Cargo Insurance</option>
+        <option value="Sea Freight">Sea Freight</option>
+        <option value="Air Freight">Air Freight</option>
+        <option value="Road Freight">Road Freight</option>
+        <option value="Multimodal Transport">Multimodal Transport</option>
+        <option value="Freight Forwarding">Freight Forwarding</option>
+        <option value="Parcel Courier">Parcel Courier</option>
+        <option value="Packaging and Storage">Packaging and Storage</option>
+        <option value="Car Transportation">Car Transportation</option>
+        <option value="Cargo Insurance">Cargo Insurance</option>
       </select>
-      <div class="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[#858482]">
-        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-      </div>
+      <!-- Dropdown List -->
+      <ul
+        id="freight-list"
+        class="absolute left-0 right-0 top-full z-50 mt-1.5 hidden rounded-[12px] border border-[#E7E6E6] bg-white shadow-lg overflow-hidden"
+      >
+        {['Sea Freight','Air Freight','Road Freight','Multimodal Transport','Freight Forwarding','Parcel Courier','Packaging and Storage','Car Transportation','Cargo Insurance'].map((opt) => (
+          <li
+            data-value={opt}
+            class="freight-option px-4 py-3 text-sm text-[#858482] cursor-pointer hover:bg-[#FFF9F2] hover:text-[#FE7E01] transition-colors"
+          >
+            {opt}
+          </li>
+        ))}
+      </ul>
     </div>
-    <input type="email" class="w-full rounded-[12px] bg-white px-4 py-4 text-base text-[#858482] outline-none focus:border-brand focus:ring-1 focus:ring-brand sm:col-span-2 placeholder:text-[#858482]" placeholder="Email" required />
-    <input class="w-full rounded-[12px] bg-white px-4 py-4 text-base text-[#858482] outline-none focus:border-brand focus:ring-1 focus:ring-brand placeholder:text-[#858482]" placeholder="City of departure" />
-    <input class="w-full rounded-[12px] bg-white px-4 py-4 text-base text-[#858482] outline-none focus:border-brand focus:ring-1 focus:ring-brand placeholder:text-[#858482]" placeholder="Delivery city" />
-    <textarea rows="4" class="w-full min-h-[100px] max-h-[180px] resize-y overflow-y-auto rounded-[12px] bg-white px-4 py-4 text-base text-[#858482] outline-none focus:border-brand focus:ring-1 focus:ring-brand sm:col-span-2 placeholder:text-[#858482]" placeholder="Message"></textarea>
+
+    <input type="email" name="email" class="w-full rounded-[12px] bg-white px-4 py-4 text-base text-[#858482] outline-none focus:border-brand focus:ring-1 focus:ring-brand sm:col-span-2 placeholder:text-[#858482]" placeholder="Email" required />
+    <input name="city_from" class="w-full rounded-[12px] bg-white px-4 py-4 text-base text-[#858482] outline-none focus:border-brand focus:ring-1 focus:ring-brand placeholder:text-[#858482]" placeholder="City of departure" />
+    <input name="city_to" class="w-full rounded-[12px] bg-white px-4 py-4 text-base text-[#858482] outline-none focus:border-brand focus:ring-1 focus:ring-brand placeholder:text-[#858482]" placeholder="Delivery city" />
+    <textarea name="message" rows="4" class="w-full min-h-[100px] max-h-[180px] resize-y overflow-y-auto rounded-[12px] bg-white px-4 py-4 text-base text-[#858482] outline-none focus:border-brand focus:ring-1 focus:ring-brand sm:col-span-2 placeholder:text-[#858482]" placeholder="Message"></textarea>
+
     <div class="pt-2 text-center sm:col-span-2">
-      <button class="inline-block rounded-full bg-brand px-8 md:px-10 py-2 md:py-3 text-base font-medium uppercase tracking-wider text-black transition-all duration-300 hover:brightness-110 hover:shadow-lg hover:scale-[1.02] cursor-pointer w-full max-w-[210px] font-[Inter,sans-serif]">Submit</button>
+      <button type="submit" class="inline-block rounded-full bg-brand px-8 md:px-10 py-2 md:py-3 text-base font-medium uppercase tracking-wider text-black transition-all duration-300 hover:brightness-110 hover:shadow-lg hover:scale-[1.02] cursor-pointer w-full max-w-[210px]">Submit</button>
     </div>
   </form>
 </div>
+
+<script is:inline>
+(function () {
+  var btn    = document.getElementById('freight-btn');
+  var list   = document.getElementById('freight-list');
+  var arrow  = document.getElementById('freight-arrow');
+  var label  = document.getElementById('freight-label');
+  var select = document.getElementById('freight-select');
+  var wrap   = document.getElementById('freight-dropdown');
+
+  if (!btn) return;
+
+  function open() {
+    list.classList.remove('hidden');
+    arrow.style.transform = 'rotate(180deg)';
+    btn.classList.add('border-brand', 'ring-1', 'ring-brand');
+  }
+
+  function close() {
+    list.classList.add('hidden');
+    arrow.style.transform = 'rotate(0deg)';
+    btn.classList.remove('border-brand', 'ring-1', 'ring-brand');
+  }
+
+  btn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    list.classList.contains('hidden') ? open() : close();
+  });
+
+  document.querySelectorAll('.freight-option').forEach(function (li) {
+    li.addEventListener('click', function () {
+      var val = li.getAttribute('data-value');
+      label.textContent = val;
+      label.classList.remove('text-[#858482]');
+      label.classList.add('text-dark');
+      select.value = val;
+      close();
+    });
+  });
+
+  document.addEventListener('click', function (e) {
+    if (!wrap.contains(e.target)) close();
+  });
+})();
+</script>
