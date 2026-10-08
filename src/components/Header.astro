@@ -14,8 +14,10 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
         {navLinks.map((l) => (
           <a
             href={l.href}
-            data-nav-link={l.href}
-            class="nav-link"
+            class:list={[
+              'nav-link',
+              isActive(l.href) ? 'nav-link--active' : ''
+            ]}
           >
             {l.name}
           </a>
@@ -61,8 +63,10 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
           {navLinks.map((l) => (
             <a
               href={l.href}
-              data-nav-link={l.href}
-              class="nav-mobile-link rounded-lg px-3 py-2 text-base font-medium transition-colors text-gray-800 hover:bg-gray-50"
+              class:list={[
+                'rounded-lg px-3 py-2 text-base font-medium transition-colors',
+                isActive(l.href) ? 'bg-orange-50 text-[#FE9834] font-semibold' : 'text-gray-800 hover:bg-gray-50'
+              ]}
             >
               {l.name}
             </a>
@@ -105,23 +109,6 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
   const closeBtn = document.getElementById('sidebar-close-btn');
   const sidebar = document.getElementById('mobile-sidebar');
   const backdrop = document.getElementById('sidebar-backdrop');
-
-  // ── Active nav link highlight (works on static/SSG builds) ──
-  const current = window.location.pathname.replace(/\/$/, '') || '/';
-  document.querySelectorAll('[data-nav-link]').forEach((el) => {
-    const href = (el.getAttribute('data-nav-link') || '').replace(/\/$/, '') || '/';
-    // desktop: exact for '/', startsWith for others (e.g. /services matches /services/*)
-    const active = href === '/' ? current === '/' : current === href;
-    if (active) {
-      if (el.classList.contains('nav-link')) {
-        el.classList.add('nav-link--active');
-      }
-      if (el.classList.contains('nav-mobile-link')) {
-        el.classList.add('bg-orange-50', 'text-[#FE9834]', 'font-semibold');
-        el.classList.remove('text-gray-800');
-      }
-    }
-  });
 
   function openSidebar() {
     sidebar?.classList.remove('hidden');
